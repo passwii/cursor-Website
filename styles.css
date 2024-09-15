@@ -1,8 +1,7 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
     padding: 0;
+    font: 16px/1.6 Arial, sans-serif;
 }
 
 header {
@@ -43,8 +42,8 @@ footer {
 
 .footer-content {
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    justify-content: space-between;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -118,10 +117,7 @@ footer {
 }
 
 .footer-column.qr-code img {
-    width: 100%;
     max-width: 190px;
-    height: auto;
-    margin-bottom: 0.5rem;
     border: 2px solid #000;
     border-radius: 10px;
     padding: 5px;
@@ -204,7 +200,7 @@ footer {
 .learn-more {
     display: inline-block;
     padding: 0.5rem 1rem;
-    background-color: #007bff;
+    background-color: #07f;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -258,4 +254,44 @@ footer {
 
 #content {
     padding: 20px;
+}
+
+footer a {
+    text-decoration: none;
+    color: inherit; /* 使用父元素的颜色 */
+}
+
+footer a:visited {
+    color: inherit; /* 访问过的链接保持相同颜色 */
+}
+
+footer a:hover, footer a:active {
+    color: #007bff; /* 悬停和激活状态保持相同颜色 */
+}
+
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #f8f8f8;
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: var(--primary-color);
+}
+
+@media (max-width: 992px) {
+    .footer-column {
+        flex-basis: calc(33.33% - 1rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-column {
+        flex-basis: calc(50% - 1rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-column {
+        flex-basis: 100%;
+    }
 }
