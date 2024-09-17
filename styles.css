@@ -4,11 +4,20 @@
 }
 
 body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+    color: #333;
     margin: 0;
     padding: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 header {
@@ -19,10 +28,213 @@ header {
 
 main {
     flex: 1;
-    padding: 2rem;
-    padding-top: 80px;
+    padding: 0rem;
+    padding-top: 0px;
 }
 
+/* Hero section */
+.hero {
+    background: linear-gradient(to right, #f0f9ff, #ffffff);
+    padding: 80px 0;
+    width: 100%; /* 添加这行 */
+}
+
+.hero-content {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-text {
+    flex: 1;
+    margin-left: 1rem;
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+    top: 33px;
+    margin-left: 1rem;
+    /* margin-right: 1rem; */
+
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #0070f3;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.btn-outline {
+    /* 按钮的基本样式 */
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #0056b3; /* 根据您的设计调整颜色 */
+    background-color: transparent;
+    color: #0056b3; /* 根据您的设计调整颜色 */
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease; /* 添加过渡效果 */
+}
+
+.btn-outline:hover {
+    transform: scale(1.1); /* 鼠标��停时放大到1.1倍 */
+    background-color: #ffffff; 
+    color: #0056b3; /* 根据您的设计调整颜色 */
+}
+
+/* Services section */
+.services {
+    padding: 50px 0;
+    background-color: #f8f9fa;
+    width: 100%; /* 添加这行 */
+}
+
+.services .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.services h2 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.service-card h3 {
+    margin-top: 20px;
+}
+
+/* How it works section */
+.how-it-works {
+    padding: 50px 0;
+    background: linear-gradient(to right, #f0f9ff, #ffffff);
+}
+
+.how-it-works h2 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.steps {
+    display: flex;
+    font-size: 18px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.step {
+    flex-basis: calc(25% - 20px);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .steps {
+        grid-template-columns: 1fr;
+        /* 在小屏幕上改为单列布局 */
+    }
+}
+
+.step p {
+    font-size: 17px;
+    max-width: 220px;
+    margin: 0 auto;
+}
+
+.step-number {
+    font-size: 42px;
+    font-weight: bold;
+    color: #0070f3;
+    margin-bottom: 10px;
+}
+
+/* Testimonials section */
+.testimonials {
+    padding: 40px 0 120px 0;
+    background: linear-gradient(to left, #f0f9ff, #ffffff);
+}
+
+.testimonials h2 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.testimonial-card {
+    display: flex;
+    flex-direction: column;
+    width: 85%; /* 或者设置具体的宽度 */
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.testimonial-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial-content {
+    padding: 10px;
+}
+
+/* Footer styles */
 footer {
     background-color: #f8f8f8;
     padding: 2rem 0;
@@ -37,31 +249,30 @@ footer {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    
 }
 
 .footer-column {
     flex: 1;
-    min-width: 10px; /* 减小最小宽度 */
+    min-width: 10px;
     max-width: 22%;
     margin-right: -5rem;
     margin-bottom: 1rem;
 }
 
 .footer-column h3 {
-    margin-bottom: 0.6rem; /* 减小标题下方的间距 */
-    font-size: 16px; /* 稍微减小标题字体大小 */
+    margin-bottom: 0.6rem;
+    font-size: 16px;
 }
 
 .footer-column ul {
     list-style-type: none;
     padding: 0;
-    margin: 0; /* 移除默认的上下边距 */
+    margin: 0;
 }
 
 .footer-column li {
-    margin-bottom: 0.6rem; /* 减小列表项之间的间距 */
-    font-size: 13px; /* 稍微减小字体大小 */
+    margin-bottom: 0.6rem;
+    font-size: 13px;
 }
 
 .footer-column.qr-code {
@@ -76,12 +287,13 @@ footer {
 }
 
 .footer-column.qr-code img {
-    max-width: 130px; /* 减小二维码图片的最大宽度 */
-    border: 3px solid #02712e; /* 减小边框宽度 */
-    border-radius: 5px; /* 减小圆角 */
-    padding: 3px; /* 减小内边距 */
+    max-width: 130px;
+    border: 3px solid #02712e;
+    border-radius: 5px;
+    padding: 3px;
 }
 
+/* Navigation styles */
 .main-nav {
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(5px);
@@ -104,9 +316,19 @@ footer {
         0 0 0 1px rgba(255, 255, 255, 0.2) inset;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+}
+
 .logo img {
     height: 40px;
     margin-right: 10px;
+}
+
+.company-info {
+    display: flex;
+    flex-direction: column;
 }
 
 .company-name {
@@ -114,6 +336,7 @@ footer {
     font-weight: bold;
     color: #333;
     text-decoration: none;
+    transition: color 0.3s ease;
     margin-bottom: 2px;
 }
 
@@ -163,6 +386,7 @@ footer {
     background-color: #0056b3;
 }
 
+/* Responsive design */
 @media (max-width: 992px) {
     .main-nav {
         flex-wrap: wrap;
@@ -184,133 +408,15 @@ footer {
     }
 
     .footer-column {
-        flex-basis: calc(25% - 0.5rem); /* 调整为4列布局 */
+        flex-basis: calc(25% - 0.5rem);
     }
-}
 
-@media (max-width: 768px) {
-    .nav-links {
+    .steps {
         flex-direction: column;
-        align-items: center;
     }
 
-    .nav-link {
-        margin: 5px 0;
-    }
-
-    .footer-column {
-        flex-basis: calc(50% - 0.5rem); /* 调整为2列布局 */
-    }
-}
-
-@media (max-width: 480px) {
-    .footer-column {
+    .step {
         flex-basis: 100%;
-        margin-right: 0;
-    }
-}
-
-footer a {
-    text-decoration: none;
-    color: inherit;
-}
-
-footer a:hover, footer a:active {
-    color: var(--primary-color);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo img {
-    height: 40px;
-    margin-right: 10px;
-}
-
-.company-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.company-name {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    margin-bottom: 2px; /* 添加一些底部间距 */
-}
-
-.company-slogan {
-    font-size: 12px;
-    color: #666;
-    font-style: bold;
-}
-
-.nav-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.nav-link {
-    color: #333;
-    text-decoration: none;
-    padding: 8px 12px;
-    margin: 0 5px;
-    border-radius: 20px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.nav-link:hover, .nav-link.active {
-    background-color: var(--primary-color);
-    color: white;
-}
-
-.login-btn {
-    margin-left: 20px;
-}
-
-.login-btn .btn {
-    padding: 8px 16px;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.login-btn .btn:hover {
-    background-color: #0056b3;
-}
-
-@media (max-width: 992px) {
-    .main-nav {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .logo {
-        margin-bottom: 10px;
-    }
-
-    .nav-links {
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 10px;
-    }
-
-    .login-btn {
-        margin-left: 0;
-    }
-
-    .footer-column {
-        flex-basis: calc(25% - 0.5rem); /* 调整为4列布局 */
     }
 }
 
@@ -325,7 +431,7 @@ footer a:hover, footer a:active {
     }
 
     .footer-column {
-        flex-basis: calc(50% - 0.5rem); /* 调整为2列布局 */
+        flex-basis: calc(50% - 0.5rem);
     }
 }
 
