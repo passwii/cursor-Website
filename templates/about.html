@@ -4,39 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>彼励扶电子商务 - 关于我们</title>
-    <link rel="stylesheet" href="/statics/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
     <nav class="main-nav">
         <div class="logo">
-            <img src="/images/blf_logo_1.jpg" alt="公司logo">
+            <img src="{{ url_for('static', filename='images/blf_logo_1.jpg') }}" alt="公司logo">
             <div class="company-info">
                 <a href="index.html" class="company-name">彼励扶跨境</a>
                 <span class="company-slogan">It's always Day 1</span>
             </div>
         </div>
-        <button class="menu-toggle">☰</button>
+            <div class="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
         <ul class="nav-links">
-            <li><a href="index.html" class="nav-link">BLF主页</a></li>
-            <li><a href="services.html" class="nav-link">服务体系</a></li>
+            <li><a href="index.html" class="nav-link">主页</a></li>
             <li class="dropdown">
-                <a href="about.html" class="nav-link">关于我们</a>
+                <a href="services.html" class="nav-link">服务体系</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#company-overview" class="dropdown-item">公司概况</a></li>
-                    <li><a href="#company-culture" class="dropdown-item">企业文化</a></li>
-                    <li><a href="#partners" class="dropdown-item">合作伙伴</a></li>
-                    <li><a href="#" class="dropdown-item">人才招聘</a></li>
-                    <li><a href="#future-outlook" class="dropdown-item">展望未来</a></li>
+                    <li><a href="#" class="dropdown-item">市场调研</a></li>
+                    <li><a href="#" class="dropdown-item">产品出海</a></li>
+                    <li><a href="#" class="dropdown-item">品牌出海</a></li>
+                    <li><a href="#" class="dropdown-item">AI 赋能运营</a></li>
                 </ul>
             </li>
-            <li><a href="contact.html" class="nav-link">联系我们</a></li>
+            <li class="dropdown">
+                <a href="about.html" class="nav-link active">关于我们</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">公司概况</a></li>
+                    <li><a href="#" class="dropdown-item">企业文化</a></li>
+                    <li><a href="#" class="dropdown-item">合作伙伴</a></li>
+                    <li><a href="#" class="dropdown-item">展望未来</a></li>
+                    <!-- <li><a href="#" class="dropdown-item">荣誉资质</a></li> -->
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="contact.html" class="nav-link">联系我们</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">官方社媒</a></li>
+                    <li><a href="#" class="dropdown-item">人才招聘</a></li>
+                    <li><a href="#" class="dropdown-item">展会活动</a></li>
+                    <li><a href="#" class="dropdown-item">企业信息</a></li>
+                </ul>
+            </li>
         </ul>
         <div class="login-btn">
             <a href="#" class="btn">登录</a>
         </div>
     </nav>
-
+    <script src="/statics/script.js" defer></script>
+</head>
+<body>
     <main>
         <section id="company-overview" class="about-section hero">
             <div class="hero-content">
@@ -47,7 +68,7 @@
                         公司业务主要面向北美、欧洲和东南亚市场等，拥有一群年轻的行业意见领袖，立志成为全球领先的跨境电商服务团队。</p>
                 </div>
                 <div class="hero-image">
-                    <img src="/images/work-3.webp" alt="彼励扶电子商务公司概况">
+                    <img src="{{ url_for('static', filename='images/work-3.webp') }}" alt="彼励扶电子商务公司概况">
                 </div>
             </div>
         </section>
@@ -116,7 +137,7 @@
         <section id="future-outlook" class="about-section hero">
             <div class="hero-content">
                 <div class="hero-image">
-                    <img src="/images/work-1.webp" alt="彼励扶电子商务展望未来">
+                    <img src="{{ url_for('static', filename='images/work-2.webp') }}" alt="彼励扶电子商务展望未来">
                 </div>
 
                 <div class="hero-text">
@@ -156,11 +177,10 @@
             <div class="footer-column">
                 <h3>关于我们</h3>
                 <ul>
-                    <li>公司概况</li>
-                    <li>企业文化</li>
-                    <li>荣誉资质</li>
-                    <li>合作伙伴</li>
-                    <li>人才招聘</li>
+                    <li><a href="about.html#company-overview">公司概况</a></li>
+                    <li><a href="about.html#company-culture">企业文化</a></li>
+                    <li><a href="about.html#partners">合作伙伴</a></li>
+                    <li><a href="about.html#future-outlook">展望未来</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -174,7 +194,7 @@
                 </ul>
             </div>
             <div class="footer-column qr-code">
-                <img src="/images/qrcode.jpg" alt="二维码">
+                <img src="{{ url_for('static', filename='images/qrcode.jpg') }}" alt="二维码">
                 <p>扫码联系我们</p>
             </div>
         </div>

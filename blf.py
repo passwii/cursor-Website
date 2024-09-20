@@ -1,7 +1,7 @@
 from flask import Flask, render_template, send_from_directory
 import os
 
-app = Flask(__name__, static_folder='./templates')
+app = Flask(__name__, static_folder='./statics')
 
 @app.route('/')
 @app.route('/index.html')
@@ -17,12 +17,16 @@ def about():
     return render_template('about.html')
 
 @app.route('/contact.html')
-def contact():
+def contact():   
     return render_template('contact.html')
+
+@app.route('/tools.html')
+def tools():
+    return render_template('tools.html')
 
 @app.route('/<path:filename>')
 def serve_static(filename):
-    return send_from_directory('.', filename)
+    return send_from_directory(app.static_folder, filename)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8800, debug=True)

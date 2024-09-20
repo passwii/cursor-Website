@@ -4,17 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>彼励扶电子商务 - 主页</title>
-    <link rel="stylesheet" href="/statics/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
     <nav class="main-nav">
         <div class="logo">
-            <img src="/images/blf_logo_1.jpg" alt="公司logo">
+            <img src="{{ url_for('static', filename='images/blf_logo_1.jpg') }}" alt="公司logo">
             <div class="company-info">
                 <a href="index.html" class="company-name">彼励扶跨境</a>
                 <span class="company-slogan">It's always Day 1</span>
             </div>
         </div>
+            <div class="hamburger-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        
         <ul class="nav-links">
-            <li><a href="index.html" class="nav-link active">BLF主页</a></li>
+            <li><a href="index.html" class="nav-link active">主页</a></li>
             <li class="dropdown">
                 <a href="services.html" class="nav-link">服务体系</a>
                 <ul class="dropdown-menu">
@@ -27,20 +34,28 @@
             <li class="dropdown">
                 <a href="about.html" class="nav-link">关于我们</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" class="dropdown-item">公司概况</a></li>
-                    <li><a href="#" class="dropdown-item">企业文化</a></li>
-                    <li><a href="#" class="dropdown-item">合作伙伴</a></li>
-                    <li><a href="#" class="dropdown-item">人才招聘</a></li>
-                    <li><a href="#" class="dropdown-item">展望未来</a></li>
+                    <li><a href="about.html#company-overview" class="dropdown-item">公司概况</a></li>
+                    <li><a href="about.html#company-culture" class="dropdown-item">企业文化</a></li>
+                    <li><a href="about.html#partners" class="dropdown-item">合作伙伴</a></li>
+                    <li><a href="about.html#future-outlook" class="dropdown-item">展望未来</a></li>
                     <!-- <li><a href="#" class="dropdown-item">荣誉资质</a></li> -->
                 </ul>
             </li>
-            <li><a href="contact.html" class="nav-link">联系我们</a></li>
+            <li class="dropdown">
+                <a href="contact.html" class="nav-link">联系我们</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">官方社媒</a></li>
+                    <li><a href="#" class="dropdown-item">人才招聘</a></li>
+                    <li><a href="#" class="dropdown-item">展会活动</a></li>
+                    <li><a href="#" class="dropdown-item">企业信息</a></li>
+                </ul>
+            </li>
         </ul>
-        <div class="login-btn">
-            <a href="#" class="btn">登录</a>
-        </div>
+            <div class="login-btn">
+                <a href="tools.html" class="btn">后台</a>
+            </div>
     </nav>
+    
 </head>
 <body>
     <main>
@@ -52,10 +67,10 @@
                         <p>自信地开拓全球电子商务市场。</br>
                         <br>我们帮助中国企业、制造商、贸易商和品牌商在美国、欧洲等海外市场成功拓展业务，实现产品出海和品牌国际化。</p>
                         <a href="#" class="btn">立即开始</a>
-                        <a href="#" class="btn btn-outline">了解更多</a>
+                        <a href="about.html#company-culture" class="btn btn-outline">了解更多</a>
                     </div>
                     <div class="hero-image">
-                        <img src="/images/work-4.webp" alt="亚马中国成功" width="600" height="400">
+                        <img src="{{ url_for('static', filename='images/work-4.webp') }}" alt="亚马中国成功" width="600" height="400">
                     </div>
                 </div>
             </div>
@@ -157,7 +172,7 @@
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
                         <div class="testimonial-image">
-                            <img src="/images/tool-accessories.jpg" alt="工具配件案例">
+                            <img src="{{ url_for('static', filename='images/tool-accessories.jpg') }}" alt="工具配件案例">
                         </div>
                         <div class="testimonial-content">
                             <p><strong>项目概况：</strong></p>
@@ -174,7 +189,7 @@
                     </div>
                     <div class="testimonial-card">
                         <div class="testimonial-image">
-                            <img src="/images/food-tray.jpg" alt="食品餐盘案例">
+                            <img src="{{ url_for('static', filename='images/food-tray.jpg') }}" alt="食品餐盘案例">
                         </div>
                         <div class="testimonial-content">
                             <p><strong>项目概况：</strong></p>
@@ -191,7 +206,7 @@
                     </div>
                     <div class="testimonial-card">
                         <div class="testimonial-image">
-                            <img src="/images/mattress.jpg" alt="家居床垫案例">
+                            <img src="{{ url_for('static', filename='images/mattress.jpg') }}" alt="家居床垫案例">
                         </div>
                         <div class="testimonial-content">
                             <p><strong>项目概况：</strong></p>
@@ -238,11 +253,10 @@
             <div class="footer-column">
                 <h3>关于我们</h3>
                 <ul>
-                    <li>公司概况</li>
-                    <li>企业文化</li>
-                    <li>合作伙伴</li>
-                    <li>人才招聘</li>
-                    <li>展望未来</li>
+                    <li><a href="about.html#company-overview">公司概况</a></li>
+                    <li><a href="about.html#company-culture">企业文化</a></li>
+                    <li><a href="about.html#partners">合作伙伴</a></li>
+                    <li><a href="about.html#future-outlook">展望未来</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -256,12 +270,10 @@
                 </ul>
             </div>
             <div class="footer-column qr-code">
-                <img src="/images/qrcode.jpg" alt="二维码">
+                <img src="{{ url_for('static', filename='images/qrcode.jpg') }}" alt="二维码">
                 <p>扫码联系我们</p>
             </div>
         </div>
     </footer>
-
-    <script src="/script.js"></script>
 </body>
 </html>
