@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>彼励扶电子商务 - 服务体系</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
     <nav class="main-nav">
@@ -14,6 +15,11 @@
                 <span class="company-slogan">It's always Day 1</span>
             </div>
         </div>
+        <div class="hamburger-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
         <ul class="nav-links">
             <li><a href="index.html" class="nav-link">主页</a></li>
             <li class="dropdown">
@@ -22,7 +28,7 @@
                     <li><a href="#" class="dropdown-item">市场调研</a></li>
                     <li><a href="#" class="dropdown-item">产品出海</a></li>
                     <li><a href="#" class="dropdown-item">品牌出海</a></li>
-                    <li><a href="#" class="dropdown-item">AI 赋能运营</a></li>
+                    <li><a href="services.html#ai-empowerment" class="dropdown-item">AI 赋能运营</a></li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -54,7 +60,157 @@
 <body>
 
     <main>
-        <!-- 主要内容区域 -->
+        <section id="service-ability" class="ability-section hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1><i class="fas fa-globe"></i> 全球全平台运营方案</h1>
+                    <p>彼励扶跨境为您提供全方位的跨境电商解决方案。<br> 我们的核心竞争力包括：</p>
+                    <ul class="service-list">
+                        <li><i class="fas fa-search"></i> 深度市场洞察</li>
+                        <li><i class="fas fa-bullseye"></i> 精准品牌定位</li>
+                        <li><i class="fas fa-cogs"></i> 高效运营管理</li>
+                        <li><i class="fas fa-robot"></i> AI 驱动的决策支持</li>
+                        <li><i class="fas fa-globe-americas"></i> 全球化供应链整合</li>
+                    </ul>
+                    
+                </div>
+                <div class="hero-image">
+                    <img src="{{ url_for('static', filename='images/service-hero.jpg') }}" alt="彼励扶跨境服务能力">
+                </div>
+            </div>
+        </section>
+
+        <section id="service-detail" class="service-section">
+            <h1>跨境全生态服务</h1>
+            <div class="service-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                    <h2>项目沟通</h2>
+                    <ul>
+                        <li>
+                            <h4>全球市场</h4>
+                            <p>根据权威机构发布的调研报告，介绍产品全球销售情况，帮助客户了解市场大盘</p>
+                        </li>
+                        <li>
+                            <h4>目标市场</h4>
+                            <p>深入研究目标市场的消费人群、消费习惯、竞争格局等，为产品定位和营销策略提供数据支持</p>
+                        </li>
+                        <li>
+                            <h4>竞品分析</h4>
+                            <p>基于平台分析竞争对手的产品、价格、销量、评价等，找出自身优势和改进方向</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h2>方案制定</h2>
+                    <ul>
+                        <li>
+                            <h4>方案制定-步骤 1</h4>
+                            <p>通过市场数据分析，制定合理的定价策略，以实现利润最大化</p>
+                        </li>
+                        <li>
+                            <h4>方案制定-步骤 2</h4>
+                            <p>根据市场需求和竞品分析，制定差异化的产品策略，突出自身优势</p>
+                        </li>
+
+                        <li>
+                            <h4>方案制定-步骤 3</h4>
+                            <p>根据目标市场特点和客户需求，制定全面的营销策略和推广计划，确保产品成功进入市场</p>
+                        </li>
+                        
+                    </ul>
+                </div>
+
+
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h2>产品出海</h2>
+                    <ul>
+                        <li>
+                            <h4>产品定价</h4>
+                            <p>通过市场数据分析，制定合理的定价策略，以实现利润最大化</p>
+                        </li>
+                        <li>
+                            <h4>产品合规</h4>
+                            <p>确保产品符合目标市场的法律法规、安全标准等，避免侵权和违规风险</p>
+                        </li>
+                        <li>
+                            <h4>供应链管理</h4>
+                            <p>优化供应链，选择可靠的供应商，控制成本，保证产品质量和供货稳定</p>
+                        </li>
+                        <li>
+                            <h4>物流方案</h4>
+                            <p>制定高效的物流方案，选择合适的物流服务商，降低物流成本，提升配送时效</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-trademark"></i>
+                    </div>
+                    <h2>品牌出海</h2>
+                    <ul>
+                        <li>
+                            <h4>品牌定位</h4>
+                            <p>根据目标市场和产品特点，制定清晰的品牌定位和价值主张<br>
+                            通过专业的视觉设计、营销活动等手段，提升品牌在海外市场的知名度和美誉度</p>
+                        </li>
+                        
+                        <li>
+                            <h4>品牌营销</h4>
+                            <p>利用社交媒体、搜索引擎、电子邮件营销等方式进行品牌推广，提升品牌知名度和美誉度</p>
+                        </li>
+                        <li>
+                            <h4>品牌保护</h4>
+                            <p>注册商标，监控侵权行为，维护品牌权益</p>
+                        </li>
+                        <li>
+                            <h4>合作伙伴关系</h4>
+                            <p>建立合作伙伴关系，以帮助扩展品牌的国际影响力，例如与本地分销商或电商平台合作</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="ai-empowerment" class="service-section">
+            <h1>AI赋能运营环节</h1>
+            <div class="ai-circle">
+                <div class="ai-item ai-item-1">
+                    <h3>项目管理</h3>
+                    <p>整合SharePoint和Notion，实现全面项目跟踪和个人工作规划。</p>
+                </div>
+                <div class="ai-item ai-item-2">
+                    <h3>数据分析</h3>
+                    <p>利用Sorftime和Pycharm进行数据搜集和分析，提供全面店铺品类洞察。</p>
+                </div>
+                <div class="ai-item ai-item-3">
+                    <h3>AI决策支持</h3>
+                    <p>运用ChatGPT 4.0进行深度数据分析，优化决策和运营策略。</p>
+                </div>
+                <div class="ai-item ai-item-4">
+                    <h3>图像处理</h3>
+                    <p>结合MidJourney和StableDiffusion，实现高质量图片生成和优化。</p>
+                </div>
+                <div class="ai-item ai-item-5">
+                    <h3>内容创作</h3>
+                    <p>使用Ollama LLM、Vercel V0和Claude 3.5 Sonnet，提升内容质量和效率。</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 其他服务内容部分 -->
     </main>
 
     <footer id="footer" class="hidden">
