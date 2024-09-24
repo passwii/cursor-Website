@@ -1,0 +1,492 @@
+/* Hero section 英雄部分 */
+.hero {
+    padding: 80px 0;
+    width: 100%;
+    background: linear-gradient(to right, #dff2ff, #ffffff);
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.hero-text {
+    flex: 1;
+    margin-left: 1rem;
+    padding-right: 2rem;
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+    top: 33px;
+    margin-left: 1rem;
+    width: 100%;
+    height: 100%;
+    margin-right: 1rem;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    padding-right: 1rem;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-align: left;
+    margin-right: 1rem;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+    text-align: left;
+    padding-right: 1rem;
+}
+
+/* Samples 案例详细卡片 */
+.samples {
+    padding: 40px 0 120px 0;
+}
+
+.samples .container {
+    max-width: 1400px;
+}
+
+.samples h2 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.samples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.sample-card {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sample-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.sample-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sample-content {
+    padding: 0px;
+}
+
+.sample-content p {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* 服务部分 */
+.services-overview {
+    padding: 50px 0;
+}
+
+.services-overview h1 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.services-ai {
+    padding: 50px 0;
+
+}
+
+.services-ai .container {
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.services-ai h2 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.services-ai p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 修改为动态 column 分布 */
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.service-card {
+    margin-top: 40px;
+    margin-bottom: 80px;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.service-card-header {
+    height: 8px;
+}
+
+.service-card-content {
+    padding: 20px;
+}
+
+.service-card-content h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.services-grid .service-card {
+    text-align: center;
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.service-icon {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+}
+
+.service-card p {
+    margin-bottom: 20px;
+}
+
+.service-card .btn {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+}
+
+.service-list {
+    list-style-type: none; /* 去掉序列号 */
+    padding-left: 20px; /* 去掉默认的左边距 */
+}
+
+.service-list li {
+    font-size: 1.2em; /* 放大文字 */
+    margin-bottom: 10px; /* 增加行间距 */
+}
+
+.service-list i {
+    margin-right: 10px; /* 增加图标和文字之间的间隔 */
+}
+
+/* 案例卡片 */
+.sample-card {
+    transition: all 0.3s ease;
+}
+
+.sample-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.sample-card * {
+    pointer-events: none;
+}
+
+.sample-card h3 {
+    font-size: 24px;
+    text-align: center;
+    align-items: center;
+}
+
+.sample-content-icon {
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 企业文化 */
+.culture {
+    margin: 50px;
+    margin-bottom: 100px;
+
+}
+
+.culture h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 2rem;
+}
+
+.culture-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    width: 95%;
+    margin: 2rem 0 2rem 2rem;  
+}
+
+.culture-item {
+    background-color: #ecf0f1;
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.culture-item h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.culture-item:nth-child(1) {
+    background-color: #ffeb79;
+    /* 金色 */
+}
+
+.culture-item:nth-child(2) {
+    background-color: #a1fda1;
+    /* 淡绿色 */
+}
+
+.culture-item:nth-child(3) {
+    background-color: #a3dcff;
+    /* 淡蓝色 */
+}
+
+.culture-item:nth-child(4) {
+    background-color: #fdb294;
+    /* 浅鲑鱼 */
+}
+
+.culture-item:nth-child(5) {
+    background-color: #fcc8fc;
+    /* 梅红色 */
+}
+
+/* 合作伙伴 */
+.partners {
+    margin: 50px;
+    margin-bottom: 100px;
+}
+
+.partners h2 {
+    text-align: center;
+    font-size: 36px;
+}
+
+.partners-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.partner-category {
+    flex-basis: 30%;
+    margin-bottom: 20px;
+}
+
+.partner-category h3 {
+    text-align: center;
+    color: #2980b9;
+    margin-bottom: 18px;
+    font-size: 20px;
+    /* 增加标题字体大小 */
+}
+
+.partner-category ul {
+    text-align: center;
+    list-style-type: none;
+    padding: 0;
+}
+
+.partner-category li {
+    font-size: 16px;
+    /* 增加列表项字体大小 */
+    background-color: #e8f4f8;
+    margin-bottom: 10px;
+    /* 增加列表项之间的间距 */
+    padding: 10px 15px;
+    /* 增加内边距以增加高度 */
+    border-radius: 10px;
+    line-height: 1.5;
+    /* 增加行高以提高可读性 */
+}
+
+/* 核心竞争力 */
+.how-it-works {
+    padding: 50px 0;
+    background: linear-gradient(to right, #f0f9ff, #ffffff);
+}
+
+.how-it-works h2 {
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.step {
+    text-align: center;
+}
+
+.step p {
+    font-size: 17px;
+    max-width: 220px;
+    margin: 0 auto;
+}
+
+.step-number {
+    font-size: 42px;
+    font-weight: bold;
+    color: #0070f3;
+    margin-bottom: 10px;
+}
+
+/* 联系我们 */
+.contact-container {
+    padding: 100px;
+    background-color: linear-gradient(to right, #75c8ff, #ffffff);
+    
+}
+
+.contact-wrapper {
+    display: flex;
+    background-color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form {
+    flex: 1;
+    padding: 40px;
+}
+
+.contact-company-info {
+    flex: 1;
+    background-color: #007bff;
+    color: #fff;
+    padding: 40px;
+}
+
+.contact-form h2,
+.contact-company-info h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.contact-form h2 {
+    color: black;
+}
+
+.contact-company-info h2 {
+    color: #fff;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contact-form textarea {
+    height: 150px;
+}
+
+.contact-form .btn {
+    align-self: flex-start;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.contact-info-item i {
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+.map-container {
+    width: 100%;
+    max-width: 600px;  /* 可以根据需要调整最大宽度 */
+    margin: 0;
+    aspect-ratio: 16 / 9;  /* 保持16:9的宽高比，可以根据实际地图图片调整 */
+    overflow: hidden;
+}
+
+.responsive-map {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+

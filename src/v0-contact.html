@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>联系我们 - 公司名称</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .contact-wrapper {
+            display: flex;
+            background-color: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .contact-form {
+            flex: 1;
+            padding: 40px;
+        }
+        .company-info {
+            flex: 1;
+            background-color: #4a148c;
+            color: #fff;
+            padding: 40px;
+        }
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #4a148c;
+        }
+        .company-info h2 {
+            color: #fff;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, textarea {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        textarea {
+            height: 150px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4a148c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #6a1b9a;
+        }
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .info-item i {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+        .map {
+            margin-top: 30px;
+        }
+        .map iframe {
+            width: 100%;
+            height: 250px;
+            border: none;
+            border-radius: 10px;
+        }
+        @media (max-width: 768px) {
+            .contact-wrapper {
+                flex-direction: column;
+            }
+            .contact-form, .company-info {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="contact-wrapper">
+            <div class="contact-form">
+                <h2>联系我们</h2>
+                <form id="contact-form">
+                    <input type="text" placeholder="您的姓名" required>
+                    <input type="email" placeholder="您的电子邮箱" required>
+                    <textarea placeholder="您的留言" required></textarea>
+                    <button type="submit">发送消息</button>
+                </form>
+            </div>
+            <div class="company-info">
+                <h2>公司信息</h2>
+                <div class="info-item">
+                    <i>📍</i>
+                    <p>上海市浦东新区张江高科技园区科苑路 88 号</p>
+                </div>
+                <div class="info-item">
+                    <i>📞</i>
+                    <p>+86 21 1234 5678</p>
+                </div>
+                <div class="info-item">
+                    <i>✉️</i>
+                    <p>contact@example.com</p>
+                </div>
+                <div class="map">
+                    <h3>我们的位置</h3>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3411.3079615889554!2d121.58799661513!3d31.217344981470985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35b270fe8e2dd801%3A0x3f0c8f2a96b3c54f!2sZhangjiang%20Hi-Tech%20Park!5e0!3m2!1sen!2sus!4v1647887573921!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('感谢您的留言，我们将尽快与您联系！');
+            this.reset();
+        });
+    </script>
+</body>
+</html>

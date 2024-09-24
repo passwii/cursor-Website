@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>彼励扶电子商务 - 关于我们</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='utils.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='mobile.css') }}">
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
     <nav class="main-nav">
-        <div class="logo">
-            <img src="{{ url_for('static', filename='images/blf_logo_1.jpg') }}" alt="公司logo">
-            <div class="company-info">
-                <a href="index.html" class="company-name">彼励扶跨境</a>
-                <span class="company-slogan">It's always Day 1</span>
+        <a href="index.html" class="logo-link">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/blf_logo_1.webp') }}" alt="公司logo">
+                <div class="company-info">
+                    <a class="company-name" href="index.html">彼励扶跨境</a>
+                    <span class="company-slogan">It's always Day 1</span>
+                </div>
             </div>
-        </div>
+        </a>
             <div class="hamburger-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -47,8 +51,14 @@
                 <ul class="dropdown-menu">
                     <li><a href="#" class="dropdown-item">官方社媒</a></li>
                     <li><a href="#" class="dropdown-item">人才招聘</a></li>
-                    <li><a href="#" class="dropdown-item">展会活动</a></li>
-                    <li><a href="#" class="dropdown-item">企业信息</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="news.html" class="nav-link">新闻中心</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">跨境资讯</a></li>
+                    <li><a href="#" class="dropdown-item">公司咨询</a></li>
+                    <li><a href="#" class="dropdown-item">活动预告</a></li>
                 </ul>
             </li>
         </ul>
@@ -107,20 +117,23 @@
                     <h3>平台</h3>
                     <ul>
                         <li><i class="fab fa-amazon"></i> Amazon</li>
-                        <li><i class="fab fa-ebay"></i> eBay</li>
                         <li><i class="fab fa-walmart"></i> Walmart</li>
+                        <li><i class="fas fa-shopping-bag"></i> Temu</li>
                         <li><i class="fab fa-tiktok"></i> TikTok</li>
+                        <li><i class="fab fa-ebay"></i> eBay</li>
                         <li><i class="fas fa-shopping-bag"></i> SHEIN</li>
+                        
                     </ul>
                 </div>
                 <div class="partner-category">
                     <h3>物流</h3>
                     <ul>
-                        <li><i class="fas fa-shipping-fast"></i> 上海骊泰</li>
-                        <li><i class="fas fa-plane"></i> 圆通速递</li>
-                        <li><i class="fas fa-box"></i> 菜鸟物流</li>
-                        <li><i class="fas fa-dolly"></i> 京东物流</li>
-                        <li><i class="fas fa-truck-loading"></i> 德邦快递</li>
+                        <li><i class="fas fa-shipping-fast"></i>上海骊泰</li>
+                        <li><i class="fas fa-plane"></i>诺信达物流</li>
+                        <li><i class="fas fa-box"></i> 文鼎物流</li>
+                        <li><i class="fas fa-dolly"></i> 浙江德韶</li>
+                        <li><i class="fas fa-landmark"></i>杭州堡森</li>
+                        <li><i class="fas fa-ship"></i>衡宇物流</li>
                     </ul>
                 </div>
                 <div class="partner-category">
@@ -138,7 +151,7 @@
         <section id="future-outlook" class="about-section hero">
             <div class="hero-content">
                 <div class="hero-image">
-                    <img src="{{ url_for('static', filename='images/work-2.webp') }}" alt="彼励扶电子商务展望未来">
+                    <img src="{{ url_for('static', filename='images/global-1.webp') }}" alt="彼励扶电子商务展望未来">
                 </div>
 
                 <div class="hero-text">
@@ -159,20 +172,21 @@
             <div class="footer-column">
                 <h3>服务体系</h3>
                 <ul>
-                    <li>出海品牌管理</li>
-                    <li>产品决策</li>
-                    <li>运营管理</li>
-                    <li>跨境生态链支持</li>
+                    <li><a href="services.html#market-insight">市场洞察</a></li>
+                    <li><a href="services.html#project-solutions">项目方案</a></li>
+                    <li><a href="services.html#product-export">产品出海</a></li>
+                    <li><a href="services.html#brand-export">品牌出海</a></li>
+                    <li><a href="services.html#ai-empowerment">AI 赋能运营</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h3>合作案例</h3>
+                <h3>项目方案</h3>
                 <ul>
-                    <li>家纺产品</li>
-                    <li>家居产品</li>
-                    <li>宠物用品</li>
-                    <li>户外产品</li>
-                    <li>3C电子</li>
+                    <li><a href="services.html#tool-products">工具产品</a></li>
+                    <li><a href="services.html#mattress-products">床垫产品</a></li>
+                    <li><a href="services.html#pet-supplies">宠物用品</a></li>
+                    <li><a href="services.html#outdoor-products">户外产品</a></li>
+                    <li><a href="services.html#children-toys">儿童玩具</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -189,13 +203,13 @@
                 <ul>
                     <li>彼励扶电子商务（苏州）有限公司</li>
                     <li>地址：中国(江苏)自由贸易试验区苏州片区建发微时光商业广场 356 室</li>
-                    <li>联系电话：+86 18896968181</li>
+                    <li>联系电话：+86 18666468991</li>
                     <li>联系电话：+1 (909) 375-0156</li>
                     <li>邮箱：marketing@believeboy.com</li>
                 </ul>
             </div>
             <div class="footer-column qr-code">
-                <img src="{{ url_for('static', filename='images/qrcode.jpg') }}" alt="二维码">
+                <img src="{{ url_for('static', filename='images/qrcode.webp') }}" alt="二维码">
                 <p>扫码联系我们</p>
             </div>
         </div>

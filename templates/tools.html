@@ -1,19 +1,93 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>项目管理面板</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>彼励扶电子商务 - 主页</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='utils.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='mobile.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <nav class="main-nav">
+        <a href="index.html" class="logo-link">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/blf_logo_1.webp') }}" alt="公司logo">
+                <div class="company-info">
+                    <a class="company-name" href="index.html">彼励扶跨境</a>
+                    <span class="company-slogan">It's always Day 1</span>
+                </div>
+            </div>
+        </a>
+        <div class="hamburger-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">主页</a></li>
+            <li class="dropdown">
+                <a href="services.html" class="nav-link">服务体系</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">市场调研</a></li>
+                    <li><a href="#" class="dropdown-item">产品出海</a></li>
+                    <li><a href="#" class="dropdown-item">品牌出海</a></li>
+                    <li><a href="#" class="dropdown-item">AI 赋能运营</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="about.html" class="nav-link">关于我们</a>
+                <ul class="dropdown-menu">
+                    <li><a href="about.html#company-overview" class="dropdown-item">公司概况</a></li>
+                    <li><a href="about.html#company-culture" class="dropdown-item">企业文化</a></li>
+                    <li><a href="about.html#partners" class="dropdown-item">合作伙伴</a></li>
+                    <li><a href="about.html#future-outlook" class="dropdown-item">展望未来</a></li>
+                    <!-- <li><a href="#" class="dropdown-item">荣誉资质</a></li> -->
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="contact.html" class="nav-link">联系我们</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">官方社媒</a></li>
+                    <li><a href="#" class="dropdown-item">人才招聘</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="news.html" class="nav-link">新闻中心</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">跨境资讯</a></li>
+                    <li><a href="#" class="dropdown-item">公司咨询</a></li>
+                    <li><a href="#" class="dropdown-item">活动预告</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="login-btn">
+            <a href="tools.html" class="btn">后台</a>
+        </div>
+    </nav>
+
 </head>
+
 <body>
-    <div class="tool-container">
-        <a href="daily-report.html" class="tool-item">日报</a>
-        <a href="weekly-monthly-report.html" class="tool-item">周报</a>
-        <a href="monthly-report.html" class="tool-item">月报</a>
-        <a href="project-analysis.html" class="tool-item">项目数据分析</a>
-        <a href="cost-calculation.html" class="tool-item">项目成本核算</a>
-    </div>
+    <main>
+        <!-- 详细内容 -->
+        <div class="tool-container">
+            <a href="daily-report.html" class="tool-item">日报</a>
+            <a href="weekly-monthly-report.html" class="tool-item">周报</a>
+            <a href="monthly-report.html" class="tool-item">月报</a>
+            <a href="project-analysis.html" class="tool-item">项目数据分析</a>
+            <a href="cost-calculation.html" class="tool-item">项目成本核算</a>
+        </div>
+    </main>
+
 </body>
+
 </html>
+
+
+
+
+
 

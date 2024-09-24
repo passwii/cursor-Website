@@ -5,22 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>彼励扶电子商务 - 主页</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='utils.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='mobile.css') }}">
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
     <nav class="main-nav">
-        <div class="logo">
-            <img src="{{ url_for('static', filename='images/blf_logo_1.jpg') }}" alt="公司logo">
-            <div class="company-info">
-                <a href="index.html" class="company-name">彼励扶跨境</a>
-                <span class="company-slogan">It's always Day 1</span>
+        <a href="index.html" class="logo-link">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/blf_logo_1.webp') }}" alt="公司logo">
+                <div class="company-info">
+                    <a class="company-name" href="index.html">彼励扶跨境</a>
+                    <!-- 后期可以修改为 span，并且修改 css -->
+                    <span class="company-slogan">It's always Day 1</span>
+                </div>
             </div>
-        </div>
+        </a>
             <div class="hamburger-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
-        
         <ul class="nav-links">
             <li><a href="index.html" class="nav-link active">主页</a></li>
             <li class="dropdown">
@@ -47,10 +51,16 @@
                 <ul class="dropdown-menu">
                     <li><a href="#" class="dropdown-item">官方社媒</a></li>
                     <li><a href="#" class="dropdown-item">人才招聘</a></li>
-                    <li><a href="#" class="dropdown-item">展会活动</a></li>
-                    <li><a href="#" class="dropdown-item">企业信息</a></li>
                 </ul>
             </li>
+        <li class="dropdown">
+            <a href="news.html" class="nav-link">新闻中心</a>
+            <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item">跨境资讯</a></li>
+                <li><a href="#" class="dropdown-item">公司咨询</a></li>
+                <li><a href="#" class="dropdown-item">活动预告</a></li>
+            </ul>
+        </li>
         </ul>
             <div class="login-btn">
                 <a href="tools.html" class="btn">后台</a>
@@ -61,72 +71,80 @@
 <body>
     <main>
         <section class="hero">
-            <div class="container">
                 <div class="hero-content">
                     <div class="hero-text">
-                        <h1>打造跨境全生态服务</h1>
+                        <h1>跨境全生态服务</h1>
                         <p>自信地开拓全球电子商务市场。</br>
                         <br>我们帮助中国企业、制造商、贸易商和品牌商在美国、欧洲等海外市场成功拓展业务，实现产品出海和品牌国际化。</p>
-                        <a href="#" class="btn">立即开始</a>
-                        <a href="about.html#company-culture" class="btn btn-outline">了解更多</a>
+                        <a href="contact.html" class="btn">立即开始</a>
+                        <a href="services.html#service-detail" class="btn btn-outline">了解更多</a>
                     </div>
                     <div class="hero-image">
                         <img src="{{ url_for('static', filename='images/work-4.webp') }}" alt="亚马中国成功" width="600" height="400">
                     </div>
                 </div>
-            </div>
         </section>
 
-        <section class="services">
-            <div class="container">
-                <h2>跨境服务</h2>
+        <section id="services-overview" class="services-overview services-ai">
+                <h1>跨境服务</h1>
                 <div class="services-grid">
                     <div class="service-card">
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        <h3>市场调研</h3>
-                        <p>深入分析电商平台热销品类和消费者需求趋势。</p>
+                        <div class="service-card-header" style="background: linear-gradient(to right, #3b82f6, #60a5fa);"></div>
+                        <div class="service-card-content">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
+                                    stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <h3>市场洞察</h3>
+                            <p>深入分析电商平台热销品类和消费者需求趋势。</p>
+                        </div>
                     </div>
                     <div class="service-card">
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3 7L12 3L21 7V17L12 21L3 17V7Z" stroke="#000000" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M3 7L12 11L21 7" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M12 11V21" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <h3>产品出海</h3>
-                        <p>助力您的产品直接进入海外市场直达消费者，实现高效出海。</p>
+                        <div class="service-card-header" style="background: linear-gradient(to right, #10b981, #34d399);"></div>
+                        <div class="service-card-content">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 7L12 3L21 7V17L12 21L3 17V7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <h3>产品出海</h3>
+                            <p>助力您的产品直接进入海外市场直达消费者，实现高效出海。</p>
+                            </div>
                     </div>
                     <div class="service-card">
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="4" y="14" width="16" height="7" stroke="#000000" stroke-width="2" />
-                            <line x1="12" y1="14" x2="12" y2="21" stroke="#000000" stroke-width="2" />
-                            <rect x="8.5" y="7" width="7" height="7" stroke="#000000" stroke-width="2" />
-                        </svg>
-                        <h3>品牌出海</h3>
-                        <p>助力您的品牌在海外市场成功拓展，打造国际化形象。</p>
+                        <div class="service-card-header" style="background: linear-gradient(to right, #8b5cf6, #a78bfa);"></div>
+                        <div class="service-card-content">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="4" y="14" width="16" height="7" stroke="#000000" stroke-width="2"/>
+                                <line x1="12" y1="14" x2="12" y2="21" stroke="#000000" stroke-width="2"/>
+                                <rect x="8.5" y="7" width="7" height="7" stroke="#000000" stroke-width="2"/>
+                            </svg>
+                            <h3>品牌出海</h3>
+                            <p>助力您的品牌在海外市场成功拓展，打造国际化形象。</p>
+                            </div>
                     </div>
                     <div class="service-card">
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12.6" cy="4" r="2" stroke="#000000" stroke-width="2" />
-                            <circle cx="4" cy="20" r="2" stroke="#000000" stroke-width="2" />
-                            <circle cx="20" cy="20" r="2" stroke="#000000" stroke-width="2" />
-                            <line x1="12" y1="6" x2="5" y2="18" stroke="#000000" stroke-width="2" />
-                            <line x1="14" y1="6" x2="19" y2="18" stroke="#000000" stroke-width="2" />
-                            <line x1="6" y1="20" x2="18" y2="20" stroke="#000000" stroke-width="2" />
-                        </svg>
-                        <h3>AI 赋能运营</h3>
-                        <p>利用AI工具赋能海外运营，实现数字化运营资产管理，提高效率和精准度。</p>
+                        <div class="service-card-header" style="background: linear-gradient(to right, #ef4444, #f87171);"></div>
+                        <div class="service-card-content">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12.6" cy="4" r="2" stroke="#000000" stroke-width="2"/>
+                                <circle cx="4" cy="20" r="2" stroke="#000000" stroke-width="2"/>
+                                <circle cx="20" cy="20" r="2" stroke="#000000" stroke-width="2"/>
+                                <line x1="12" y1="6" x2="5" y2="18" stroke="#000000" stroke-width="2"/>
+                                <line x1="14" y1="6" x2="19" y2="18" stroke="#000000" stroke-width="2"/>
+                                <line x1="6" y1="20" x2="18" y2="20" stroke="#000000" stroke-width="2"/>
+                            </svg>
+                            <h3>AI 赋能运营</h3>
+                            <p>利用AI工具赋能海外运营，实现数字化运营资产管理，提高效率和精准度。</p>
+                    </div>
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 50px;">
-                    <a href="#" class="btn">探索更多</a>
+                <div style="text-align: center; margin-bottom: 10px;">
+                    <a href="services.html" class="btn">探索更多</a>
                 </div>
             </div>
         </section>
 
-        <section class="how-it-works">
+        <section class="how-it-works hero">
             <div class="container">
                 <h2>核心竞争力</h2>
                 <div class="steps">
@@ -162,54 +180,58 @@
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 40px;">
-                    <a href="#" class="btn">探索更多</a>
+                    <a href="services.html#ai-empowerment" class="btn">探索更多</a>
                 </div>
             </div>
         </section>
 
-        <section class="testimonials">
+        <section class="samples">
             <div class="container">
                 <h2>服务案例</h2>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="testimonial-image">
-                            <img src="{{ url_for('static', filename='images/tool-accessories.jpg') }}" alt="工具配件案例">
-                        </div>
-                        <div class="testimonial-content">
-                            <p><strong>项目概况：</strong></p>
-                            <p>某工具配件品牌面临亚马逊平台销量停滞、品牌知名度低的问题。</p>
-                            <p><strong>合作过程：</strong></p>
-                            <p>1. 对品牌现有产品线进行全面评估，优化产品描述和图片。</p>
-                            <p>2. 实施智能库存管理系统，提高库存周转率，降低仓储成本。</p>
-                            <p>3. 定针对性的广告策略，优化关键词和投放时间。</p>
-                            <p>4. 开展品牌推广活动，提高品牌在目标客户群中的曝光度。</p>
-                            <p>5. 利用客户反馈，持续改进产品质量和服务。</p>
-                            <p><strong>项目成果：</strong></p>
-                            <p>经过6个月的运营，销售额同比增长150%，品牌搜量提升200%，客户满意度达到95%。</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-image">
-                            <img src="{{ url_for('static', filename='images/food-tray.jpg') }}" alt="食品餐盘案例">
-                        </div>
-                        <div class="testimonial-content">
-                            <p><strong>项目概况：</strong></p>
-                            <p>某知名工厂为美国主流品牌和线下商超供应食品餐盘，面临严重的成本压缩问题。</p>
-                            <p><strong>合作过程：</strong></p>
-                            <p>1. 组建专业团队，深入分析工厂现有供应链和产品结构。</p>
-                            <p>2. 制定差异化战略，针对工厂供货的品牌竞品进行详细调查分析。</p>
-                            <p>3. 从物流环节着手，优化所有供应链节点，显著降低运营成本。</p>
-                            <p>4. 重新设计产品包装和营销策略，提升产品在线上平台的竞争力。</p>
-                            <p>5. 利用数据分析，精准定位目标客户群，优化广告投放策略。</p>
-                            <p><strong>项目成果：</strong></p>
-                            <p>半年内进入BSR TOP10，月销售额突破10万美元，毛利率超25%。工厂实现多元供货，稳定成本，达成品牌与OEM双赢。</p>
+                <div class="samples-grid">
+                    <div class="sample-card">
+                        <div class="sample-card-content">
+                            <div class="sample-image">
+                                <img src="{{ url_for('static', filename='images/tool-accessories.webp') }}" alt="工具配件案例">
+                            </div>
+                            <div class="sample-content">
+                                <p><strong>项目概况：</strong></p>
+                                <p>某工具配件品牌面临亚马逊平台销量停滞、品牌知名度低的问题。</p>
+                                <p><strong>合作过程：</strong></p>
+                                <p>1. 对品牌现有产品线进行全面评估，优化产品描述和图片。</p>
+                                <p>2. 实施智能库存管理系统，提高库存周转率，降低仓储成本。</p>
+                                <p>3. 定针对性的广告策略，优化关键词和投放时间。</p>
+                                <p>4. 开展品牌推广活动，提高品牌在目标客户群中的曝光度。</p>
+                                <p>5. 利用客户反馈，持续改进产品质量和服务。</p>
+                                <p><strong>项目成果：</strong></p>
+                                <p>经过6个月的运营，销售额同比增长150%，品牌搜量提升200%，客户满意度达到95%。</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-image">
-                            <img src="{{ url_for('static', filename='images/mattress.jpg') }}" alt="家居床垫案例">
+                    <div class="sample-card">
+                        <div class="sample-card-content">
+                            <div class="sample-image">
+                                <img src="{{ url_for('static', filename='images/food-tray.webp') }}" alt="食品餐盘案例">
+                            </div>
+                            <div class="sample-content">
+                                <p><strong>项目概况：</strong></p>
+                                <p>某知名工厂为美国主流品牌和线下商超供应食品餐盘，面临严重的成本压缩问题。</p>
+                                <p><strong>合作过程：</strong></p>
+                                <p>1. 组建专业团队，深入分析工厂现有供应链和产品结构。</p>
+                                <p>2. 制定差异化战略，针对工厂供货的品牌竞品进行详细调查分析。</p>
+                                <p>3. 从物流环节着手，优化所有供应链节点，显著降低运营成本。</p>
+                                <p>4. 重新设计产品包装和营销策略，提升产品在线上平台的竞争力。</p>
+                                <p>5. 利用数据分析，精准定位目标客户群，优化广告投放策略。</p>
+                                <p><strong>项目成果：</strong></p>
+                                <p>半年内进入BSR TOP10，月销售额突破10万美元，毛利率超25%。工厂实现多元供货，稳定成本，达成品牌与OEM双赢。</p>
+                            </div>
                         </div>
-                        <div class="testimonial-content">
+                    </div>
+                    <div class="sample-card">
+                        <div class="sample-image">
+                            <img src="{{ url_for('static', filename='images/mattress.webp') }}" alt="家居床垫案例">
+                        </div>
+                        <div class="sample-content">
                             <p><strong>项目概况：</strong></p>
                             <p>某家居床垫品牌希望在美国市场扩大影响力，提高销售额。</p>
                             <p><strong>合作过程：</strong></p>
@@ -235,20 +257,21 @@
             <div class="footer-column">
                 <h3>服务体系</h3>
                 <ul>
-                    <li>出海品牌管理</li>
-                    <li>产品决策</li>
-                    <li>运营管理</li>
-                    <li>跨境生态链支持</li>
+                    <li><a href="services.html#market-insight">市场洞察</a></li>
+                    <li><a href="services.html#project-solutions">项目方案</a></li>
+                    <li><a href="services.html#product-export">产品出海</a></li>
+                    <li><a href="services.html#brand-export">品牌出海</a></li>
+                    <li><a href="services.html#ai-empowerment">AI 赋能运营</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h3>合作案例</h3>
+                <h3>项目方案</h3>
                 <ul>
-                    <li>家纺产品</li>
-                    <li>家居产品</li>
-                    <li>宠物用品</li>
-                    <li>户外产品</li>
-                    <li>3C电子</li>
+                    <li><a href="services.html#tool-products">工具产品</a></li>
+                    <li><a href="services.html#mattress-products">床垫产品</a></li>
+                    <li><a href="services.html#pet-supplies">宠物用品</a></li>
+                    <li><a href="services.html#outdoor-products">户外产品</a></li>
+                    <li><a href="services.html#children-toys">儿童玩具</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -265,13 +288,13 @@
                 <ul>
                     <li>彼励扶电子商务（苏州）有限公司</li>
                     <li>地址：中国(江苏)自由贸易试验区苏州片区建发微时光商业广场 356 室</li>
-                    <li>联系电话：+86 18896968181</li>
+                    <li>联系电话：+86 18666468991</li>
                     <li>联系电话：+1 (909) 375-0156</li>
                     <li>邮箱：marketing@believeboy.com</li>
                 </ul>
             </div>
             <div class="footer-column qr-code">
-                <img src="{{ url_for('static', filename='images/qrcode.jpg') }}" alt="二维码">
+                <img src="{{ url_for('static', filename='images/qrcode.webp') }}" alt="二维码">
                 <p>扫码联系我们</p>
             </div>
         </div>

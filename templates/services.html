@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>彼励扶电子商务 - 服务体系</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='utils.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='mobile.css') }}">
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
     <nav class="main-nav">
-        <div class="logo">
-            <img src="/images/blf_logo_1.jpg" alt="公司logo">
-            <div class="company-info">
-                <a href="index.html" class="company-name">彼励扶跨境</a>
-                <span class="company-slogan">It's always Day 1</span>
+        <a href="index.html" class="logo-link">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='images/blf_logo_1.webp') }}" alt="公司logo">
+                <div class="company-info">
+                    <a class="company-name" href="index.html">彼励扶跨境</a>
+                    <span class="company-slogan">It's always Day 1</span>
+                </div>
             </div>
-        </div>
+        </a>
         <div class="hamburger-menu">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -46,8 +50,14 @@
                 <ul class="dropdown-menu">
                     <li><a href="#" class="dropdown-item">官方社媒</a></li>
                     <li><a href="#" class="dropdown-item">人才招聘</a></li>
-                    <li><a href="#" class="dropdown-item">展会活动</a></li>
-                    <li><a href="#" class="dropdown-item">企业信息</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="news.html" class="nav-link">新闻中心</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">跨境资讯</a></li>
+                    <li><a href="#" class="dropdown-item">公司咨询</a></li>
+                    <li><a href="#" class="dropdown-item">活动预告</a></li>
                 </ul>
             </li>
         </ul>
@@ -55,7 +65,7 @@
             <a href="#" class="btn">登录</a>
         </div>
     </nav>
-    <script src="/statics/script.js" defer></script>
+    
 </head>
 <body>
 
@@ -75,142 +85,117 @@
                     
                 </div>
                 <div class="hero-image">
-                    <img src="{{ url_for('static', filename='images/service-hero.jpg') }}" alt="彼励扶跨境服务能力">
+                    <img src="{{ url_for('static', filename='images/service-hero.webp') }}" alt="彼励扶跨境服务能力">
                 </div>
             </div>
         </section>
 
-        <section id="service-detail" class="service-section">
-            <h1>跨境全生态服务</h1>
-            <div class="service-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    
-                    <h2>项目沟通</h2>
-                    <ul>
-                        <li>
-                            <h4>全球市场</h4>
-                            <p>根据权威机构发布的调研报告，介绍产品全球销售情况，帮助客户了解市场大盘</p>
-                        </li>
-                        <li>
-                            <h4>目标市场</h4>
-                            <p>深入研究目标市场的消费人群、消费习惯、竞争格局等，为产品定位和营销策略提供数据支持</p>
-                        </li>
-                        <li>
-                            <h4>竞品分析</h4>
-                            <p>基于平台分析竞争对手的产品、价格、销量、评价等，找出自身优势和改进方向</p>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-box"></i>
-                    </div>
-                    <h2>方案制定</h2>
-                    <ul>
-                        <li>
-                            <h4>方案制定-步骤 1</h4>
-                            <p>通过市场数据分析，制定合理的定价策略，以实现利润最大化</p>
-                        </li>
-                        <li>
-                            <h4>方案制定-步骤 2</h4>
-                            <p>根据市场需求和竞品分析，制定差异化的产品策略，突出自身优势</p>
-                        </li>
-
-                        <li>
-                            <h4>方案制定-步骤 3</h4>
-                            <p>根据目标市场特点和客户需求，制定全面的营销策略和推广计划，确保产品成功进入市场</p>
-                        </li>
+        <section id="service-detail" class="samples">
+            <div class="container">
+                <h2>跨境全生态服务</h2>
+                <div class="samples-grid">
+                    <div class="sample-card">
+                            <div class="sample-content-icon">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3>市场洞察</h3>
+                            <p>根据权威机构发布的调研报告，介绍产品全球销售情况，帮助客户了解市场大盘。深入研究目标市场的消费人群、消费习惯、竞争格局等，为产品定位和营销策略提供数据支持。基于平台分析竞争对手的产品、价格、销量、评价等，找出自身优势和改进方向。</p>
                         
-                    </ul>
-                </div>
-
-
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-box"></i>
+                        </div>
+                    <div class="sample-card">
+                        <div class="sample-content-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <h3>项目方案</h3>
+                        <p>通过市场数据分析，制定合理的定价策略，以实现利润最大化。根据市场需求和竞品分析，制定差异化的产品策略，突出自身优势。根据目标市场特点和客户需求，制定全面的营销策略和推广计划，确保产品成功进入市场。</p>
                     </div>
-                    <h2>产品出海</h2>
-                    <ul>
-                        <li>
-                            <h4>产品定价</h4>
-                            <p>通过市场数据分析，制定合理的定价策略，以实现利润最大化</p>
-                        </li>
-                        <li>
-                            <h4>产品合规</h4>
-                            <p>确保产品符合目标市场的法律法规、安全标准等，避免侵权和违规风险</p>
-                        </li>
-                        <li>
-                            <h4>供应链管理</h4>
-                            <p>优化供应链，选择可靠的供应商，控制成本，保证产品质量和供货稳定</p>
-                        </li>
-                        <li>
-                            <h4>物流方案</h4>
-                            <p>制定高效的物流方案，选择合适的物流服务商，降低物流成本，提升配送时效</p>
-                        </li>
-                    </ul>
+                    <div class="sample-card">
+                        <div class="sample-content-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <h3>产品出海</h3>
+                        <p>通过市场数据分析，制定合理的定价策略，以实现利润最大化。确保产品符合目标市场的法律法规、安全标准等，避免侵权和违规风险。优化供应链，选择可靠的供应商，控制成本，保证产品质量和供货稳定。制定高效的物流方案，选择合适的物流服务商，降低物流成本，提升配送时效。</p>
+                    </div>
+                    <div class="sample-card">
+                        <div class="sample-content-icon">
+                            <i class="fas fa-trademark"></i>
+                        </div>
+                        <h3>品牌出海</h3>
+                        <p>根据目标市场和产品特点，制定清晰的品牌定位和价值主张。通过专业的视觉设计、营销活动等手段，提升品牌在海外市场的知名度和美誉度。利用社交媒体、搜索引擎、电子邮件营销等方式进行品牌推广，提升品牌知名度和美誉度。注册商标，监控侵权行为，维护品牌权益。建立合作伙伴关系，以帮助扩展品牌的国际影响力，例如与本地分销商或电商平台合作。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="ai-empowerment" class="services-ai hero">
+            <h2>ALL IN AI  赋能</h2>
+            <p>我们在 AI 领域拥有丰富的实践经验，目前本地 LLM 部署有：Qwen/Deepseek/Qwen/Llama 等模型
+            <br>让运营使用工具没有门槛，让 AI 成为跨境电商的超级大脑，让跨境电商成为 AI 的最佳实践场景。</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-card-header" style="background: linear-gradient(to right, #3b82f6, #60a5fa);"></div>
+                    <div class="service-card-content">
+                        <h3>
+                            <span class="service-icon" style="background: linear-gradient(to right, #3b82f6, #60a5fa);">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
+                                </svg>
+                            </span>
+                            项目管理
+                        </h3>
+                        <p>基于SharePoint项目，分类存储数据/标准化分析/科学决策。
+                            结合Notion的TO-DO制定计划，提高效率。</p>
+                        <a href="#" class="btn-color" style="color: #3b82f6; border: 1px solid #3b82f6;">了解详情</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-header" style="background: linear-gradient(to right, #ef4444, #f87171);"></div>
+                    <div class="service-card-content">
+                        <h3>
+                            <span class="service-icon" style="background: linear-gradient(to right, #ef4444, #f87171);">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                            </span>
+                            图片智能
+                        </h3>
+                        <p>MidJourney和StableDiffution部署，智能生成和优化图片，AI 生成多场景活动 Banner增加店铺吸引力</p>
+                        <a href="#" class="btn-color" style="color: #ef4444; border: 1px solid #ef4444;">了解详情</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-header" style="background: linear-gradient(to right, #10b981, #34d399);"></div>
+                    <div class="service-card-content">
+                        <h3>
+                            <span class="service-icon" style="background: linear-gradient(to right, #10b981, #34d399);">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2m0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                            </span>
+                            数据分析
+                        </h3>
+                        <p>运用Sorftime进行数据搜集，使用集成项目核算工具，分析店铺所有品类数据，提供全面店铺品类洞察。</p>
+                        <a href="#" class="btn-color" style="color: #10b981; border: 1px solid #10b981;">了解详情</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-card-header" style="background: linear-gradient(to right, #8b5cf6, #a78bfa);"></div>
+                    <div class="service-card-content">
+                        <h3>
+                            <span class="service-icon" style="background: linear-gradient(to right, #8b5cf6, #a78bfa);">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="24" height="24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                </svg>
+                            </span>
+                            AI决策支持
+                        </h3>
+                        <p>运用chatGPT-4o进行深度数据分析，制定深度优化Action List，优化运营策略和项目决策执行，提升效率。</p>
+                        <a href="#" class="btn-color" style="color: #8b5cf6; border: 1px solid #8b5cf6;">了解详情</a>
+                    </div>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-trademark"></i>
-                    </div>
-                    <h2>品牌出海</h2>
-                    <ul>
-                        <li>
-                            <h4>品牌定位</h4>
-                            <p>根据目标市场和产品特点，制定清晰的品牌定位和价值主张<br>
-                            通过专业的视觉设计、营销活动等手段，提升品牌在海外市场的知名度和美誉度</p>
-                        </li>
-                        
-                        <li>
-                            <h4>品牌营销</h4>
-                            <p>利用社交媒体、搜索引擎、电子邮件营销等方式进行品牌推广，提升品牌知名度和美誉度</p>
-                        </li>
-                        <li>
-                            <h4>品牌保护</h4>
-                            <p>注册商标，监控侵权行为，维护品牌权益</p>
-                        </li>
-                        <li>
-                            <h4>合作伙伴关系</h4>
-                            <p>建立合作伙伴关系，以帮助扩展品牌的国际影响力，例如与本地分销商或电商平台合作</p>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </section>
-        
-        <section id="ai-empowerment" class="service-section">
-            <h1>AI赋能运营环节</h1>
-            <div class="ai-circle">
-                <div class="ai-item ai-item-1">
-                    <h3>项目管理</h3>
-                    <p>整合SharePoint和Notion，实现全面项目跟踪和个人工作规划。</p>
-                </div>
-                <div class="ai-item ai-item-2">
-                    <h3>数据分析</h3>
-                    <p>利用Sorftime和Pycharm进行数据搜集和分析，提供全面店铺品类洞察。</p>
-                </div>
-                <div class="ai-item ai-item-3">
-                    <h3>AI决策支持</h3>
-                    <p>运用ChatGPT 4.0进行深度数据分析，优化决策和运营策略。</p>
-                </div>
-                <div class="ai-item ai-item-4">
-                    <h3>图像处理</h3>
-                    <p>结合MidJourney和StableDiffusion，实现高质量图片生成和优化。</p>
-                </div>
-                <div class="ai-item ai-item-5">
-                    <h3>内容创作</h3>
-                    <p>使用Ollama LLM、Vercel V0和Claude 3.5 Sonnet，提升内容质量和效率。</p>
-                </div>
-            </div>
-        </section>
-        
-        <!-- 其他服务内容部分 -->
     </main>
 
     <footer id="footer" class="hidden">
@@ -218,30 +203,30 @@
             <div class="footer-column">
                 <h3>服务体系</h3>
                 <ul>
-                    <li>出海品牌管理</li>
-                    <li>产品决策</li>
-                    <li>运营管理</li>
-                    <li>跨境生态链支持</li>
+                    <li><a href="services.html#market-insight">市场洞察</a></li>
+                    <li><a href="services.html#project-solutions">项目方案</a></li>
+                    <li><a href="services.html#product-export">产品出海</a></li>
+                    <li><a href="services.html#brand-export">品牌出海</a></li>
+                    <li><a href="services.html#ai-empowerment">AI 赋能运营</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h3>合作案例</h3>
+                <h3>项目方案</h3>
                 <ul>
-                    <li>家纺产品</li>
-                    <li>家居产品</li>
-                    <li>宠物用品</li>
-                    <li>户外产品</li>
-                    <li>3C电子</li>
+                    <li><a href="services.html#tool-products">工具产品</a></li>
+                    <li><a href="services.html#mattress-products">床垫产品</a></li>
+                    <li><a href="services.html#pet-supplies">宠物用品</a></li>
+                    <li><a href="services.html#outdoor-products">户外产品</a></li>
+                    <li><a href="services.html#children-toys">儿童玩具</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h3>关于我们</h3>
                 <ul>
-                    <li>公司概况</li>
-                    <li>企业文化</li>
-                    <li>荣誉资质</li>
-                    <li>合作伙伴</li>
-                    <li>人才招聘</li>
+                    <li><a href="about.html#company-overview">公司概况</a></li>
+                    <li><a href="about.html#company-culture">企业文化</a></li>
+                    <li><a href="about.html#partners">合作伙伴</a></li>
+                    <li><a href="about.html#future-outlook">展望未来</a></li>
                 </ul>
             </div>
             <div class="footer-column">
@@ -249,18 +234,17 @@
                 <ul>
                     <li>彼励扶电子商务（苏州）有限公司</li>
                     <li>地址：中国(江苏)自由贸易试验区苏州片区建发微时光商业广场 356 室</li>
-                    <li>联系电话：+86 18896968181</li>
+                    <li>联系电话：+86 18666468991</li>
                     <li>联系电话：+1 (909) 375-0156</li>
                     <li>邮箱：marketing@believeboy.com</li>
                 </ul>
             </div>
             <div class="footer-column qr-code">
-                <img src="/images/qrcode.jpg" alt="二维码">
+                <img src="{{ url_for('static', filename='images/qrcode.webp') }}" alt="二维码">
                 <p>扫码联系我们</p>
             </div>
         </div>
     </footer>
-
-    <script src="script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 </body>
 </html>
