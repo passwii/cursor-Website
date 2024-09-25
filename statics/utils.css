@@ -377,6 +377,11 @@
     margin-bottom: 40px;
 }
 
+.how-it-works p{
+    text-align: center;
+    padding-right: 0;
+}
+
 .steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

@@ -1,0 +1,91 @@
+/* 在文件顶部添加以下样式 */
+.main-nav {
+    display: none !important;
+}
+
+/* 调整 .tools-main 的样式 */
+.tools-main {
+    display: flex;
+    min-height: 100vh; /* 改为占满整个视口高度 */
+}
+
+.category-sidebar {
+    width: 200px;
+    background-color: #007bff;
+    padding: 20px;
+}
+
+.category-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.category-item {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.category-item:hover,
+.category-item.active {
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.content-area {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.subcategory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    display: none;
+}
+
+.subcategory-grid.active {
+    display: grid;
+}
+
+.subcategory-card {
+    background-color: var(--card-bg-color);
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: inherit;
+}
+
+.subcategory-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.subcategory-card i {
+    font-size: 3.2em;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.subcategory-card h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.5em;
+    color: black;
+}
+
+.subcategory-card p {
+    font-size: 1em;
+    color: var(--text-color);
+    margin: 0;
+    line-height: 1.5;
+}
