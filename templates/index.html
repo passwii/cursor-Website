@@ -3,20 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>彼励扶电子商务 - 主页</title>
+    <title data-i18n="page-title">彼励扶电子商务 - 主页</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='utils.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='mobile.css') }}">
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next/i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-i18next/jquery-i18next.min.js"></script>
+    <script>
+        // 初始化 i18next
+        i18next.use(i18nextHttpBackend)
+               .use(i18nextBrowserLanguageDetector)
+               .init({
+                   fallbackLng: 'zh', // 默认语言
+                   backend: {
+                       loadPath: '/locales/{{lng}}/translation.json' // 语言文件路径
+                   }
+               }, function(err, t) {
+                   // 初始化 jQuery i18next
+                   jqueryI18next.init(i18next, $, { useOptionsAttr: true });
+                   // 翻译页面
+                   $('[data-i18n]').localize();
+               });
+
+        // 切换语言
+        function changeLanguage(lang) {
+            i18next.changeLanguage(lang, function(err, t) {
+                $('[data-i18n]').localize();
+            });
+        }
+    </script>
     <nav class="main-nav">
         <a href="index.html" class="logo-link">
             <div class="logo">
                 <img src="{{ url_for('static', filename='images/blf_logo_1.webp') }}" alt="公司logo">
                 <div class="company-info">
-                    <a class="company-name" href="index.html">彼励扶跨境</a>
+                    <a class="company-name" href="index.html" data-i18n="company-name">彼励扶跨境</a>
                     <!-- 后期可以修改为 span，并且修改 css -->
-                    <span class="company-slogan">It's always Day 1</span>
+                    <span class="company-slogan" data-i18n="company-slogan">It's always Day 1</span>
                 </div>
             </div>
         </a>
@@ -26,58 +54,57 @@
                 <span class="bar"></span>
             </div>
         <ul class="nav-links">
-            <li><a href="index.html" class="nav-link active">主页</a></li>
+            <li><a href="index.html" class="nav-link active" data-i18n="home">主页</a></li>
             <li class="dropdown">
-                <a href="services.html" class="nav-link">服务体系</a>
+                <a href="services.html" class="nav-link" data-i18n="services">服务体系</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" class="dropdown-item">市场调研</a></li>
-                    <li><a href="#" class="dropdown-item">产品出海</a></li>
-                    <li><a href="#" class="dropdown-item">品牌出海</a></li>
-                    <li><a href="#" class="dropdown-item">AI 赋能运营</a></li>
+                    <li><a href="#" class="dropdown-item" data-i18n="market-research">市场调研</a></li>
+                    <li><a href="#" class="dropdown-item" data-i18n="product-export">产品出海</a></li>
+                    <li><a href="#" class="dropdown-item" data-i18n="brand-export">品牌出海</a></li>
+                    <li><a href="#" class="dropdown-item" data-i18n="ai-operation">AI 赋能运营</a></li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="about.html" class="nav-link">关于我们</a>
+                <a href="about.html" class="nav-link" data-i18n="about-us">关于我们</a>
                 <ul class="dropdown-menu">
-                    <li><a href="about.html#company-overview" class="dropdown-item">公司概况</a></li>
-                    <li><a href="about.html#company-culture" class="dropdown-item">企业文化</a></li>
-                    <li><a href="about.html#partners" class="dropdown-item">合作伙伴</a></li>
-                    <li><a href="about.html#future-outlook" class="dropdown-item">展望未来</a></li>
+                    <li><a href="about.html#company-overview" class="dropdown-item" data-i18n="company-overview">公司概况</a></li>
+                    <li><a href="about.html#company-culture" class="dropdown-item" data-i18n="company-culture">企业文化</a></li>
+                    <li><a href="about.html#partners" class="dropdown-item" data-i18n="partners">合作伙伴</a></li>
+                    <li><a href="about.html#future-outlook" class="dropdown-item" data-i18n="future-outlook">展望未来</a></li>
                     <!-- <li><a href="#" class="dropdown-item">荣誉资质</a></li> -->
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="contact.html" class="nav-link">联系我们</a>
+                <a href="contact.html" class="nav-link" data-i18n="contact-us">联系我们</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" class="dropdown-item">官方社媒</a></li>
-                    <li><a href="#" class="dropdown-item">人才招聘</a></li>
+                    <li><a href="#" class="dropdown-item" data-i18n="official-social-media">官方社媒</a></li>
+                    <li><a href="#" class="dropdown-item" data-i18n="talent-recruitment">人才招聘</a></li>
                 </ul>
             </li>
         <li class="dropdown">
-            <a href="news.html" class="nav-link">新闻中心</a>
+                <a href="news.html" class="nav-link" data-i18n="news-center">新闻中心</a>
             <ul class="dropdown-menu">
-                <li><a href="#" class="dropdown-item">跨境资讯</a></li>
-                <li><a href="#" class="dropdown-item">公司咨询</a></li>
-                <li><a href="#" class="dropdown-item">活动预告</a></li>
+                    <li><a href="#" class="dropdown-item" data-i18n="cross-border-news">跨境资讯</a></li>
+                    <li><a href="#" class="dropdown-item" data-i18n="company-news">公司咨询</a></li>
+                    <li><a href="#" class="dropdown-item" data-i18n="event-preview">活动预告</a></li>
             </ul>
         </li>
         </ul>
             <div class="login-btn">
-                <a href="tools.html" class="btn">后台</a>
+                <a href="tools.html" class="btn" data-i18n="backend">后台</a>
             </div>
     </nav>
-    
 </head>
 <body>
     <main>
         <section class="hero">
                 <div class="hero-content">
                     <div class="hero-text">
-                        <h1>跨境全生态服务</h1>
-                        <p>自信地开拓全球电子商务市场。</br>
-                        <br>我们帮助中国企业、制造商、贸易商和品牌商在美国、欧洲等海外市场成功拓展业务，实现产品出海和品牌国际化。</p>
-                        <a href="contact.html" class="btn">立即开始</a>
-                        <a href="services.html#service-detail" class="btn btn-outline">了解更多</a>
+                        <h1 data-i18n="hero-title">跨境全生态服务</h1>
+                        <p data-i18n="hero-description">自信地开拓全球电子商务市场。<br>
+                        我们帮助中国企业、制造商、贸易商和品牌商在美国、欧洲等海外市场成功拓展业务，实现产品出海和品牌国际化。</p>
+                        <a href="contact.html" class="btn" data-i18n="cta-start">立即开始</a>
+                        <a href="services.html#service-detail" class="btn btn-outline" data-i18n="cta-learn-more">了解更多</a>
                     </div>
                     <div class="hero-image">
                         <img src="{{ url_for('static', filename='images/work-4.webp') }}" alt="亚马中国成功" width="600" height="400">
@@ -86,7 +113,7 @@
         </section>
 
         <section id="services-overview" class="services-overview services-ai">
-                <h1>跨境服务</h1>
+                <h1 data-i18n="services-title">跨境服务</h1>
                 <div class="services-grid">
                     <div class="service-card">
                         <div class="service-card-header" style="background: linear-gradient(to right, #3b82f6, #60a5fa);"></div>
@@ -96,8 +123,8 @@
                                     d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"
                                     stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
-                            <h3>市场洞察</h3>
-                            <p>深入分析电商平台热销品类和消费者需求趋势。</p>
+                            <h3 data-i18n="market-insight">市场洞察</h3>
+                            <p data-i18n="market-insight-desc">深入分析电商平台热销品类和消费者需求趋势。</p>
                         </div>
                     </div>
                     <div class="service-card">
@@ -106,8 +133,8 @@
                             <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3 7L12 3L21 7V17L12 21L3 17V7Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            <h3>产品出海</h3>
-                            <p>助力您的产品直接进入海外市场直达消费者，实现高效出海。</p>
+                            <h3 data-i18n="product-export">产品出海</h3>
+                            <p data-i18n="product-export-desc">助力您的产品直接进入海外市场直达消费者，实现高效出海。</p>
                             </div>
                     </div>
                     <div class="service-card">
@@ -118,8 +145,8 @@
                                 <line x1="12" y1="14" x2="12" y2="21" stroke="#000000" stroke-width="2"/>
                                 <rect x="8.5" y="7" width="7" height="7" stroke="#000000" stroke-width="2"/>
                             </svg>
-                            <h3>品牌出海</h3>
-                            <p>助力您的品牌在海外市场成功拓展，打造国际化形象。</p>
+                            <h3 data-i18n="brand-export">品牌出海</h3>
+                            <p data-i18n="brand-export-desc">助力您的品牌在海外市场成功拓展，打造国际化形象。</p>
                             </div>
                     </div>
                     <div class="service-card">
@@ -133,8 +160,8 @@
                                 <line x1="14" y1="6" x2="19" y2="18" stroke="#000000" stroke-width="2"/>
                                 <line x1="6" y1="20" x2="18" y2="20" stroke="#000000" stroke-width="2"/>
                             </svg>
-                            <h3>AI 赋能运营</h3>
-                            <p>利用AI工具赋能海外运营，实现数字化运营资产管理，提高效率和精准度。</p>
+                            <h3 data-i18n="ai-operation">AI 赋能运营</h3>
+                            <p data-i18n="ai-operation-desc">利用AI工具赋能海外运营，实现数字化运营资产管理，提高效率和精准度。</p>
                     </div>
                     </div>
                 </div>
@@ -223,7 +250,7 @@
                                 <p>4. 重新设计产品包装和营销策略，提升产品在线上平台的竞争力。</p>
                                 <p>5. 利用数据分析，精准定位目标客户群，优化广告投放策略。</p>
                                 <p><strong>项目成果：</strong></p>
-                                <p>半年内进入BSR TOP10，月销售额突破10万美元，毛利率超25%。工厂实现多元供货，稳定成本，达成品牌与OEM双赢。</p>
+                                <p>半年内进入BSR TOP10，月销售额突破10万美元，毛利率超25%。工厂实现多元供货，稳定成，达成品牌与OEM双赢。</p>
                             </div>
                         </div>
                     </div>
@@ -298,6 +325,34 @@
                 <p>扫码联系我们</p>
             </div>
         </div>
+        <div class="language-switcher">
+            <button onclick="changeLanguage('zh')">中文</button>
+            <button onclick="changeLanguage('en')">English</button>
+        </div>
     </footer>
+
+    <style>
+        .language-switcher {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .language-switcher button {
+            background: none;
+            border: none;
+            color: #333;
+            cursor: pointer;
+            font-size: 14px;
+            padding: 5px 10px;
+            margin: 0 5px;
+            transition: color 0.3s;
+        }
+
+        .language-switcher button:hover {
+            color: #007bff;
+        }
+    </style>
 </body>
 </html>

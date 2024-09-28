@@ -1,4 +1,5 @@
-from flask import Flask, render_template, send_from_directory, request, send_file, jsonify
+from flask import Flask, render_template, send_from_directory, request, send_file, jsonify, g
+from flask_babel import Babel
 import os
 import json
 from datetime import datetime
@@ -8,16 +9,28 @@ from tool_app.daily_report import main_daily
 from tool_app.weekly_report import main_weekly
 from tool_app.monthly_report import main_monthly
 from tool_app.product_analysis import main_product_analysis
-
+from tool_app.mic_pdf import main_mic_pdf
 
 app = Flask(__name__, static_folder='./statics', template_folder='./templates')
+babel = Babel(app)
 
 app.register_blueprint(main_daily, url_prefix='/tools/daily-report')
 app.register_blueprint(main_weekly, url_prefix='/tools/weekly-report')
 app.register_blueprint(main_monthly, url_prefix='/tools/monthly-report')
 app.register_blueprint(main_product_analysis, url_prefix='/tools/product-analysis')
+app.register_blueprint(main_mic_pdf, url_prefix='/tools/mic-pdf')
 
 NEWS_DIR = os.path.join(os.path.dirname(__file__), 'news')
+
+def get_locale():
+    # 尝试从请求参数中获取语言设置
+    lang = request.args.get('lang')
+    if lang in ['zh', 'en']:
+        return lang
+    # 如果没有指定语言，返回默认语言
+    return 'zh'
+
+babel.init_app(app, locale_selector=get_locale)
 
 def load_news():
     news_list = []
@@ -28,6 +41,11 @@ def load_news():
                 news['id'] = filename[:-5]
                 news_list.append(news)
     return sorted(news_list, key=lambda x: datetime.strptime(x['date'], '%Y-%m-%d'), reverse=True)
+
+@app.route('/locales/<lang>/translation.json')
+def serve_translations(lang):
+    # 确保路径正确，这里假设翻译文件在 static/locales 目录下
+    return send_from_directory('statics/locales', f'{lang}/translation.json')
 
 @app.route('/')
 @app.route('/index.html')
@@ -98,44 +116,5 @@ def project_analysis():
     return render_template('dataset/project_analysis.html')
 
 # 新增的路由和功能
-@app.route('/upload', methods=['POST'])
-def upload_files():
-    uploaded_files = request.files.getlist("files")
-    file2_path = "model_file/21PcsMIC.pdf"
-    processed_files = []
-
-    upload_folder = 'pdf/upload'
-    os.makedirs(upload_folder, exist_ok=True)
-    pdf_folder = 'pdf'
-    os.makedirs(pdf_folder, exist_ok=True)
-
-    for uploaded_file in uploaded_files:
-        file1_path = os.path.join(upload_folder, uploaded_file.filename)
-        uploaded_file.save(file1_path)
-
-        new_pdf = PdfFileReader(open(file2_path, 'rb'))
-        existing_pdf = PdfFileReader(open(file1_path, 'rb'))
-        output = PdfFileWriter()
-        page = existing_pdf.getPage(0)
-        page.mergePage(new_pdf.getPage(0))
-        output.addPage(page)
-
-        output_filename = f"{os.path.splitext(uploaded_file.filename)[0]}-Merge.pdf"
-        output_path = os.path.join(pdf_folder, output_filename)
-
-        with open(output_path, "wb") as outputStream:
-            output.write(outputStream)
-
-        processed_files.append(output_path)
-
-    zip_filename = f"{datetime.now().strftime('%Y%m%d_%H%M%S')}_merged_files.zip"
-    zip_path = os.path.join(pdf_folder, zip_filename)
-
-    with zipfile.ZipFile(zip_path, 'w') as zipf:
-        for file_path in processed_files:
-            zipf.write(file_path, os.path.basename(file_path))
-
-    return send_file(zip_path, as_attachment=True)
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8800, debug=True)
