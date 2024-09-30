@@ -10,6 +10,7 @@ from tool_app.weekly_report import main_weekly
 from tool_app.monthly_report import main_monthly
 from tool_app.product_analysis import main_product_analysis
 from tool_app.mic_pdf import main_mic_pdf
+from tool_app.resize_img import main_resize_img
 
 app = Flask(__name__, static_folder='./statics', template_folder='./templates')
 babel = Babel(app)
@@ -19,7 +20,7 @@ app.register_blueprint(main_weekly, url_prefix='/tools/weekly-report')
 app.register_blueprint(main_monthly, url_prefix='/tools/monthly-report')
 app.register_blueprint(main_product_analysis, url_prefix='/tools/product-analysis')
 app.register_blueprint(main_mic_pdf, url_prefix='/tools/mic-pdf')
-
+app.register_blueprint(main_resize_img, url_prefix='/tools/resize-image')
 NEWS_DIR = os.path.join(os.path.dirname(__file__), 'news')
 
 def get_locale():
@@ -37,9 +38,9 @@ def load_news():
     for filename in os.listdir(NEWS_DIR):
         if filename.endswith('.json'):
             with open(os.path.join(NEWS_DIR, filename), 'r', encoding='utf-8') as f:
-                news = json.load(f)
-                news['id'] = filename[:-5]
-                news_list.append(news)
+                e_news = json.load(f)
+                e_news['id'] = filename[:-5]
+                news_list.append(e_news)
     return sorted(news_list, key=lambda x: datetime.strptime(x['date'], '%Y-%m-%d'), reverse=True)
 
 @app.route('/locales/<lang>/translation.json')
@@ -94,6 +95,10 @@ def size_converter():
 @app.route('/tools/mic-pdf')
 def mic_pdf():
     return render_template('toolset/mic_pdf.html')
+
+@app.route('/tools/resize-image')
+def resize_image():
+    return render_template('toolset/resize_image.html')
 
 @app.route('/tools/daily-report')
 def daily_report():
