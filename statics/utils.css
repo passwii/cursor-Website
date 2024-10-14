@@ -259,7 +259,7 @@
 
 /* 企业文化 */
 .culture {
-    margin: 50px;
+    /* margin: 50px; */
     margin-bottom: 100px;
 
 }
@@ -288,6 +288,12 @@
 .culture-item h3 {
     color: #333;
     margin-bottom: 10px;
+}
+
+.culture-item p {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
 }
 
 .culture-item:nth-child(1) {
