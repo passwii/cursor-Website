@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="page-title">彼励扶电子商务 - 主页</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/blf_logo_1.webp') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='utils.css') }}">
@@ -58,10 +59,8 @@
             <li class="dropdown">
                 <a href="services.html" class="nav-link" data-i18n="services">服务体系</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" class="dropdown-item" data-i18n="market-research">市场调研</a></li>
-                    <li><a href="#" class="dropdown-item" data-i18n="product-export">产品出海</a></li>
-                    <li><a href="#" class="dropdown-item" data-i18n="brand-export">品牌出海</a></li>
-                    <li><a href="#" class="dropdown-item" data-i18n="ai-operation">AI 赋能运营</a></li>
+                    <li><a href="services.html#service-detail" class="dropdown-item" data-i18n="market-research">市场调研</a></li>
+                    <li><a href="services.html#ai-empowerment" class="dropdown-item" data-i18n="ai-operation">AI 赋能运营</a></li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -107,7 +106,7 @@
                         <a href="services.html#service-detail" class="btn btn-outline" data-i18n="cta-learn-more">了解更多</a>
                     </div>
                     <div class="hero-image">
-                        <img src="{{ url_for('static', filename='images/work-4.webp') }}" alt="亚马中国成功" width="600" height="400">
+                        <img src="{{ url_for('static', filename='images/service-hero.webp') }}" alt="亚马中国成功" width="600" height="400">
                     </div>
                 </div>
         </section>

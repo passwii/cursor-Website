@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>彼励扶电子商务 - 主页</title>
+    <title>彼励扶电子商务 - 新闻中心</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo-i.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='utils.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='mobile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='news.css') }}">
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
     <nav class="main-nav">
         <a href="index.html" class="logo-link">
@@ -31,10 +33,8 @@
             <li class="dropdown">
                 <a href="services.html" class="nav-link">服务体系</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" class="dropdown-item">市场调研</a></li>
-                    <li><a href="#" class="dropdown-item">产品出海</a></li>
-                    <li><a href="#" class="dropdown-item">品牌出海</a></li>
-                    <li><a href="#" class="dropdown-item">AI 赋能运营</a></li>
+                    <li><a href="services.html#service-detail" class="dropdown-item">全生态服务</a></li>
+                    <li><a href="services.html#ai-empowerment" class="dropdown-item">AI 赋能运营</a></li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -74,20 +74,47 @@
 
 <body>
     <main>
-        <!-- 详细内容 -->
-        <section class="news-section hero">
-            <h1>跨境新闻咨询</h1>
-            <div class="news-list">
-                {% for news in news_list %}
+        <section class="news-hero">
+            <h1>From Here We Reach The World</h1>
+            <h2>全球资讯，尽在彼励扶</h2>
+        </section>
+        
+        <section class="news-categories">
+            <div class="container">
+                <a href="#" class="category-button active">公司新闻</a>
+                <a href="#" class="category-button">行业动态</a>
+                <a href="#" class="category-button">前沿观点</a>
+            </div>
+        </section>
+        
+        <section class="news-list">
+            <div class="container">
                 <article class="news-item">
-                    <h3><a href="{{ url_for('news_detail', news_id=news.id) }}">{{ news.title }}</a></h3>
-                    <p class="news-meta">发布日期：{{ news.date }} | 分类：{{ news.category }}</p>
-                    <p class="news-summary">{{ news.summary }}</p>
+                    <div class="news-image">
+                        <img src="{{ url_for('static', filename='images/work-3.webp') }}" alt="News Image 1">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">2023.06.26</span>
+                        <h2>彼励扶运营总监 Jackie 高先生 工具出海品牌战略探索</h2>
+                        <p>Jackie 高先生分享了工具品牌出海的战略洞察和实践经验，为企业提供了宝贵的市场拓展建议。</p>
+                        <a href="#" class="read-more">查看详情</a>
+                    </div>
                 </article>
-                {% endfor %}
+                <article class="news-item">
+                    <div class="news-image">
+                        <img src="{{ url_for('static', filename='images/work-2.webp') }}" alt="News Image 2">
+                    </div>
+                    <div class="news-content">
+                        <span class="news-date">2023.06.26</span>
+                        <h2>彼励扶 AI 探索实例: LLM-AI 赋能，效率为王</h2>
+                        <p>探讨了大语言模型 AI 如何提升跨境电商运营效率，展示了彼励扶在 AI 应用方面的创新实践。</p>
+                        <a href="#" class="read-more">查看详情</a>
+                    </div>
+                </article>
             </div>
         </section>
     </main>
+
     <footer id="footer" class="hidden">
         <div class="footer-content">
             <div class="footer-column">

@@ -58,4 +58,20 @@ document.addEventListener('DOMContentLoaded', function() {
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('active');
     });
+
+    const card = document.getElementById('market-insight-card');
+    const detail = document.getElementById('market-insight-detail');
+    const closeButton = detail.querySelector('.close-detail');
+
+    card.addEventListener('click', function () {
+        const overlay = document.createElement('div');
+        overlay.classList.add('overlay');
+        document.body.appendChild(overlay);
+        detail.style.display = 'block';
+    });
+
+    closeButton.addEventListener('click', function () {
+        detail.style.display = 'none';
+        document.body.removeChild(document.querySelector('.overlay'));
+    });
 });

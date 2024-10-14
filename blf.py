@@ -11,6 +11,7 @@ from tool_app.monthly_report import main_monthly
 from tool_app.product_analysis import main_product_analysis
 from tool_app.mic_pdf import main_mic_pdf
 from tool_app.resize_img import main_resize_img
+from tool_app.news import main_news, load_news, delete_news_file
 
 app = Flask(__name__, static_folder='./statics', template_folder='./templates')
 babel = Babel(app)
@@ -21,7 +22,7 @@ app.register_blueprint(main_monthly, url_prefix='/tools/monthly-report')
 app.register_blueprint(main_product_analysis, url_prefix='/tools/product-analysis')
 app.register_blueprint(main_mic_pdf, url_prefix='/tools/mic-pdf')
 app.register_blueprint(main_resize_img, url_prefix='/tools/resize-image')
-NEWS_DIR = os.path.join(os.path.dirname(__file__), 'news')
+app.register_blueprint(main_news, url_prefix='/news')
 
 def get_locale():
     # 尝试从请求参数中获取语言设置
@@ -32,16 +33,6 @@ def get_locale():
     return 'zh'
 
 babel.init_app(app, locale_selector=get_locale)
-
-def load_news():
-    news_list = []
-    for filename in os.listdir(NEWS_DIR):
-        if filename.endswith('.json'):
-            with open(os.path.join(NEWS_DIR, filename), 'r', encoding='utf-8') as f:
-                e_news = json.load(f)
-                e_news['id'] = filename[:-5]
-                news_list.append(e_news)
-    return sorted(news_list, key=lambda x: datetime.strptime(x['date'], '%Y-%m-%d'), reverse=True)
 
 @app.route('/locales/<lang>/translation.json')
 def serve_translations(lang):
@@ -67,14 +58,8 @@ def contact():
 
 @app.route('/news.html')
 def news():
-    news_list = load_news()
+    news_list = load_news()  # 使用 load_news 函数
     return render_template('news.html', news_list=news_list)
-
-@app.route('/news/<news_id>')
-def news_detail(news_id):
-    with open(os.path.join(NEWS_DIR, f'{news_id}.json'), 'r', encoding='utf-8') as f:
-        news = json.load(f)
-    return render_template('news_detail.html', news=news)
 
 @app.route('/tools.html')
 def tools():
@@ -119,6 +104,19 @@ def product_analysis():
 @app.route('/tools/project-analysis')
 def project_analysis():
     return render_template('dataset/project_analysis.html')
+
+@app.route('/news/manage')
+def manage_news():
+    return render_template('news/manage_news.html')
+
+@app.route('/news/create')
+def create_news():
+    return render_template('news/edit_news.html')
+
+@app.route('/news/edit/<news_id>')
+def edit_news(news_id):
+    return render_template('/news/edit_news.html', news_id=news_id)
+
 
 # 新增的路由和功能
 if __name__ == '__main__':

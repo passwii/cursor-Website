@@ -1,0 +1,48 @@
+.company-overview-section {
+    padding: 80px 0;
+    width: 100%;
+    background: white;
+}
+
+.company-overview-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.company-overview-section p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+    text-align: left;
+    padding-right: 1rem;
+}
+
+.about-us-section {
+    padding: 80px 4rem;
+    width: 100%;
+    background: linear-gradient(to right, #dff2ff, #ffffff);
+}
+
+.about-us-section .hero-content {
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 40px;
+}   
+
+.about-us-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about-us-section p {
+    font-size: 24px;
+    color: #666;
+    margin-bottom: 30px;
+    text-align: left;
+    padding-right: 1rem;
+}
+    

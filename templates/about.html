@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>彼励扶电子商务 - 关于我们</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/logo-i.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='utils.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='mobile.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
     <nav class="main-nav">
         <a href="index.html" class="logo-link">
@@ -30,10 +32,8 @@
             <li class="dropdown">
                 <a href="services.html" class="nav-link">服务体系</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" class="dropdown-item">市场调研</a></li>
-                    <li><a href="#" class="dropdown-item">产品出海</a></li>
-                    <li><a href="#" class="dropdown-item">品牌出海</a></li>
-                    <li><a href="#" class="dropdown-item">AI 赋能运营</a></li>
+                    <li><a href="services.html#service-detail" class="dropdown-item">全生态服务</a></li>
+                    <li><a href="services.html#ai-empowerment" class="dropdown-item">AI 赋能运营</a></li>
                 </ul>
             </li>
             <li class="dropdown">
@@ -63,14 +63,24 @@
             </li>
         </ul>
         <div class="login-btn">
-            <a href="#" class="btn">登录</a>
+            <a href="tools.html" class="btn">后台</a>
         </div>
     </nav>
     <script src="/statics/script.js" defer></script>
 </head>
 <body>
     <main>
-        <section id="company-overview" class="about-section hero">
+        <section id="about-us" class="about-us-section">
+            <div class="hero-content"></div>
+                <div class="hero-text">
+                    <h2><i class="fas fa-building"></i>关于我们</h2>
+                    <p>We Believe It's Always Day 1</p>
+                </div>
+                
+            </div>  
+        </section>
+
+        <section id="company-overview" class="company-overview-section">
             <div class="hero-content">
                 <div class="hero-text">
                     <h2><i class="fas fa-building"></i> 公司概况</h2>
@@ -84,9 +94,11 @@
             </div>
         </section>
 
-        <section id="company-culture" class="about-section culture">
-            <h2><i class="fas fa-users"></i> 企业文化</h2>
-            <div class="culture-grid">
+        <section id="company-culture" class="about-section culture hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2><i class="fas fa-users"></i> 企业文化</h2>
+                    <div class="culture-grid">
                 <div class="culture-item">
                     <h3>Believe（信念）</h3>
                     <p>Believe always day 1 <br>（始终保持初创心态）</p>

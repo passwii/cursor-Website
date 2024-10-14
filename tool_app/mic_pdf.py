@@ -24,9 +24,12 @@ def process_mic_pdf():
         new_pdf = PdfFileReader(open(file2_path, 'rb'))
         existing_pdf = PdfFileReader(open(file1_path, 'rb'))
         output = PdfFileWriter()
-        page = existing_pdf.getPage(0)
-        page.mergePage(new_pdf.getPage(0))
-        output.addPage(page)
+
+        # 遍历上传文件的每一页
+        for page_num in range(existing_pdf.getNumPages()):
+            page = existing_pdf.getPage(page_num)
+            page.mergePage(new_pdf.getPage(0))
+            output.addPage(page)
 
         output_filename = f"{os.path.splitext(uploaded_file.filename)[0]}-Merge.pdf"
         output_path = os.path.join(pdf_folder, output_filename)
