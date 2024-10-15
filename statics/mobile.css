@@ -274,4 +274,8 @@
         text-align: left;
         padding-left: 1rem;
     }
+
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
 }
