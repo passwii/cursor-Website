@@ -1,6 +1,9 @@
 /* Hero section 英雄部分 */
 .hero {
-    padding: 80px 0;
+    height: 80vh; /* 设置高度为视口高度的80% */
+    display: flex;
+    align-items: center;
+    padding: auto;
     width: 100%;
     background: linear-gradient(to right, #dff2ff, #ffffff);
 }
@@ -9,9 +12,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    max-width: 1400px;
+    max-width: 1680px;
+    width: 100%;
     margin: 0 auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
     gap: 40px;
+    height: 100%; /* 确保内容占满整个高度 */
 }
 
 .hero-text {
@@ -22,19 +29,17 @@
 
 .hero-image {
     flex: 1;
-    position: relative;
-    top: 33px;
-    margin-left: 1rem;
-    width: 100%;
-    height: 100%;
+    height: 90%; /* 确保图片容器占满整个高度 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-right: 1rem;
 }
 
 .hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    padding-right: 1rem;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* 保持图片比例 */
 }
 
 .hero h1 {
@@ -63,7 +68,7 @@
 }
 
 .samples .container {
-    max-width: 1400px;
+    max-width: 1680px;
 }
 
 .samples h2 {
@@ -112,23 +117,76 @@
 
 /* 服务部分 */
 .services-overview {
-    padding: 50px 0;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1680px;
+    margin: 0 auto;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
 
 .services-overview h1 {
     font-size: 36px;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 40px;
+}
+
+.services-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.service-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    width: 350px; /* 每行4个卡片 */
+    min-width: 200px; /* 设置最小宽度以确保在小屏幕上的可读性 */
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+
+.service-card-header {
+    height: 8px;
+}
+
+.service-card-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.service-card-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-card p {
+    font-size: 1rem;
+    margin-bottom: 20px;
 }
 
 .services-ai {
     padding: 50px 0;
-
+    height: 70vh;
 }
 
 .services-ai .container {
-    max-width: 1400px;
+    max-width: 1680px;
     margin: 40px auto;
     padding: 0 20px;
 }
@@ -146,16 +204,16 @@
     text-align: center;
 }
 
-.services-grid {
+.services-ai-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 修改为动态 column 分布 */
-    gap: 20px;
-    max-width: 1400px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 50px;
+    max-width: 1680px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.service-card {
+.service-ai-card {
     margin-top: 40px;
     margin-bottom: 80px;
     background: white;
@@ -163,71 +221,42 @@
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    display: flex; /* 添加这行 */
+    flex-direction: column; /* 添加这行 */
 }
 
-.service-card:hover {
+.service-ai-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
 }
 
-.service-card-header {
+.service-ai-card * {
+    pointer-events: none;
+}
+
+.service-ai-card-header {
     height: 8px;
 }
 
-.service-card-content {
+.service-ai-card-content {
     padding: 20px;
-}
-
-.service-card-content h3 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.services-grid .service-card {
     text-align: center;
+    display: flex; /* 添加这行 */
+    flex-direction: column; /* 添加这行 */
+    justify-content: center; /* 添加这行 */
+    flex-grow: 1; /* 添加这行 */
 }
 
-.service-card h3 {
+.service-ai-card-content h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
     display: flex;
-    text-align: center;
-    align-items: center;
+    align-items: center; /* 确保图标和文字垂直居中 */
+    justify-content: center; /* 添加这行，使内容水平居中 */
 }
 
-.service-icon {
-    width: 50px;
-    height: 50px;
-    margin-right: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    color: white;
-}
-
-.service-card p {
-    margin-bottom: 20px;
-}
-
-.service-card .btn {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-}
-
-.service-list {
-    list-style-type: none; /* 去掉序列号 */
-    padding-left: 20px; /* 去掉默认的左边距 */
-}
-
-.service-list li {
-    font-size: 1.2em; /* 放大文字 */
-    margin-bottom: 10px; /* 增加行间距 */
-}
-
-.service-list i {
-    margin-right: 10px; /* 增加图标和文字之间的间隔 */
+.services-ai-hero {
+    background: linear-gradient(to right, #cceaff, #f8fbfe);
 }
 
 /* 案例卡片 */
@@ -372,43 +401,103 @@
 
 /* 核心竞争力 */
 .how-it-works {
-    padding: 50px 0;
+    padding: 50px 20px;
     background: linear-gradient(to right, #f0f9ff, #ffffff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 65vh; /* 确保至少占据70%的视口高度 */
 }
 
 .how-it-works h2 {
     font-size: 36px;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.how-it-works p{
+.how-it-works p {
+    font-size: 18px;
+    margin-top: -15px;
+    margin-bottom: 40px;
     text-align: center;
-    padding-right: 0;
+}
+
+.subtitle-underline {
+    position: relative;
+    display: inline-block;
+    font-size: 18px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.subtitle-underline::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 3px;
+    background-color: #0070f3;
+    /* 蓝色，可以根据需要调整 */
 }
 
 .steps {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
+    width: 100%;
+    max-width: 1680px; /* 限制最大宽度 */
+    margin-bottom: 40px;
+    margin-top: 20px;
 }
 
 .step {
     text-align: center;
+    padding: 20px;
+    /* background-color: #fff; */
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+}
+
+.step:hover {
+    transform: translateY(-5px);
+    box-shadow: 5px 5px 5px rgba(49, 49, 49, 0.05);
+    /* transition: all 0.5s ease; */
 }
 
 .step p {
-    font-size: 17px;
-    max-width: 220px;
+    font-size: 16px;
     margin: 0 auto;
 }
 
 .step-number {
-    font-size: 42px;
+    font-size: 36px;
     font-weight: bold;
     color: #0070f3;
     margin-bottom: 10px;
+}
+
+.cta-button {
+    margin-top: auto; /* 将按钮推到底部 */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0070f3;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
 }
 
 /* 联系我们 */
@@ -499,5 +588,26 @@
     object-fit: cover;
 }
 
+.service-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px; /* 设置固定宽度 */
+    height: 40px; /* 设置固定高度，与宽度相同 */
+    border-radius: 8px; /* 可以根据需要调整圆角 */
+    margin-right: 10px;
+    flex-shrink: 0; /* 添加这行，防止图标被压缩 */
+}
 
+.service-icon svg {
+    width: 24px;
+    height: 24px;
+    color: white; /* 确保图标颜色为白色 */
+}
 
+.service-ai-card-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
