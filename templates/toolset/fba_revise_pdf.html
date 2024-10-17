@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>合成产品标签 PDF</title>
+    <title>FBA 标签修改</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,7 +16,7 @@
             align-items: center;
             height: 100vh;
         }
-    
+
         .container {
             background: #fff;
             padding: 30px;
@@ -25,24 +25,24 @@
             max-width: 500px;
             width: 100%;
         }
-    
+
         h1 {
             text-align: center;
             color: black;
             margin-bottom: 20px;
         }
-    
+
         form {
             display: flex;
             flex-direction: column;
         }
-    
+
         label {
             margin-top: 15px;
             color: black;
             font-weight: bold;
         }
-    
+
         input[type="text"],
         input[type="file"],
         input[list],
@@ -54,7 +54,7 @@
             width: 100%;
             box-sizing: border-box;
         }
-    
+
         button {
             padding: 15px;
             margin-top: 20px;
@@ -66,24 +66,40 @@
             font-size: 16px;
             transition: background-color 0.3s ease;
         }
-    
+
         button:hover {
             background-color: #005f8b;
         }
     </style>
 </head>
 
+<!-- 现有代码 -->
 <body>
     <div class="container">
-        <h1>选择你的 PDF 标签源文件</h1>
-        <form action="{{ url_for('main_mic_pdf.process_mic_pdf') }}" id="upload-form" method="POST" enctype="multipart/form-data">
-            <label for="label_pdf">产品标签</label>
-            <input type="file" id="label_pdf" name="label_pdf" accept=".pdf" multiple required>
+        <h1>FBA标签 - 文字替换</h1>
+        <form action="{{ url_for('main_fba_revise_pdf.process_fba_revise_pdf') }}" id="upload-form" method="POST"
+            enctype="multipart/form-data">
 
-            <button type="submit">合成新标签</button>
+            <label for="label_pdf">FBA 标签文件</label>
+            <input type="file" id="label_pdf" name="fba_label_pdf" accept=".pdf" multiple required>
+
+            <label for="original_text">原始文本</label>
+            <input type="text" id="original_text" name="original_text" required>
+
+            <!-- 设置下拉菜单 空/Amazon / FBA -->
+            <label for="replacement_text">替换文本</label>
+            <select id="replacement_text" name="replacement_text">
+                <option value="">空</option>
+                <option value="Amazon">Amazon</option>
+                <option value="FBA">FBA</option>
+                <option value="Warehouse">Warehouse</option>
+            </select>
+
+            <button type="submit">处理新标签</button>
         </form>
     </div>
-
 </body>
 
-</html>
+
+<!-- 现有代码 -->
+

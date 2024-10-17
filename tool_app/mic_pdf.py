@@ -8,14 +8,15 @@ main_mic_pdf = Blueprint('main_mic_pdf', __name__)
 
 @main_mic_pdf.route('/mic_pdf', methods=['POST'])
 def process_mic_pdf():
-    uploaded_files = request.files.getlist("label_pdf")
-    file2_path = "model_file/21PcsMIC.pdf"
-    processed_files = []
-
     upload_folder = 'pdf/upload'
     os.makedirs(upload_folder, exist_ok=True)
     pdf_folder = 'pdf'
     os.makedirs(pdf_folder, exist_ok=True)
+
+    uploaded_files = request.files.getlist("label_pdf")
+    file2_path = "model_file/21PcsMIC.pdf"
+    processed_files = []
+
 
     for uploaded_file in uploaded_files:
         file1_path = os.path.join(upload_folder, uploaded_file.filename)

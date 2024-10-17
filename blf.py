@@ -12,6 +12,7 @@ from tool_app.product_analysis import main_product_analysis
 from tool_app.mic_pdf import main_mic_pdf
 from tool_app.resize_img import main_resize_img
 from tool_app.news import main_news, load_news, delete_news_file
+from tool_app.fba_revise_pdf import main_fba_revise_pdf
 
 app = Flask(__name__, static_folder='./statics', template_folder='./templates')
 babel = Babel(app)
@@ -23,6 +24,7 @@ app.register_blueprint(main_product_analysis, url_prefix='/tools/product-analysi
 app.register_blueprint(main_mic_pdf, url_prefix='/tools/mic-pdf')
 app.register_blueprint(main_resize_img, url_prefix='/tools/resize-image')
 app.register_blueprint(main_news, url_prefix='/news')
+app.register_blueprint(main_fba_revise_pdf, url_prefix='/tools/fba-revise-pdf')
 
 def get_locale():
     # 尝试从请求参数中获取语言设置
@@ -116,6 +118,10 @@ def create_news():
 @app.route('/news/edit/<news_id>')
 def edit_news(news_id):
     return render_template('/news/edit_news.html', news_id=news_id)
+
+@app.route('/tools/fba-revise-pdf')
+def fba_revise_pdf():
+    return render_template('toolset/fba_revise_pdf.html')
 
 
 # 新增的路由和功能
