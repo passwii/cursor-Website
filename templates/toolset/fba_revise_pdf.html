@@ -70,6 +70,39 @@
         button:hover {
             background-color: #005f8b;
         }
+
+        .copyright {
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .custom-select {
+            height: 40px; /* 设置选择框的高度 */
+            padding: 5px 10px; /* 设置内边距 */
+            font-size: 16px; /* 设置字体大小 */
+            border: 1px solid #007bb5; /* 设置边框 */
+            border-radius: 5px; /* 设置圆角 */
+            background-color: white; /* 设置背景色 */
+            appearance: none; /* 移除默认的下拉箭头 */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position-x: 98%;
+            background-position-y: 50%;
+        }
+
+        .custom-select:focus {
+            outline: none;
+            border-color: #005f8b;
+            box-shadow: 0 0 5px rgba(0,123,181,0.5);
+        }
     </style>
 </head>
 
@@ -88,7 +121,7 @@
 
             <!-- 设置下拉菜单 空/Amazon / FBA -->
             <label for="replacement_text">替换文本</label>
-            <select id="replacement_text" name="replacement_text">
+            <select id="replacement_text" name="replacement_text" class="custom-select">
                 <option value="">空</option>
                 <option value="Amazon">Amazon</option>
                 <option value="FBA">FBA</option>
@@ -97,6 +130,7 @@
 
             <button type="submit">处理新标签</button>
         </form>
+        <p class="copyright">Copyright © 纪亚伟</p>
     </div>
 </body>
 

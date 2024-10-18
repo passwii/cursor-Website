@@ -35,9 +35,13 @@ def process_fba_revise_pdf():
             areas = page.search_for(original_text)
             # 如果找到了文本，就替换它
             for rect in areas:
+                # 调整矩形高度
+                new_height = rect.height * 0.7  # 将高度减少到原来的70%
+                rect.y1 = rect.y0 + new_height
+                
                 page.add_redact_annot(rect)
                 page.apply_redactions()
-                page.insert_text(rect.tl, replacement_text, fontsize=11, fontname="helv")
+                page.insert_text(rect.tl, replacement_text, fontsize=8, fontname="Times-Roman")
 
         # 保存修改后的PDF，保持原文件名加上日期后缀
         output_filename = f"{os.path.splitext(os.path.basename(file_path))[0]}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pdf"
