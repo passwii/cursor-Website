@@ -67,13 +67,8 @@
             <div class="subcategory-grid" id="data-analysis">
                 <a href="{{ url_for('daily_report') }}" target="_blank" class="subcategory-card">
                     <i class="fas fa-calendar-day"></i>
-                    <h3>日报</h3>
-                    <p>每日销售数据概况</p>
-                </a>
-                <a href="{{ url_for('weekly_report') }}" target="_blank" class="subcategory-card">
-                    <i class="fas fa-calendar-week"></i>
-                    <h3>周报</h3>
-                    <p>每周销售数据概况</p>
+                    <h3>日报 & 周报</h3>
+                    <p>短期销售数据概况</p>
                 </a>
                 <a href="{{ url_for('monthly_report') }}" target="_blank" class="subcategory-card">
                     <i class="fas fa-calendar-alt"></i>
@@ -89,6 +84,16 @@
                     <i class="fas fa-project-diagram"></i>
                     <h3>项目核算表</h3>
                     <p>详细记录和分析项目销售数据</p>
+                </a>
+                <a href="{{ url_for('project_analysis') }}" target="_blank" class="subcategory-card">
+                    <i class="fas fa-database"></i>
+                    <h3>店铺数据库</h3>
+                    <p>管理店铺数据，包括产品、库存、销售等信息</p>
+                </a>
+                <a href="" target="_blank" class="subcategory-card">
+                    <i class="fas fa-boxes"></i>
+                    <h3>库存管理</h3>
+                    <p>库存管理工具，包括产品添加、删除和库存调整</p>
                 </a>
             </div>
             <div class="subcategory-grid" id="templates">
