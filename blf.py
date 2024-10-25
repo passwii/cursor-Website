@@ -1,5 +1,4 @@
 from flask import Flask, render_template, send_from_directory, request, send_file, jsonify, g
-from flask_babel import Babel
 import os
 import json
 from datetime import datetime
@@ -15,7 +14,6 @@ from tool_app.news import main_news, load_news, delete_news_file
 from tool_app.fba_revise_pdf import main_fba_revise_pdf
 
 app = Flask(__name__, static_folder='./statics', template_folder='./templates')
-babel = Babel(app)
 
 app.register_blueprint(main_daily, url_prefix='/tools/daily-report')
 app.register_blueprint(main_weekly, url_prefix='/tools/weekly-report')
@@ -34,7 +32,6 @@ def get_locale():
     # 如果没有指定语言，返回默认语言
     return 'zh'
 
-babel.init_app(app, locale_selector=get_locale)
 
 @app.route('/locales/<lang>/translation.json')
 def serve_translations(lang):
