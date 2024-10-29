@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运营数据系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='database.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
-<body>
 
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>运营数据管理</h2>
+            <ul>
+                <li class="has-submenu">
+                    <a href="#" data-report="sales"><i class="fas fa-chart-line"></i> 销售报表 <i class="fas fa-chevron-down"></i></a>
+                    <ul class="submenu">
+                        <li><a href="#" data-report="all-orders">所有订单</a></li>
+                        <li><a href="#" data-report="sales-statistics">销售统计</a></li>
+                        <li><a href="#" data-report="product-analysis">产品分析</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" data-report="inventory"><i class="fas fa-boxes"></i> 库存报表</a></li>
+                <li><a href="#" data-report="finance"><i class="fas fa-file-invoice-dollar"></i> 财务报表</a></li>
+                <li><a href="#" data-report="users"><i class="fas fa-users"></i> 用户管理</a></li>
+                <li><a href="#" data-report="settings"><i class="fas fa-cog"></i> 系统设置</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <h1 id="report-title">数据预览</h1>
+            <div id="data-preview">
+                <p>请从左侧选择要查看的报表类型</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='database.js') }}"></script>
 </body>
+
 </html>

@@ -12,6 +12,7 @@ from tool_app.mic_pdf import main_mic_pdf
 from tool_app.resize_img import main_resize_img
 from tool_app.news import main_news, load_news, delete_news_file
 from tool_app.fba_revise_pdf import main_fba_revise_pdf
+from tool_app.database import main_database
 
 app = Flask(__name__, static_folder='./statics', template_folder='./templates')
 
@@ -23,6 +24,7 @@ app.register_blueprint(main_mic_pdf, url_prefix='/tools/mic-pdf')
 app.register_blueprint(main_resize_img, url_prefix='/tools/resize-image')
 app.register_blueprint(main_news, url_prefix='/news')
 app.register_blueprint(main_fba_revise_pdf, url_prefix='/tools/fba-revise-pdf')
+app.register_blueprint(main_database, url_prefix='/tools/database')
 
 def get_locale():
     # 尝试从请求参数中获取语言设置
@@ -119,6 +121,10 @@ def edit_news(news_id):
 @app.route('/tools/fba-revise-pdf')
 def fba_revise_pdf():
     return render_template('toolset/fba_revise_pdf.html')
+
+@app.route('/tools/database')
+def database():
+    return render_template('dataset/database.html')
 
 
 # 新增的路由和功能
