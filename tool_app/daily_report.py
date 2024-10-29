@@ -79,6 +79,8 @@ def process_daily_report(project_name, report_date, sales_report, ad_report, fba
     merged_data = pd.merge(daily_sales, daily_ad_report, on='SKU', how='outer')
     merged_data = pd.merge(merged_data, fba, on='SKU', how='outer')
     merged_data = merged_data.fillna(0)
+    # 按SKU列排序
+    merged_data = merged_data.sort_values('SKU')
 
     overview_data = {
         '日期(US)': [],
