@@ -74,10 +74,6 @@ def serve_static(filename):
 def exchange_rate():
     return render_template('toolset/exchange_rate.html')
 
-@app.route('/tools/size-converter')
-def size_converter():
-    return render_template('toolset/size_converter.html')
-
 @app.route('/tools/mic-pdf')
 def mic_pdf():
     return render_template('toolset/mic_pdf.html')
