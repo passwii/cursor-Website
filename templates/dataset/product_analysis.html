@@ -82,9 +82,6 @@
             <label for="project_name">项目名称:</label>
             <input list="projects" name="project_name" id="project_name" required>
             <datalist id="projects">
-                <option value="朗净">
-                <option value="铨富">
-                <option value="天勤">
             </datalist>
 
             <label for="report_date">报表日期:</label>
@@ -95,6 +92,9 @@
 
             <label for="payment_report">付款报告:</label>
             <input type="file" name="payment_report" accept=".csv" required>
+
+            <label for="payment_report_hold">延迟报告:</label>
+            <input type="file" name="payment_report_hold" accept=".csv">
 
             <label for="ad_product_report">广告报表:</label>
             <input type="file" name="ad_product_report" accept=".xlsx" required>

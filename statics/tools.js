@@ -17,4 +17,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 默认显示第一个类别
     categoryItems[0].click();
+
+    // 添加点击事件处理程序到所有 href 为 # 的链接
+    const links = document.querySelectorAll('a[href="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            alert('仅限内网使用');
+        });
+    });
 });
