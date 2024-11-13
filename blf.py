@@ -118,6 +118,14 @@ def edit_news(news_id):
 def fba_revise_pdf():
     return render_template('toolset/fba_revise_pdf.html')
 
+@app.route('/help/payment_delay')
+def payment_delay():
+    return render_template('help/payment_report.html')
+
+@app.route('/help/payment_range')
+def payment_range():
+    return render_template('help/payment_report.html')
+
 @app.route('/tools/database')
 def database():
     return render_template('dataset/database.html')
