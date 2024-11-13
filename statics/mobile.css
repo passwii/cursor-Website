@@ -42,6 +42,12 @@
     color: #34495e;
 }
 
+@media (max-width: 1200px) {
+    .hero {
+        padding: 20px 20px;
+    }
+}
+
 /* 导航栏响应式设计 第二宽*/
 @media (max-width: 992px) {
     .steps {
