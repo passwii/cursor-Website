@@ -120,11 +120,11 @@ def fba_revise_pdf():
 
 @app.route('/help/payment_delay')
 def payment_delay():
-    return render_template('help/payment_report.html')
+    return render_template('help/payment_report_help.html')
 
-@app.route('/help/payment_range')
-def payment_range():
-    return render_template('help/payment_report.html')
+@app.route('/help/payment_report')
+def payment_report():
+    return render_template('help/payment_report_help.html')
 
 @app.route('/tools/database')
 def database():

@@ -88,7 +88,7 @@
         }
 
         .help-icon:hover {
-            background-color: #005f8b;
+            background-color: #ffc927;
             color: white;
             text-decoration: none;
         }
@@ -115,12 +115,12 @@
             </select>
 
             <label for="payment_range_report">付款报告:
-                <a href="{{ url_for('payment_range') }}" target="_blank" class="help-icon">?</a>
+                <a href="{{ url_for('payment_report') }}#payment-report" target="_blank" class="help-icon">?</a>
             </label>
             <input type="file" name="payment_range_report" accept=".csv" required>
 
             <label for="payment_delay_report">付款延迟报告:
-                <a href="{{ url_for('payment_delay') }}" target="_blank" class="help-icon">?</a>
+                <a href="{{ url_for('payment_delay') }}#payment-delay" target="_blank" class="help-icon">?</a>
             </label>
             <input type="file" name="payment_delay_report" accept=".csv" required>
 
