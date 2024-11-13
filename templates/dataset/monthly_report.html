@@ -46,6 +46,7 @@
         input[type="text"],
         input[type="file"],
         input[list],
+        select,
         datalist {
             padding: 10px;
             margin-top: 5px;
@@ -70,6 +71,27 @@
         button:hover {
             background-color: #005f8b;
         }
+
+        .help-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            line-height: 16px;
+            text-align: center;
+            background-color: #007bb5;
+            color: white;
+            border-radius: 50%;
+            font-size: 12px;
+            margin-left: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .help-icon:hover {
+            background-color: #005f8b;
+            color: white;
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -92,8 +114,15 @@
                 <option value="2024-12">2024-12</option>
             </select>
 
-            <label for="payment_range_report">日期范围报告:</label>
+            <label for="payment_range_report">付款报告:
+                <a href="{{ url_for('payment_range') }}" target="_blank" class="help-icon">?</a>
+            </label>
             <input type="file" name="payment_range_report" accept=".csv" required>
+
+            <label for="payment_delay_report">付款延迟报告:
+                <a href="{{ url_for('payment_delay') }}" target="_blank" class="help-icon">?</a>
+            </label>
+            <input type="file" name="payment_delay_report" accept=".csv" required>
 
             <button type="submit">生成月报</button>
         </form>
