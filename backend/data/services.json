@@ -1,0 +1,170 @@
+[
+  {
+    "id": "1",
+    "title": "跨境全生态服务",
+    "titleEn": "Cross-border Ecosystem Service",
+    "description": "提供从选品、采购、物流到营销的一站式跨境电商解决方案",
+    "descriptionEn": "One-stop cross-border e-commerce solutions from product selection to marketing",
+    "category": "跨境电商",
+    "categoryEn": "Cross-border E-commerce",
+    "duration": "12个月",
+    "durationEn": "12 months",
+    "price": "¥50,000起",
+    "priceEn": "Starting from ¥50,000",
+    "icon": "fas fa-globe",
+    "features": [
+      "数据驱动的选品策略",
+      "优质供应链网络",
+      "全球物流解决方案",
+      "多平台营销策略",
+      "专业团队支持"
+    ],
+    "featuresEn": [
+      "Data-driven product selection",
+      "Quality supplier network",
+      "Global logistics solutions",
+      "Multi-platform marketing strategy",
+      "Professional team support"
+    ],
+    "process": [
+      {
+        "title": "需求分析",
+        "titleEn": "Requirement Analysis",
+        "description": "深入了解您的业务需求和目标市场",
+        "descriptionEn": "In-depth understanding of your business needs and target markets"
+      },
+      {
+        "title": "策略制定",
+        "titleEn": "Strategy Development",
+        "description": "制定个性化的跨境电商策略",
+        "descriptionEn": "Develop personalized cross-border e-commerce strategies"
+      },
+      {
+        "title": "实施执行",
+        "titleEn": "Implementation",
+        "description": "专业团队协助执行各项任务",
+        "descriptionEn": "Professional team assists in executing various tasks"
+      },
+      {
+        "title": "优化调整",
+        "titleEn": "Optimization",
+        "description": "持续监控和优化运营效果",
+        "descriptionEn": "Continuous monitoring and optimization of operations"
+      }
+    ],
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "2",
+    "title": "AI赋能运营服务",
+    "titleEn": "AI-Powered Operations Service",
+    "description": "利用人工智能技术优化运营流程，提升效率和收益",
+    "descriptionEn": "Optimize operations with artificial intelligence to improve efficiency and revenue",
+    "category": "AI技术",
+    "categoryEn": "AI Technology",
+    "duration": "6个月",
+    "durationEn": "6 months",
+    "price": "¥30,000起",
+    "priceEn": "Starting from ¥30,000",
+    "icon": "fas fa-robot",
+    "features": [
+      "智能数据分析",
+      "自动化运营工具",
+      "AI辅助决策",
+      "效率优化方案",
+      "定制化报告"
+    ],
+    "featuresEn": [
+      "Intelligent data analysis",
+      "Automated operation tools",
+      "AI-assisted decision making",
+      "Efficiency optimization solutions",
+      "Customized reporting"
+    ],
+    "process": [
+      {
+        "title": "系统评估",
+        "titleEn": "System Assessment",
+        "description": "评估现有系统和流程",
+        "descriptionEn": "Evaluate existing systems and processes"
+      },
+      {
+        "title": "AI方案设计",
+        "titleEn": "AI Solution Design",
+        "description": "设计针对性的AI解决方案",
+        "descriptionEn": "Design targeted AI solutions"
+      },
+      {
+        "title": "系统集成",
+        "titleEn": "System Integration",
+        "description": "整合AI工具到现有系统",
+        "descriptionEn": "Integrate AI tools into existing systems"
+      },
+      {
+        "title": "持续优化",
+        "titleEn": "Continuous Optimization",
+        "description": "持续监控和优化AI系统",
+        "descriptionEn": "Continuous monitoring and optimization of AI systems"
+      }
+    ],
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "3",
+    "title": "市场研究服务",
+    "titleEn": "Market Research Service",
+    "description": "深入分析全球市场趋势，为您的业务决策提供数据支持",
+    "descriptionEn": "In-depth analysis of global market trends to support your business decisions",
+    "category": "市场研究",
+    "categoryEn": "Market Research",
+    "duration": "3个月",
+    "durationEn": "3 months",
+    "price": "¥20,000起",
+    "priceEn": "Starting from ¥20,000",
+    "icon": "fas fa-chart-line",
+    "features": [
+      "市场趋势分析",
+      "竞争对手研究",
+      "消费者洞察",
+      "机会识别",
+      "风险评估"
+    ],
+    "featuresEn": [
+      "Market trend analysis",
+      "Competitor research",
+      "Consumer insights",
+      "Opportunity identification",
+      "Risk assessment"
+    ],
+    "process": [
+      {
+        "title": "研究规划",
+        "titleEn": "Research Planning",
+        "description": "确定研究目标和方法",
+        "descriptionEn": "Define research objectives and methodology"
+      },
+      {
+        "title": "数据收集",
+        "titleEn": "Data Collection",
+        "description": "收集和整理市场数据",
+        "descriptionEn": "Collect and organize market data"
+      },
+      {
+        "title": "分析报告",
+        "titleEn": "Analysis Report",
+        "description": "深度分析并形成报告",
+        "descriptionEn": "In-depth analysis and report generation"
+      },
+      {
+        "title": "策略建议",
+        "titleEn": "Strategic Recommendations",
+        "description": "提供具体的行动建议",
+        "descriptionEn": "Provide specific action recommendations"
+      }
+    ],
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  }
+]
