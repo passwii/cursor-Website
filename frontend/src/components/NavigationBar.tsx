@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
+import logoImage from '../assets/images/logo.webp';
 
 const Nav = styled.nav`
   position: fixed;
@@ -19,11 +20,41 @@ const Nav = styled.nav`
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 `;
 
-const Logo = styled.div`
-  font-size: 24px;
-  font-weight: bold;
+const LogoSection = styled(Link)`
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 300px;
+  text-decoration: none;
+  cursor: pointer;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+`;
+
+const LogoImage = styled.img`
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+`;
+
+const LogoText = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+const MainText = styled.div`
+  font-size: 18px;
+  font-weight: 600;
   color: #333;
-  min-width: 200px;
+`;
+
+const SubText = styled.div`
+  font-size: 14px;
+  color: #666;
+  font-style: bold;
 `;
 
 const NavLinks = styled.div`
@@ -61,16 +92,28 @@ const NavItem = styled.div`
 
 const NavLink = styled(Link)<{ $isActive?: boolean }>`
   text-decoration: none;
-  color: ${props => props.$isActive ? '#2196f3' : '#666'};
+  color: ${props => props.$isActive ? '#fff' : '#666'};
   font-size: 16px;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 5px 15px;
+  padding: 8px 20px;
+  border-radius: 20px;
+  background: ${props => {
+    if (props.to === '/admin') return '#1976d2';
+    return props.$isActive ? '#1976d2' : 'transparent';
+  }};
+  color: ${props => props.to === '/admin' ? '#fff' : props.$isActive ? '#fff' : '#666'};
   
   &:hover {
-    color: #2196f3;
+    background: ${props => {
+      if (props.to === '/admin') return '#2196f3';
+      return props.$isActive ? '#1976d2' : '#f5f5f5';
+    }};
+    color: ${props => props.to === '/admin' || props.$isActive ? '#fff' : '#666'};
   }
 `;
 
@@ -92,16 +135,19 @@ const Dropdown = styled.div`
 
 const DropdownItem = styled(Link)<{ $isActive?: boolean }>`
   display: block;
-  padding: 10px 24px;
-  color: ${props => props.$isActive ? '#2196f3' : '#666'};
+  padding: 8px 20px;
+  color: ${props => props.$isActive ? '#fff' : '#666'};
   text-decoration: none;
   transition: all 0.3s ease;
   text-align: center;
   white-space: nowrap;
+  margin: 4px 8px;
+  border-radius: 20px;
+  background: ${props => props.$isActive ? '#1976d2' : 'transparent'};
   
   &:hover {
-    color: #2196f3;
-    background: rgba(33, 150, 243, 0.1);
+    background: ${props => props.$isActive ? '#1976d2' : '#f5f5f5'};
+    color: ${props => props.$isActive ? '#fff' : '#666'};
   }
 `;
 
@@ -116,7 +162,13 @@ const NavigationBar: React.FC = () => {
   
   return (
     <Nav>
-      <Logo>Cross Border Service</Logo>
+      <LogoSection to="/">
+        <LogoImage src={logoImage} alt="彼励扶" />
+        <LogoText>
+          <MainText>彼励扶跨境</MainText>
+          <SubText>It's always Day 1</SubText>
+        </LogoText>
+      </LogoSection>
       <NavLinks>
         <NavItem>
           <NavLink to="/" $isActive={location.pathname === '/'}>

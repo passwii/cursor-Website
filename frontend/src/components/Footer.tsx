@@ -118,7 +118,7 @@ const Footer: React.FC = () => {
       </FooterContent>
       
       <Copyright>
-        {new Date().getFullYear()} 彼励扶电子商务（苏州）有限公司. 版权所有
+        {new Date().getFullYear()} 彼励扶电子商务（苏州）有限公司 © 版权所有
       </Copyright>
     </FooterContainer>
   );
