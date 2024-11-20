@@ -23,7 +23,7 @@ def save_file(file, folder, filename):
     file.save(filepath)
     return filepath
 
-def process_product_analysis(project_name, report_date, business_report, payment_report, ad_product_report, basic_report):
+def process_product_analysis(project_name, report_date, business_report, payment_report, payment_report_hold, ad_product_report, basic_report):
     current_time = datetime.datetime.now().strftime('%H-%M-%S')
     source_folder = os.getcwd()
     os.chdir(source_folder)
@@ -38,6 +38,7 @@ def process_product_analysis(project_name, report_date, business_report, payment
 
     business_report_path = f'{project_name}_Business_Report_{report_date}.csv'
     payment_report_path = f'{project_name}_Payment_Report_{report_date}.csv'
+    payment_report_hold_path = f'{project_name}_Payment_Report_Hold_{report_date}.csv'
     ad_product_report_path = f'{project_name}_AD_Product_{report_date}.xlsx'
     basic_report_path = f'{project_name}_Basic_Information.csv'
 
@@ -47,6 +48,9 @@ def process_product_analysis(project_name, report_date, business_report, payment
     with open(payment_report_path, 'wb') as f:
         f.write(payment_report.read())
 
+    with open(payment_report_hold_path, 'wb') as f:
+        f.write(payment_report_hold.read())
+
     with open(ad_product_report_path, 'wb') as f:
         f.write(ad_product_report.read())
 
@@ -55,12 +59,14 @@ def process_product_analysis(project_name, report_date, business_report, payment
 
     business_report = pd.read_csv(business_report_path, encoding='utf-8')
     payment_report = pd.read_csv(payment_report_path, encoding='utf-8', thousands=',', skiprows=7)
+    payment_report_hold = pd.read_csv(payment_report_hold_path, encoding='utf-8', thousands=',', skiprows=7)
     ad_product_report = pd.read_excel(ad_product_report_path, engine='openpyxl')
     basic_report = pd.read_csv(basic_report_path, encoding='utf-8')
 
     files_to_copy = [
         (business_report_path, f'{tmp_folder_path}/{project_name}_Business_Report_{report_date}_{current_time}.csv'),
         (payment_report_path, f'{tmp_folder_path}/{project_name}_Payment_Report_{report_date}_{current_time}.csv'),
+        (payment_report_hold_path, f'{tmp_folder_path}/{project_name}_Payment_Report_Hold_{report_date}_{current_time}.csv'),
         (ad_product_report_path, f'{tmp_folder_path}/{project_name}_AD_Product_{report_date}_{current_time}.xlsx'),
         (basic_report_path, f'{tmp_folder_path}/{project_name}_Basic_Information_{report_date}_{current_time}.csv')
     ]
@@ -104,6 +110,14 @@ def process_product_analysis(project_name, report_date, business_report, payment
 
     # 读取Payment数据表，此时数据表中的sku都是小写格式
     df_payment = payment_report.copy()
+    df_payment_hold = payment_report_hold.copy()
+    df_payment.fillna(0, inplace=True)
+
+    # 将Payment Hold 9th 列添加一列，使其和 payment 对齐
+    df_payment_hold.insert(8, 'account type', 0)
+
+    # 把 Payment Hold 的数据添加到 Payment 数据表中
+    df_payment = pd.concat([df_payment, df_payment_hold], ignore_index=True)
     df_payment.fillna(0, inplace=True)
 
     # 筛选出类型为'Order'和'Refund'的记录
@@ -177,18 +191,20 @@ def process_product_analysis(project_name, report_date, business_report, payment
     df_sale_refund_basic_info = df_sale_refund_basic_info.drop(columns=['头程单价', 'FOB单价'])
     
     # 选择保留的关键业务指标列，这些指标对于分析销售和市场表现至关重要
-    business_to_keep = ['（子）ASIN', '页面浏览量 – 总计', '已订购商品数量', '会话次数 – 总计', '已订购商品销售额']
+    business_to_keep = ['（子）ASIN', '页面浏览量 - 总计 ', '已订购商品数量', '会话数 - 总计', '已订购商品销售额']
     # 从原始业务报告数据框中提取保留的列，并创建一个新的数据框
     business_report = business_report[business_to_keep].copy()
     
     # 重命名列，以便更清晰地反映数据的含义，简化后续分析
     business_report.rename(columns={'（子）ASIN': 'ASIN',
-                                    '页面浏览量 – 总计': '页面浏览量',
+                                    '页面浏览量 - 总计 ': '页面浏览量',
                                     '已订购商品数量': '总销量',
-                                    '会话次数 – 总计': '总访客',
+                                    '会话数 - 总计': '总访客',
                                     '已订购商品销售额': '总销售额',
                                     }, inplace=True)
-    
+    # 将总销售额列，逗号和 US$符号去除,并且数值化
+    business_report['总销售额'] = business_report['总销售额'].replace({'\$': '', ',': '', 'US': ''}, regex=True).astype(float)
+
     # 合并广告与业务数据，基于ASIN关联，以便整合不同数据源的信息
     df_merge_business_ad_asin = pd.merge(df_merge_ad_sku_asin, business_report, on='ASIN', how='left')
     # 进一步合并销售与退款基本信息，基于SKU关联，完善数据视图
@@ -271,7 +287,7 @@ def process_product_analysis(project_name, report_date, business_report, payment
 
     # 业务报告
     df_overview['总销量'] = df_overview['总销量'].fillna(0)
-    df_overview['总销售额'] = df_overview['总销售额'].fillna(0).str.replace(',', '').str.replace('US$', '').astype(float)
+    df_overview['总销售额'] = df_overview['总销售额'].fillna(0)
     df_overview['页面浏览量'] = pd.to_numeric(df_overview['页面浏览量'].fillna(0).astype(str).str.replace(',', ''), errors='coerce')
     df_overview['总访客'] = pd.to_numeric(df_overview['总访客'].fillna(0).astype(str).str.replace(',', ''), errors='coerce')
     
@@ -360,6 +376,7 @@ def product_analysis():
         report_date = request.form.get('report_date')
         business_report = request.files.get('business_report')
         payment_report = request.files.get('payment_report')
+        payment_report_hold = request.files.get('payment_report_hold')
         ad_product_report = request.files.get('ad_product_report')
         basic_report = request.files.get('basic_report')
         
@@ -371,7 +388,7 @@ def product_analysis():
             flash('文件格式不正确')
             return redirect(url_for('main_product_analysis.product_analysis'))
         
-        file_content, filename = process_product_analysis(project_name, report_date, business_report, payment_report, ad_product_report, basic_report)  
+        file_content, filename = process_product_analysis(project_name, report_date, business_report, payment_report, payment_report_hold, ad_product_report, basic_report)  
         
         return send_file(
             io.BytesIO(file_content),
