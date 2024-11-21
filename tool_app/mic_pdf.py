@@ -1,5 +1,5 @@
 from flask import Blueprint, request, send_file
-from PyPDF2 import PdfFileReader, PdfFileWriter
+from PyPDF2 import PdfReader, PdfWriter
 import os
 from datetime import datetime
 import zipfile
@@ -22,9 +22,9 @@ def process_mic_pdf():
         file1_path = os.path.join(upload_folder, uploaded_file.filename)
         uploaded_file.save(file1_path)
 
-        new_pdf = PdfFileReader(open(file2_path, 'rb'))
-        existing_pdf = PdfFileReader(open(file1_path, 'rb'))
-        output = PdfFileWriter()
+        new_pdf = PdfReader(open(file2_path, 'rb'))
+        existing_pdf = PdfReader(open(file1_path, 'rb'))
+        output = PdfWriter()
 
         # 遍历上传文件的每一页
         for page_num in range(existing_pdf.getNumPages()):
