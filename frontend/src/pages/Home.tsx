@@ -248,12 +248,34 @@ const CompetenceSection = styled.section`
   padding: 120px 0;
   text-align: center;
   overflow: hidden;
+  position: relative;
+`;
+
+const CompetenceTitleGroup = styled.div`
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 5px;
+    background: #1976d2;
+    border-radius: 2px;
+  }
+`;
+
+const CompetenceTitle = styled(SectionTitle)`
+  margin-bottom: 16px;
 `;
 
 const CompetenceSubtitle = styled.p`
   font-size: 1.3rem;
   color: #424242;
-  margin: 24px 0 80px;
   line-height: 1.6;
 `;
 
@@ -262,72 +284,65 @@ const CompetenceLayout = styled.div`
   width: 100%;
   max-width: 1200px;
   margin: 60px auto;
-  min-height: 600px;
+  display: grid;
+  grid-template-columns: 1fr 200px 1fr;
+  gap: 40px;
+  align-items: start;
 
   @media (max-width: 1024px) {
-    min-height: auto;
+    grid-template-columns: 1fr;
     padding: 20px;
   }
 `;
 
-const ArcGrid = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 60px;
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    gap: 20px;
-  }
-`;
-
-const SideContainer = styled.div<{ $isLeft?: boolean }>`
+const CardsContainer = styled.div<{ $side: 'left' | 'right' }>`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  width: 340px;
-  position: relative;
-  padding-top: ${props => props.$isLeft ? '40px' : '80px'};
-
+  ${props => props.$side === 'right' && 'grid-column: 3;'}
+  
   @media (max-width: 1024px) {
-    width: 100%;
-    padding-top: 0;
+    grid-column: 1;
   }
 `;
 
-const CompetencyCard = styled.div<{ $index: number, $active: boolean, $isLeft: boolean }>`
-  position: relative;
+const CompetencyCard = styled.div<{ 
+  $active: boolean;
+  $isMiddle?: boolean;
+  $side?: 'left' | 'right';
+}>`
   background: white;
   border-radius: 12px;
   padding: 24px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
-  transform: translateX(${props => props.$isLeft ? 
-    Math.sin((props.$index * 30) * (Math.PI / 180)) * 40 : 
-    -Math.sin(((props.$index - 3) * 30) * (Math.PI / 180)) * 40}px);
-
+  cursor: pointer;
+  position: relative;
+  ${props => {
+    if (props.$isMiddle) {
+      return props.$side === 'left' 
+        ? 'margin-left: -40px;' 
+        : 'margin-left: 40px;';
+    }
+    return '';
+  }}
+  
   &:hover {
-    transform: translateX(${props => props.$isLeft ? 
-      Math.sin((props.$index * 30) * (Math.PI / 180)) * 40 + (props.$isLeft ? 10 : -10) : 
-      -Math.sin(((props.$index - 3) * 30) * (Math.PI / 180)) * 40 + (props.$isLeft ? 10 : -10)}px);
-    box-shadow: 0 8px 30px rgba(25, 118, 210, 0.12);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   }
+  
+  ${props => props.$active && `
+    background-color: #f0f8ff;
+    border: 2px solid #1976d2;
+  `}
 
   @media (max-width: 1024px) {
-    transform: none;
-    &:hover {
-      transform: translateX(${props => props.$isLeft ? '10px' : '-10px'});
-    }
+    margin-left: 0 !important;
   }
 `;
 
 const CenterContent = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   width: 200px;
   height: 200px;
   background: white;
@@ -337,31 +352,30 @@ const CenterContent = styled.div`
   justify-content: center;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
   z-index: 2;
+  grid-column: 2;
+  align-self: center;
 
-  &::before {
+  &::before, &::after {
     content: '';
     position: absolute;
+    border-radius: 50%;
+  }
+
+  &::before {
     width: 220px;
     height: 220px;
     border: 2px solid rgba(25, 118, 210, 0.1);
-    border-radius: 50%;
   }
 
   &::after {
-    content: '';
-    position: absolute;
     width: 240px;
     height: 240px;
     border: 2px solid rgba(25, 118, 210, 0.05);
-    border-radius: 50%;
   }
 
   @media (max-width: 1024px) {
-    position: relative;
-    transform: none;
-    left: auto;
-    top: auto;
-    margin: 40px auto;
+    grid-column: 1;
+    margin: 40px 0;
   }
 `;
 
@@ -393,6 +407,125 @@ const ItemDescription = styled.p`
   font-size: 1rem;
   line-height: 1.6;
   color: #424242;
+`;
+
+const ServiceCasesSectionWrapper = styled.div`
+  width: 100%;
+  background: white;
+`;
+
+const ServiceCasesSection = styled.section`
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 120px 20px;
+`;
+
+const CasesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 60px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const CaseCard = styled.div`
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const CaseImagePlaceholder = styled.div`
+  width: 100%;
+  padding-top: 60%;
+  background-color: #f5f5f5;
+  position: relative;
+  
+  &::after {
+    content: '图片待更新';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #999;
+  }
+`;
+
+const CaseContent = styled.div`
+  padding: 20px;
+`;
+
+const CaseTitle = styled.h3`
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a237e;
+  text-align: center;
+  margin-bottom: 16px;
+`;
+
+const CaseSection = styled.div`
+  margin-bottom: 16px;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1976d2;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #424242;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 6px;
+
+    li {
+      color: #424242;
+      line-height: 1.5;
+      padding-left: 16px;
+      position: relative;
+      font-size: 0.95rem;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: #1976d2;
+      }
+    }
+  }
 `;
 
 const Home: React.FC = () => {
@@ -485,57 +618,149 @@ const Home: React.FC = () => {
       </ServicesSectionWrapper>
 
       <CompetenceSection>
-        <SectionTitle>核心竞争力</SectionTitle>
-        <CompetenceSubtitle>
-          专业团队 + AI赋能 = 全方位助力您的全球业务拓展
-        </CompetenceSubtitle>
+        <CompetenceTitleGroup>
+          <CompetenceTitle>核心竞争力</CompetenceTitle>
+          <CompetenceSubtitle>
+            专业团队 + AI赋能 = 全方位助力您的全球业务拓展
+          </CompetenceSubtitle>
+        </CompetenceTitleGroup>
         <CompetenceLayout>
-          <ArcGrid>
-            <SideContainer $isLeft>
-              {competencies.slice(0, 3).map((item, index) => (
-                <CompetencyCard
-                  key={index}
-                  $index={index}
-                  $active={activeIndex === index}
-                  $isLeft={true}
-                  onMouseEnter={() => setActiveIndex(index)}
-                  onMouseLeave={() => setActiveIndex(-1)}
-                >
-                  <ItemContent>
-                    <ItemNumber>{item.number}</ItemNumber>
-                    <ItemTitle>{item.title}</ItemTitle>
-                    <ItemDescription>{item.description}</ItemDescription>
-                  </ItemContent>
-                </CompetencyCard>
-              ))}
-            </SideContainer>
+          <CardsContainer $side="left">
+            {competencies.slice(0, 3).map((item, index) => (
+              <CompetencyCard
+                key={index}
+                $active={activeIndex === index}
+                $isMiddle={index === 1}
+                $side="left"
+                onClick={() => setActiveIndex(index)}
+              >
+                <ItemContent>
+                  <ItemNumber>{item.number}</ItemNumber>
+                  <ItemTitle>{item.title}</ItemTitle>
+                  <ItemDescription>{item.description}</ItemDescription>
+                </ItemContent>
+              </CompetencyCard>
+            ))}
+          </CardsContainer>
+          
+          <CenterContent>
+            <h3>核心竞争力</h3>
+          </CenterContent>
 
-            <CenterContent>
-              <h3>核心竞争力</h3>
-            </CenterContent>
-
-            <SideContainer>
-              {competencies.slice(3).map((item, index) => (
-                <CompetencyCard
-                  key={index + 3}
-                  $index={index + 3}
-                  $active={activeIndex === index + 3}
-                  $isLeft={false}
-                  onMouseEnter={() => setActiveIndex(index + 3)}
-                  onMouseLeave={() => setActiveIndex(-1)}
-                >
-                  <ItemContent>
-                    <ItemNumber>{item.number}</ItemNumber>
-                    <ItemTitle>{item.title}</ItemTitle>
-                    <ItemDescription>{item.description}</ItemDescription>
-                  </ItemContent>
-                </CompetencyCard>
-              ))}
-            </SideContainer>
-          </ArcGrid>
+          <CardsContainer $side="right">
+            {competencies.slice(3, 6).map((item, index) => (
+              <CompetencyCard
+                key={index + 3}
+                $active={activeIndex === index + 3}
+                $isMiddle={index === 1}
+                $side="right"
+                onClick={() => setActiveIndex(index + 3)}
+              >
+                <ItemContent>
+                  <ItemNumber>{item.number}</ItemNumber>
+                  <ItemTitle>{item.title}</ItemTitle>
+                  <ItemDescription>{item.description}</ItemDescription>
+                </ItemContent>
+              </CompetencyCard>
+            ))}
+          </CardsContainer>
         </CompetenceLayout>
       </CompetenceSection>
-      
+
+      <ServiceCasesSectionWrapper>
+        <ServiceCasesSection>
+          <CompetenceTitleGroup>
+            <CompetenceTitle>服务案例</CompetenceTitle>
+            <CompetenceSubtitle>
+              我们用专业和创新，助力客户实现业务增长
+            </CompetenceSubtitle>
+          </CompetenceTitleGroup>
+          
+          <CasesGrid>
+            <CaseCard>
+              <CaseImagePlaceholder />
+              <CaseContent>
+                <CaseTitle>Drill Bit</CaseTitle>
+                <CaseSection>
+                  <h4>项目概况</h4>
+                  <p>某工具配件品牌面临亚马逊平台销量停滞、品牌知名度低的问题。</p>
+                </CaseSection>
+                
+                <CaseSection>
+                  <h4>合作过程</h4>
+                  <ul>
+                    <li>对品牌现有产品线进行全面评估，优化产品描述和图片。</li>
+                    <li>实施智能库存管理系统，提高库存周转率，降低仓储成本。</li>
+                    <li>定针对性的广告策略，优化关键词和投放时间。</li>
+                    <li>开展品牌推广活动，提高品牌在目标客户群中的曝光度。</li>
+                    <li>利用客户反馈，持续改进产品质量和服务。</li>
+                  </ul>
+                </CaseSection>
+                
+                <CaseSection>
+                  <h4>项目成果</h4>
+                  <p>经过6个月的运营，销售额同比增长150%，品牌搜量提升200%，客户满意度达到95%。</p>
+                </CaseSection>
+              </CaseContent>
+            </CaseCard>
+
+            <CaseCard>
+              <CaseImagePlaceholder />
+              <CaseContent>
+                <CaseTitle>Glass Pan</CaseTitle>
+                <CaseSection>
+                  <h4>项目概况</h4>
+                  <p>某知名工厂为美国主流品牌和线下商超供应食品餐盘，面临严重的成本压缩问题。</p>
+                </CaseSection>
+                
+                <CaseSection>
+                  <h4>合作过程</h4>
+                  <ul>
+                    <li>组建专业团队，深入分析工厂现有供应链和产品结构。</li>
+                    <li>制定差异化战略，针对工厂供货的品牌竞品进行详细调查分析。</li>
+                    <li>从物流环节着手，优化所有供应链节点，显著降低运营成本。</li>
+                    <li>重新设计产品包装和营销策略，提升产品在线上平台的竞争力。</li>
+                    <li>利用数据分析，精准定位目标客户群，优化广告投放策略。</li>
+                  </ul>
+                </CaseSection>
+                
+                <CaseSection>
+                  <h4>项目成果</h4>
+                  <p>半年内进入BSR TOP10，月销售额突破10万美元，毛利率超25%。工厂实现多元供货，稳定成，达成品牌与OEM双赢。</p>
+                </CaseSection>
+              </CaseContent>
+            </CaseCard>
+
+            <CaseCard>
+              <CaseImagePlaceholder />
+              <CaseContent>
+                <CaseTitle>Mattress</CaseTitle>
+                <CaseSection>
+                  <h4>项目概况</h4>
+                  <p>某家居床垫品牌希望在美国市场扩大影响力，提高销售额。</p>
+                </CaseSection>
+                
+                <CaseSection>
+                  <h4>合作过程</h4>
+                  <ul>
+                    <li>深入分析目标市场，制定针对性的品牌定位和营销策略。</li>
+                    <li>优化产品线，开发符合美国消费者需求的新产品。</li>
+                    <li>全面提升社交媒体运营，包括Facebook、Instagram和TikTok。</li>
+                    <li>与知名KOL合作，开展多场线上直播和产品体验活动。</li>
+                    <li>优化亚马逊店铺，提高搜索排名和转化率。</li>
+                  </ul>
+                </CaseSection>
+                
+                <CaseSection>
+                  <h4>项目成果</h4>
+                  <p>经过8个月运营，品牌知名度提升200%，客户复购率增长30%，月均销售额增长150%。</p>
+                </CaseSection>
+              </CaseContent>
+            </CaseCard>
+          </CasesGrid>
+        </ServiceCasesSection>
+      </ServiceCasesSectionWrapper>
+
     </HomeContainer>
   );
 };

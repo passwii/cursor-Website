@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import NavigationBar from './components/NavigationBar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import AdminPage from './pages/admin/Admin';
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -34,9 +35,6 @@ const Consultation = () => <div style={{ padding: '20px' }}>跨境咨询</div>;
 const Social = () => <div style={{ padding: '20px' }}>社媒联系</div>;
 const Careers = () => <div style={{ padding: '20px' }}>人才招聘</div>;
 
-// Admin page
-const Admin = () => <div style={{ padding: '20px' }}>业务后台</div>;
-
 function App() {
   return (
     <Router>
@@ -64,8 +62,8 @@ function App() {
             <Route path="/contact/social" element={<Social />} />
             <Route path="/contact/careers" element={<Careers />} />
             
-            {/* Admin route */}
-            <Route path="/admin" element={<Admin />} />
+            {/* Admin routes */}
+            <Route path="/admin/*" element={<AdminPage />} />
           </Routes>
         </Content>
         <Footer />
