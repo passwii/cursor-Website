@@ -27,9 +27,9 @@ def process_mic_pdf():
         output = PdfWriter()
 
         # 遍历上传文件的每一页
-        for page_num in range(existing_pdf.getNumPages()):
-            page = existing_pdf.getPage(page_num)
-            page.mergePage(new_pdf.getPage(0))
+        for page_num in range(existing_pdf.pages()):
+            page = existing_pdf.pages(page_num)
+            page.mergePage(new_pdf.pages(0))
             output.addPage(page)
 
         output_filename = f"{os.path.splitext(uploaded_file.filename)[0]}-Merge.pdf"
