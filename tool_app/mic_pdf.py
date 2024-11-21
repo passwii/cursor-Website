@@ -29,7 +29,7 @@ def process_mic_pdf():
         # 遍历上传文件的每一页
         for page_num in range(len(existing_pdf.pages)):
             page = existing_pdf.pages[page_num]
-            page.mergePage(new_pdf.pages[0])
+            page.merge_page(new_pdf.pages[0])
             output.addPage(page)
 
         output_filename = f"{os.path.splitext(uploaded_file.filename)[0]}-Merge.pdf"
