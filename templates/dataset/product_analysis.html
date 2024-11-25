@@ -105,8 +105,12 @@
             <datalist id="projects">
             </datalist>
 
-            <label for="report_date">报表日期:</label>
-            <input type="text" name="report_date" id="report_date" required>
+            <label for="report_date_range">报表日期范围:</label>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <input type="date" name="report_start_date" id="report_start_date" required>
+                <span>至</span>
+                <input type="date" name="report_end_date" id="report_end_date" required>
+            </div>
 
             <label for="business_report">业务报告:</label>
             <input type="file" name="business_report" accept=".csv" required>

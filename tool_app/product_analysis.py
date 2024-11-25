@@ -23,10 +23,13 @@ def save_file(file, folder, filename):
     file.save(filepath)
     return filepath
 
-def process_product_analysis(project_name, report_date, business_report, payment_report, payment_report_hold, ad_product_report, basic_report):
+def process_product_analysis(project_name, report_start_date, report_end_date, business_report, payment_report, payment_report_hold, ad_product_report, basic_report):
     current_time = datetime.datetime.now().strftime('%H-%M-%S')
     source_folder = os.getcwd()
     os.chdir(source_folder)
+
+    # Combine dates for file naming
+    report_date = f"{report_start_date}_to_{report_end_date}"
 
     project_folder_path = os.path.join(source_folder, 'project', project_name, '产品数据分析')
     os.makedirs(project_folder_path, exist_ok=True)
@@ -62,6 +65,33 @@ def process_product_analysis(project_name, report_date, business_report, payment
     payment_report_hold = pd.read_csv(payment_report_hold_path, encoding='utf-8', thousands=',', skiprows=7)
     ad_product_report = pd.read_excel(ad_product_report_path, engine='openpyxl')
     basic_report = pd.read_csv(basic_report_path, encoding='utf-8')
+
+    # Process payment report hold dates
+    def clean_date(date_str):
+        try:
+            # Parse the date string and convert to datetime
+            date_obj = datetime.datetime.strptime(date_str.strip(), '%b %d, %Y %I:%M:%S %p %Z')
+            return date_obj.date()
+        except:
+            return None
+
+    if 'Date/Time' in payment_report_hold.columns:
+        # Clean dates and remove rows with invalid dates
+        payment_report_hold['Clean_Date'] = payment_report_hold['Date/Time'].apply(clean_date)
+        payment_report_hold = payment_report_hold.dropna(subset=['Clean_Date'])
+        
+        # Convert date strings to datetime objects for comparison
+        start_date = datetime.datetime.strptime(report_start_date, '%Y-%m-%d').date()
+        end_date = datetime.datetime.strptime(report_end_date, '%Y-%m-%d').date()
+        
+        # Filter rows within the date range
+        payment_report_hold = payment_report_hold[
+            (payment_report_hold['Clean_Date'] >= start_date) & 
+            (payment_report_hold['Clean_Date'] <= end_date)
+        ]
+        
+        # Drop the temporary Clean_Date column
+        payment_report_hold = payment_report_hold.drop('Clean_Date', axis=1)
 
     files_to_copy = [
         (business_report_path, f'{tmp_folder_path}/{project_name}_Business_Report_{report_date}_{current_time}.csv'),
@@ -373,14 +403,15 @@ def process_product_analysis(project_name, report_date, business_report, payment
 def product_analysis():
     if request.method == 'POST':
         project_name = request.form.get('project_name')
-        report_date = request.form.get('report_date')
+        report_start_date = request.form.get('report_start_date')
+        report_end_date = request.form.get('report_end_date')
         business_report = request.files.get('business_report')
         payment_report = request.files.get('payment_report')
         payment_report_hold = request.files.get('payment_report_hold')
         ad_product_report = request.files.get('ad_product_report')
         basic_report = request.files.get('basic_report')
         
-        if not (project_name and report_date and business_report and payment_report and ad_product_report and basic_report):
+        if not (project_name and report_start_date and report_end_date and business_report and payment_report and ad_product_report and basic_report):
             flash('请填写所有字段并上传所有文件')
             return redirect(url_for('main_product_analysis.product_analysis'))
         
@@ -388,7 +419,7 @@ def product_analysis():
             flash('文件格式不正确')
             return redirect(url_for('main_product_analysis.product_analysis'))
         
-        file_content, filename = process_product_analysis(project_name, report_date, business_report, payment_report, payment_report_hold, ad_product_report, basic_report)  
+        file_content, filename = process_product_analysis(project_name, report_start_date, report_end_date, business_report, payment_report, payment_report_hold, ad_product_report, basic_report)  
         
         return send_file(
             io.BytesIO(file_content),
@@ -398,12 +429,3 @@ def product_analysis():
         )
 
     return render_template('dataset/product_analysis.html')
-        
-        
-
-    
-    
-    
-
-
-    
