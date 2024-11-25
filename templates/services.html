@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='services.css') }}">
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
     <nav class="main-nav">
-        <a href="index.html" class="logo-link">
+        <a href="{{ url_for('main.home') }}" class="logo-link">
             <div class="logo">
                 <img src="{{ url_for('static', filename='images/blf_logo_1.webp') }}" alt="公司logo">
                 <div class="company-info">
-                    <a class="company-name" href="index.html">彼励扶跨境</a>
+                    <a class="company-name" href="{{ url_for('main.home') }}">彼励扶跨境</a>
                     <span class="company-slogan">It's always Day 1</span>
                 </div>
             </div>
@@ -27,33 +27,32 @@
             <span class="bar"></span>
         </div>
         <ul class="nav-links">
-            <li><a href="index.html" class="nav-link">主页</a></li>
+            <li><a href="{{ url_for('main.home') }}" class="nav-link">主页</a></li>
             <li class="dropdown">
-                <a href="services.html" class="nav-link active">服务体系</a>
+                <a href="{{ url_for('main.services') }}" class="nav-link active">服务体系</a>
                 <ul class="dropdown-menu">
-                    <li><a href="services.html#service-detail" class="dropdown-item">跨境全生态</a></li>
-                    <li><a href="services.html#ai-empowerment" class="dropdown-item">AI 赋能运营</a></li>
+                    <li><a href="{{ url_for('main.services') }}#service-detail" class="dropdown-item">跨境全生态</a></li>
+                    <li><a href="{{ url_for('main.services') }}#ai-empowerment" class="dropdown-item">AI 赋能运营</a></li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="about.html" class="nav-link">关于我们</a>
+                <a href="{{ url_for('main.about') }}" class="nav-link">关于我们</a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" class="dropdown-item">公司概况</a></li>
-                    <li><a href="#" class="dropdown-item">企业文化</a></li>
-                    <li><a href="#" class="dropdown-item">合作伙伴</a></li>
-                    <li><a href="#" class="dropdown-item">展望未来</a></li>
-                    <!-- <li><a href="#" class="dropdown-item">荣誉资质</a></li> -->
+                    <li><a href="{{ url_for('main.about') }}#company-overview" class="dropdown-item">公司概况</a></li>
+                    <li><a href="{{ url_for('main.about') }}#company-culture" class="dropdown-item">企业文化</a></li>
+                    <li><a href="{{ url_for('main.about') }}#partners" class="dropdown-item">合作伙伴</a></li>
+                    <li><a href="{{ url_for('main.about') }}#future-outlook" class="dropdown-item">展望未来</a></li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="contact.html" class="nav-link">联系我们</a>
+                <a href="{{ url_for('main.contact') }}" class="nav-link">联系我们</a>
                 <ul class="dropdown-menu">
                     <li><a href="#" class="dropdown-item">官方社媒</a></li>
                     <li><a href="#" class="dropdown-item">人才招聘</a></li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="news.html" class="nav-link">新闻中心</a>
+                <a href="{{ url_for('main.news') }}" class="nav-link">新闻中心</a>
                 <ul class="dropdown-menu">
                     <li><a href="#" class="dropdown-item">跨境资讯</a></li>
                     <li><a href="#" class="dropdown-item">公司咨询</a></li>
@@ -62,7 +61,7 @@
             </li>
         </ul>
         <div class="login-btn">
-            <a href="tools.html" class="btn">后台</a>
+            <a href="{{ url_for('main.tools') }}" class="btn">后台</a>
         </div>
     </nav>
     
@@ -101,7 +100,7 @@
                         <h3>市场洞察</h3>
                         <p>根据权威机构发布的调研报告，介绍产品全球销售情况，帮助客户了解市场大盘。深入研究目标市场的消费人群、消费习惯、竞争格局等，为产品定位和营销策略提供数据支持。基于平台分析竞争对手的产品、价格、销量、评价等，找出自身优势和改进方向。</p>
                         <div class="connection-line"></div>
-                        <a href="services.html#market-insight-detail" class="btn-color" style="color: #000000; border: 1px solid #000000;">了解详情</a>
+                        <a href="{{ url_for('main.services') }}#market-insight-detail" class="btn-color" style="color: #000000; border: 1px solid #000000;">了解详情</a>
                     </div>
                     <div class="sample-card" data-target="project-solutions-detail">
                         <div class="sample-content-icon">
@@ -109,7 +108,7 @@
                         </div>
                         <h3>项目方案</h3>
                         <p>通过市场数据分析，制定合理的定价策略，以实现利润最大化。根据市场需求和竞品分析，制定差异化的产品策略，突出自身优势。根据目标市场特点和客户需求，制定全面的营销策略和推广计划，确保产品成功进入市场。</p>
-                        <a href="services.html#project-solutions-detail" class="btn-color"
+                        <a href="{{ url_for('main.services') }}#project-solutions-detail" class="btn-color"
                             style="color: #000000; border: 1px solid #000000;">了解详情</a>
                     </div>
                     <div class="sample-card" data-target="product-export-detail">
@@ -118,7 +117,7 @@
                         </div>
                         <h3>产品出海</h3>
                         <p>通过市场数据分析，制定合理的定价策略，以实现利润最大化。确保产品符合目标市场的法律法规、安全标准等，避免侵权和违规风险。优化供应链，选择可靠的供应商，控制成本，保证产品质量和供货稳定。制定高效的物流方案，选择合适的物流服务商，降低物流成本，提升配送时效。</p>
-                        <a href="services.html#product-export-detail" class="btn-color"
+                        <a href="{{ url_for('main.services') }}#product-export-detail" class="btn-color"
                             style="color: #000000; border: 1px solid #000000;">了解详情</a>
                     </div>
                     <div class="sample-card" data-target="brand-export-detail">
@@ -127,7 +126,7 @@
                         </div>
                         <h3>品牌出海</h3>
                         <p>根据目标市场和产品特点，制定清晰的品牌定位和价值主张。通过专业的视觉设计、营销活动等手段，提升品牌在海外市场的知名度和美誉度利社交媒体、搜索引擎、电子邮件营销等方式进行品牌推广，提升品牌知名度和美誉度。注册商标，监控侵权行为，维护品牌权益。建立合作伙伴关系，以帮助扩展品牌的国际影响力，例如与本地分销商或电商平台合作。</p>
-                        <a href="services.html#brand-export-detail" class="btn-color"
+                        <a href="{{ url_for('main.services') }}#brand-export-detail" class="btn-color"
                             style="color: #000000; border: 1px solid #000000;">了解详情</a>
                     </div>
                 </div>
@@ -318,34 +317,34 @@
             <div class="footer-column">
                 <h3>服务体系</h3>
                 <ul>
-                    <li><a href="services.html#market-insight">市场洞察</a></li>
-                    <li><a href="services.html#project-solutions">项目方案</a></li>
-                    <li><a href="services.html#product-export">产品出海</a></li>
-                    <li><a href="services.html#brand-export">品牌出海</a></li>
-                    <li><a href="services.html#ai-empowerment">AI 赋能运营</a></li>
+                    <li><a href="{{ url_for('main.services') }}#market-insight">市场洞察</a></li>
+                    <li><a href="{{ url_for('main.services') }}#project-solutions">项目方案</a></li>
+                    <li><a href="{{ url_for('main.services') }}#product-export">产品出海</a></li>
+                    <li><a href="{{ url_for('main.services') }}#brand-export">品牌出海</a></li>
+                    <li><a href="{{ url_for('main.services') }}#ai-empowerment">AI 赋能运营</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h3>项目方案</h3>
                 <ul>
-                    <li><a href="services.html#tool-products">工具产品</a></li>
-                    <li><a href="services.html#mattress-products">床垫产品</a></li>
-                    <li><a href="services.html#pet-supplies">宠物用品</a></li>
-                    <li><a href="services.html#outdoor-products">户外产品</a></li>
-                    <li><a href="services.html#children-toys">儿童玩具</a></li>
+                    <li><a href="{{ url_for('main.services') }}#tool-products">工具产品</a></li>
+                    <li><a href="{{ url_for('main.services') }}#mattress-products">床垫产品</a></li>
+                    <li><a href="{{ url_for('main.services') }}#pet-supplies">宠物用品</a></li>
+                    <li><a href="{{ url_for('main.services') }}#outdoor-products">户外产品</a></li>
+                    <li><a href="{{ url_for('main.services') }}#children-toys">儿童玩具</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h3>关于我们</h3>
                 <ul>
-                    <li><a href="about.html#company-overview">公司概况</a></li>
-                    <li><a href="about.html#company-culture">企业文化</a></li>
-                    <li><a href="about.html#partners">合作伙伴</a></li>
-                    <li><a href="about.html#future-outlook">展望未来</a></li>
+                    <li><a href="{{ url_for('main.about') }}#company-overview">公司概况</a></li>
+                    <li><a href="{{ url_for('main.about') }}#company-culture">企业文化</a></li>
+                    <li><a href="{{ url_for('main.about') }}#partners">合作伙伴</a></li>
+                    <li><a href="{{ url_for('main.about') }}#future-outlook">展望未来</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h3><a href="contact.html">联系方式</a></h3>
+                <h3><a href="{{ url_for('main.contact') }}">联系方式</a></h3>
                 <ul>
                     <li>彼励扶电子商务（苏州）有限公司</li>
                     <li>地址：中国(江苏)自由贸易试验区苏州片区建发微时光商业广场 356 </li>

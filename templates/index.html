@@ -39,11 +39,11 @@
         }
     </script>
     <nav class="main-nav">
-        <a href="index.html" class="logo-link">
+        <a href="{{ url_for('main.home') }}" class="logo-link">
             <div class="logo">
                 <img src="{{ url_for('static', filename='images/blf_logo_1.webp') }}" alt="公司logo">
                 <div class="company-info">
-                    <a class="company-name" href="index.html" data-i18n="company-name">彼励扶跨境</a>
+                    <a class="company-name" href="{{ url_for('main.home') }}" data-i18n="company-name">彼励扶跨境</a>
                     <!-- 后期可以修改为 span，并且修改 css -->
                     <span class="company-slogan" data-i18n="company-slogan">It's always Day 1</span>
                 </div>
@@ -55,33 +55,33 @@
                 <span class="bar"></span>
             </div>
         <ul class="nav-links">
-            <li><a href="index.html" class="nav-link active" data-i18n="home">主页</a></li>
+            <li><a href="{{ url_for('main.home') }}" class="nav-link active" data-i18n="home">主页</a></li>
             <li class="dropdown">
-                <a href="services.html" class="nav-link" data-i18n="services">服务体系</a>
+                <a href="{{ url_for('main.services') }}" class="nav-link" data-i18n="services">服务体系</a>
                 <ul class="dropdown-menu">
-                    <li><a href="services.html#service-detail" class="dropdown-item" data-i18n="market-research">跨境全生态</a></li>
-                    <li><a href="services.html#ai-empowerment" class="dropdown-item" data-i18n="ai-operation">AI 赋能运营</a></li>
+                    <li><a href="{{ url_for('main.services') }}#service-detail" class="dropdown-item" data-i18n="market-research">跨境全生态</a></li>
+                    <li><a href="{{ url_for('main.services') }}#ai-empowerment" class="dropdown-item" data-i18n="ai-operation">AI 赋能运营</a></li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="about.html" class="nav-link" data-i18n="about-us">关于我们</a>
+                <a href="{{ url_for('main.about') }}" class="nav-link" data-i18n="about-us">关于我们</a>
                 <ul class="dropdown-menu">
-                    <li><a href="about.html#company-overview" class="dropdown-item" data-i18n="company-overview">公司概况</a></li>
-                    <li><a href="about.html#company-culture" class="dropdown-item" data-i18n="company-culture">企业文化</a></li>
-                    <li><a href="about.html#partners" class="dropdown-item" data-i18n="partners">合作伙伴</a></li>
-                    <li><a href="about.html#future-outlook" class="dropdown-item" data-i18n="future-outlook">展望未来</a></li>
+                    <li><a href="{{ url_for('main.about') }}#company-overview" class="dropdown-item" data-i18n="company-overview">公司概况</a></li>
+                    <li><a href="{{ url_for('main.about') }}#company-culture" class="dropdown-item" data-i18n="company-culture">企业文化</a></li>
+                    <li><a href="{{ url_for('main.about') }}#partners" class="dropdown-item" data-i18n="partners">合作伙伴</a></li>
+                    <li><a href="{{ url_for('main.about') }}#future-outlook" class="dropdown-item" data-i18n="future-outlook">展望未来</a></li>
                     <!-- <li><a href="#" class="dropdown-item">荣誉资质</a></li> -->
                 </ul>
             </li>
             <li class="dropdown">
-                <a href="contact.html" class="nav-link" data-i18n="contact-us">联系我们</a>
+                <a href="{{ url_for('main.contact') }}" class="nav-link" data-i18n="contact-us">联系我们</a>
                 <ul class="dropdown-menu">
                     <li><a href="#" class="dropdown-item" data-i18n="official-social-media">官方社媒</a></li>
                     <li><a href="#" class="dropdown-item" data-i18n="talent-recruitment">人才招聘</a></li>
                 </ul>
             </li>
         <li class="dropdown">
-                <a href="news.html" class="nav-link" data-i18n="news-center">新闻中心</a>
+                <a href="{{ url_for('main.news') }}" class="nav-link" data-i18n="news-center">新闻中心</a>
             <ul class="dropdown-menu">
                     <li><a href="#" class="dropdown-item" data-i18n="cross-border-news">跨境资讯</a></li>
                     <li><a href="#" class="dropdown-item" data-i18n="company-news">公司咨询</a></li>
@@ -90,7 +90,7 @@
         </li>
         </ul>
             <div class="login-btn">
-                <a href="tools.html" class="btn" data-i18n="backend">后台</a>
+                <a href="{{ url_for('main.tools') }}" class="btn" data-i18n="backend">后台</a>
             </div>
     </nav>
 </head>
@@ -102,7 +102,7 @@
                     <h1>跨境全生态服务</h1>
                     <p>开拓全球电子商务市场 <br>
                     我们帮助中国企业、制造商、贸易商和品牌商在美国、欧洲等海外市场成功拓展业务，实现产品出海和品牌国际化。</p>
-                    <a href="services.html#service-detail" class="btn">了解更多</a>
+                    <a href="{{ url_for('main.services') }}#service-detail" class="btn">了解更多</a>
                 </div>
                 <div class="hero-image">
                     <img src="{{ url_for('static', filename='images/service-hero.webp') }}" style="width: 100%; height: auto;">
@@ -164,7 +164,7 @@
                     </div>
                 </div>
                 <div style="text-align: center; margin-bottom: 10px;">
-                    <a href="services.html" class="btn">探索更多</a>
+                    <a href="{{ url_for('main.services') }}" class="btn">探索更多</a>
                 </div>
             </div>
         </section>
@@ -205,7 +205,7 @@
                 </div>
             </div>
             <div style="text-align: center; margin-top: 40px;">
-                <a href="services.html#ai-empowerment" class="btn">探索更多</a>
+                <a href="{{ url_for('main.services') }}#ai-empowerment" class="btn">探索更多</a>
             </div>
         </section>
 
@@ -281,34 +281,34 @@
             <div class="footer-column">
                 <h3>服务体系</h3>
                 <ul>
-                    <li><a href="services.html#market-insight">市场洞察</a></li>
-                    <li><a href="services.html#project-solutions">项目方案</a></li>
-                    <li><a href="services.html#product-export">产品出海</a></li>
-                    <li><a href="services.html#brand-export">品牌出海</a></li>
-                    <li><a href="services.html#ai-empowerment">AI 赋能运营</a></li>
+                    <li><a href="{{ url_for('main.services') }}#market-insight">市场洞察</a></li>
+                    <li><a href="{{ url_for('main.services') }}#project-solutions">项目方案</a></li>
+                    <li><a href="{{ url_for('main.services') }}#product-export">产品出海</a></li>
+                    <li><a href="{{ url_for('main.services') }}#brand-export">品牌出海</a></li>
+                    <li><a href="{{ url_for('main.services') }}#ai-empowerment">AI 赋能运营</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h3>项目方案</h3>
                 <ul>
-                    <li><a href="services.html#tool-products">工具产品</a></li>
-                    <li><a href="services.html#mattress-products">床垫产品</a></li>
-                    <li><a href="services.html#pet-supplies">宠物用品</a></li>
-                    <li><a href="services.html#outdoor-products">户外产品</a></li>
-                    <li><a href="services.html#children-toys">儿童玩具</a></li>
+                    <li><a href="{{ url_for('main.services') }}#tool-products">工具产品</a></li>
+                    <li><a href="{{ url_for('main.services') }}#mattress-products">床垫产品</a></li>
+                    <li><a href="{{ url_for('main.services') }}#pet-supplies">宠物用品</a></li>
+                    <li><a href="{{ url_for('main.services') }}#outdoor-products">户外产品</a></li>
+                    <li><a href="{{ url_for('main.services') }}#children-toys">儿童玩具</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h3>关于我们</h3>
                 <ul>
-                    <li><a href="about.html#company-overview">公司概况</a></li>
-                    <li><a href="about.html#company-culture">企业文化</a></li>
-                    <li><a href="about.html#partners">合作伙伴</a></li>
-                    <li><a href="about.html#future-outlook">展望未来</a></li>
+                    <li><a href="{{ url_for('main.about') }}#company-overview">公司概况</a></li>
+                    <li><a href="{{ url_for('main.about') }}#company-culture">企业文化</a></li>
+                    <li><a href="{{ url_for('main.about') }}#partners">合作伙伴</a></li>
+                    <li><a href="{{ url_for('main.about') }}#future-outlook">展望未来</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h3><a href="contact.html">联系方式</a></h3>
+                <h3><a href="{{ url_for('main.contact') }}">联系方式</a></h3>
                 <ul>
                     <li>彼励扶电子商务（苏州）有限公司</li>
                     <li>地址：中国(江苏)自由贸易试验区苏州片区建发微时光商业广场 356 室</li>
