@@ -184,7 +184,7 @@ const NavigationBar: React.FC = () => {
             <DropdownItem to="/service/ecosystem" $isActive={location.pathname === '/service/ecosystem'}>
               跨境全生态
             </DropdownItem>
-            <DropdownItem to="/service/ai" $isActive={location.pathname === '/service/ai'}>
+            <DropdownItem to="/service#core-tech" $isActive={location.pathname === '/service' && location.hash === '#core-tech'}>
               AI 赋能
             </DropdownItem>
           </Dropdown>
@@ -215,14 +215,29 @@ const NavigationBar: React.FC = () => {
             联系我们
           </NavLink>
           <Dropdown>
-            <DropdownItem to="/contact/consultation" $isActive={location.pathname === '/contact/consultation'}>
-              跨境咨询
-            </DropdownItem>
+            
             <DropdownItem to="/contact/social" $isActive={location.pathname === '/contact/social'}>
               社媒联系
             </DropdownItem>
             <DropdownItem to="/contact/careers" $isActive={location.pathname === '/contact/careers'}>
               人才招聘
+            </DropdownItem>
+          </Dropdown>
+        </NavItem>
+
+        <NavItem>
+          <NavLink to="/news" $isActive={location.pathname.startsWith('/news')}>
+            新闻资讯
+          </NavLink>
+          <Dropdown>
+            <DropdownItem to="/news/company" $isActive={location.pathname === '/news/company'}>
+              公司动态
+            </DropdownItem>
+            <DropdownItem to="/news/industry" $isActive={location.pathname === '/news/industry'}>
+              行业资讯
+            </DropdownItem>
+            <DropdownItem to="/news/insights" $isActive={location.pathname === '/news/insights'}>
+              跨境洞察
             </DropdownItem>
           </Dropdown>
         </NavItem>
