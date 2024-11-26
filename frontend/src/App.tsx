@@ -5,6 +5,7 @@ import NavigationBar from './components/NavigationBar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import AdminPage from './pages/admin/Admin';
+import ServicePage from './pages/service/Service';
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -45,7 +46,7 @@ function App() {
             <Route path="/" element={<Home />} />
             
             {/* Service routes */}
-            <Route path="/service" element={<Service />} />
+            <Route path="/service" element={<ServicePage />} />
             <Route path="/service/ecosystem" element={<Ecosystem />} />
             <Route path="/service/ai" element={<AI />} />
             
