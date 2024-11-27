@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, send_from_directory
 from tool_app.daily_report import main_daily
 from tool_app.weekly_report import main_weekly
 from tool_app.monthly_report import main_monthly
@@ -22,19 +22,6 @@ app.register_blueprint(main_resize_img, url_prefix='/tools/resize-image')
 app.register_blueprint(main_news, url_prefix='/news')
 app.register_blueprint(main_fba_revise_pdf, url_prefix='/tools/fba-revise-pdf')
 app.register_blueprint(main_database, url_prefix='/tools/database')
-
-def get_locale():
-    # 尝试从请求参数中获取语言设置
-    lang = request.args.get('lang')
-    if lang in ['zh', 'en']:
-        return lang
-    # 如果没有指定语言，返回默认语言
-    return 'zh'
-
-@app.route('/locales/<lang>/translation.json')
-def serve_translations(lang):
-    # 确保路径正确，这里假设翻译文件在 static/locales 目录下
-    return send_from_directory('statics/locales', f'{lang}/translation.json')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8800, debug=True)

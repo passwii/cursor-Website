@@ -1,19 +1,7 @@
-from flask import Blueprint, render_template, send_from_directory, request
+from flask import Blueprint, render_template, send_from_directory
 from tool_app.news import load_news
 
 main = Blueprint('main', __name__)
-
-def get_locale():
-    # Try to get language setting from request parameters
-    lang = request.args.get('lang')
-    if lang in ['zh', 'en']:
-        return lang
-    # If no language specified, return default
-    return 'zh'
-
-@main.route('/locales/<lang>/translation.json')
-def serve_translations(lang):
-    return send_from_directory('statics/locales', f'{lang}/translation.json')
 
 @main.route('/')
 @main.route('/index.html')
@@ -40,10 +28,6 @@ def news():
 @main.route('/tools.html')
 def tools():
     return render_template('tools.html')
-
-@main.route('/<path:filename>')
-def serve_static(filename):
-    return send_from_directory('static', filename)
 
 @main.route('/tools/exchange-rate')
 def exchange_rate():

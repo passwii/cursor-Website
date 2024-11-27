@@ -29,7 +29,9 @@ def process_product_analysis(project_name, report_start_date, report_end_date, b
     os.chdir(source_folder)
 
     # Combine dates for file naming
-    report_date = f"{report_start_date}_to_{report_end_date}"
+    start_date = report_start_date.replace('-', '')
+    end_date = report_end_date.replace('-', '')[4:]  # Remove the year (YYYY) from end date
+    report_date = f"{start_date}-{end_date}"
 
     project_folder_path = os.path.join(source_folder, 'project', project_name, '产品数据分析')
     os.makedirs(project_folder_path, exist_ok=True)
