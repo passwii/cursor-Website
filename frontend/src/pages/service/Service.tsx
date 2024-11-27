@@ -520,7 +520,7 @@ const ServicePage: React.FC = () => {
           跨境全生态服务
         </motion.h2>
         <p className={styles['services-description']}>
-          为您提供跨境全生态服务, 助力全球品牌创造价值
+          为您提供跨境全生态服务, 助力创造跨境品牌价值
         </p>
 
         <div className={styles['services-cards']}>

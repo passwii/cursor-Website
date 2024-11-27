@@ -1,6 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
 import crossBoardImage from '../assets/images/cross-board.webp';
+import { 
+  Activity, 
+  TrendingUp, 
+  ShoppingBag, 
+  Shield, 
+  Award, 
+  FileText, 
+  Target,
+  Binary,
+  Repeat,
+  Tags,
+  Share2,
+  BadgeCheck,
+  UserCheck,
+  ShieldAlert,
+  MessageSquare,
+  Receipt,
+  FileWarning,
+  Package,
+  Percent,
+  Wrench,
+  BarChart2,
+  Boxes,
+  Search,
+  MessageCircle,
+  Facebook,
+  TrendingDown,
+  ClipboardList,
+  BookOpen,
+  Settings,
+  PieChart,
+  Calculator,
+  BarChart,
+  CalendarRange
+} from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -23,10 +59,13 @@ const Section = styled.section`
 const HeroSection = styled(Section)`
   position: relative;
   background: linear-gradient(to right, #f1f8fe, #ddeefb, #c7e4fc);
-  width: 100%;
+  width: 100vw;
+  height: calc(100vh - 70px); /* Accounting for navigation height */
   max-width: 100%;
   margin: 0;
-  padding: 100px 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
 
   & > * {
     max-width: 1400px;
@@ -39,43 +78,67 @@ const HeroSection = styled(Section)`
 
     @media (max-width: 968px) {
       flex-direction: column;
-      padding: 0 20px;
+      padding: 40px 20px;
     }
   }
 `;
 
 const Content = styled.div`
-  flex: 0.8;
+  flex: 1;
   padding-left: 40px;
+
+  @media (max-width: 968px) {
+    padding-left: 0;
+    text-align: center;
+  }
 `;
 
 const Title = styled.h1`
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   color: #1a237e;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   font-weight: 600;
+  line-height: 1.2;
+
+  @media (max-width: 968px) {
+    font-size: 2.8rem;
+  }
 `;
 
 const Description = styled.p`
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   line-height: 1.8;
   color: #424242;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
+  max-width: 600px;
+
+  @media (max-width: 968px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const ImageContainer = styled.div`
-  flex: 1.2;
+  flex: 1.4;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  overflow: hidden;
+  padding: 40px;
+  position: relative;
+
+  @media (max-width: 968px) {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
 `;
 
 const Image = styled.img`
   width: 100%;
   height: auto;
-  object-fit: cover;
-  border-radius: 4px;
+  object-fit: contain;
+  border-radius: 12px;
+  max-width: 100%;
 `;
 
 const ServicesSectionWrapper = styled.div`
@@ -103,6 +166,7 @@ const ServicesGrid = styled.div`
   gap: 40px;
   max-width: 1400px;
   margin: 0 auto;
+  margin-bottom: 60px;
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
@@ -528,6 +592,90 @@ const CaseSection = styled.div`
   }
 `;
 
+const OperationServiceWrapper = styled.div`
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  background-color: #f8fafc;
+  padding: 20px 0 30px;
+  overflow: hidden;
+`;
+
+const ScrollContainer = styled(motion.div)`
+  width: 100%;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 20px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+`;
+
+const ServiceItemsTrack = styled(motion.div)`
+  display: flex;
+  width: fit-content;
+`;
+
+const ServiceItemsRow = styled(motion.div)`
+  display: flex;
+  gap: 24px;
+  padding: 0 12px;
+`;
+
+const ServiceItemsGrid = styled(motion.div)`
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-auto-flow: column;
+  gap: 12px 24px;
+  padding: 0 max(calc((100vw - 1400px) / 2), 20px);
+  width: fit-content;
+  min-width: 100%;
+  margin-top: 20px;
+
+  & > *:nth-child(even) {
+    transform: translateX(100px);
+  }
+`;
+
+const ServiceItem = styled(motion.div)<{ $bgColor: string }>`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 40px;
+  background-color: ${props => props.$bgColor};
+  color: white;
+  border-radius: 12px;
+  white-space: nowrap;
+  min-width: 200px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  span {
+    font-size: 16px;
+    font-weight: 500;
+  }
+`;
+
+const OperationDescription = styled(motion.p)`
+  text-align: center;
+  color: #666;
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 0 20px;
+`;
+
+const SubSectionTitle = styled.h3`
+  text-align: center;
+  font-size: 20px;
+  margin: 20px 0;
+  color: #333;
+  line-height: 1.6;
+`;
+
 const Home: React.FC = () => {
   const [activeIndex, setActiveIndex] = React.useState<number>(-1);
 
@@ -611,9 +759,291 @@ const Home: React.FC = () => {
                 <AIIcon />
               </IconContainer>
               <ServiceTitle>AI赋能</ServiceTitle>
-              <ServiceDescription>AI 普惠运营，首批跨境全 AI 部署企业</ServiceDescription>
+              <ServiceDescription>利用AI技术优化运营效率</ServiceDescription>
             </ServiceCard>
           </ServicesGrid>
+
+          <OperationServiceWrapper>
+            <SubSectionTitle>
+              跨境运营面临诸多方面竞争，<br />
+              我们拥有全行业顶尖运营人才，优秀的运营团队，全流程数据管理制度,
+              <br />
+              专注运营流程，为客户提供全面的跨境电商解决方案。
+              <br />
+              彼励扶将成为您产品出海品牌运营的终极合作伙伴。
+
+            </SubSectionTitle>
+            <OperationDescription
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              
+            </OperationDescription>
+            <ScrollContainer
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <ServiceItemsTrack>
+                <ServiceItemsRow
+                  initial={{ x: 0 }}
+                  animate={{ x: "-100%" }}
+                  transition={{
+                    duration: 80,
+                    repeat: Infinity,
+                    ease: "linear",
+                    repeatType: "loop"
+                  }}
+                >
+                  <ServiceItem $bgColor="#4B5A9A">
+                    <Binary />
+                    <span>A9算法</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#3D7A62">
+                    <Repeat />
+                    <span>螺旋打法</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#7E5AA6">
+                    <Tags />
+                    <span>定价促销</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#A66F42">
+                    <Share2 />
+                    <span>站外推广</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#4B5A9A">
+                    <BadgeCheck />
+                    <span>产品认证</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#3D7A62">
+                    <UserCheck />
+                    <span>客户联系</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#7E5AA6">
+                    <Wrench />
+                    <span>运营工具</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#A66F42">
+                    <BarChart2 />
+                    <span>财务报表</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#4B5A9A">
+                    <Boxes />
+                    <span>库存管理</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#3D7A62">
+                    <Search />
+                    <span>新品探测</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#7E5AA6">
+                    <MessageCircle />
+                    <span>Review 管理</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#A66F42">
+                    <Facebook />
+                    <span>Facebook 群组</span>
+                  </ServiceItem>
+                </ServiceItemsRow>
+                <ServiceItemsRow
+                  initial={{ x: 0 }}
+                  animate={{ x: "-100%" }}
+                  transition={{
+                    duration: 80,
+                    repeat: Infinity,
+                    ease: "linear",
+                    repeatType: "loop"
+                  }}
+                >
+                  <ServiceItem $bgColor="#4B5A9A">
+                    <Binary />
+                    <span>A9算法</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#3D7A62">
+                    <Repeat />
+                    <span>螺旋打法</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#7E5AA6">
+                    <Tags />
+                    <span>定价促销</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#A66F42">
+                    <Share2 />
+                    <span>站外推广</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#4B5A9A">
+                    <BadgeCheck />
+                    <span>产品认证</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#3D7A62">
+                    <UserCheck />
+                    <span>客户联系</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#7E5AA6">
+                    <Wrench />
+                    <span>运营工具</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#A66F42">
+                    <BarChart2 />
+                    <span>财务报表</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#4B5A9A">
+                    <Boxes />
+                    <span>库存管理</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#3D7A62">
+                    <Search />
+                    <span>新品探测</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#7E5AA6">
+                    <MessageCircle />
+                    <span>Review 管理</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#A66F42">
+                    <Facebook />
+                    <span>Facebook 群组</span>
+                  </ServiceItem>
+                </ServiceItemsRow>
+              </ServiceItemsTrack>
+
+              <ServiceItemsTrack>
+                <ServiceItemsRow
+                  initial={{ x: "-100%" }}
+                  animate={{ x: "0%" }}
+                  transition={{
+                    duration: 75,
+                    repeat: Infinity,
+                    ease: "linear",
+                    repeatType: "loop"
+                  }}
+                >
+                  <ServiceItem $bgColor="#7E5AA6">
+                    <ShieldAlert />
+                    <span>店铺安全</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#A66F42">
+                    <MessageSquare />
+                    <span>客诉处理</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#4B5A9A">
+                    <Receipt />
+                    <span>VAT税法</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#3D7A62">
+                    <FileWarning />
+                    <span>Listing合规</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#7E5AA6">
+                    <Package />
+                    <span>爆款选品</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#A66F42">
+                    <Percent />
+                    <span>折扣优惠</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#4B5A9A">
+                    <TrendingDown />
+                    <span>旺季销售</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#3D7A62">
+                    <ClipboardList />
+                    <span>绩效考核</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#7E5AA6">
+                    <BookOpen />
+                    <span>FBA 手册</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#A66F42">
+                    <Settings />
+                    <span>AGL 操作</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#4B5A9A">
+                    <PieChart />
+                    <span>ACOS 优化</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#3D7A62">
+                    <Calculator />
+                    <span>产品核算分析</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#7E5AA6">
+                    <BarChart />
+                    <span>项目核算</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#A66F42">
+                    <CalendarRange />
+                    <span>全年销售规划</span>
+                  </ServiceItem>
+                </ServiceItemsRow>
+                <ServiceItemsRow
+                  initial={{ x: "-100%" }}
+                  animate={{ x: "0%" }}
+                  transition={{
+                    duration: 75,
+                    repeat: Infinity,
+                    ease: "linear",
+                    repeatType: "loop"
+                  }}
+                >
+                  <ServiceItem $bgColor="#7E5AA6">
+                    <ShieldAlert />
+                    <span>店铺安全</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#A66F42">
+                    <MessageSquare />
+                    <span>客诉处理</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#4B5A9A">
+                    <Receipt />
+                    <span>VAT税法</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#3D7A62">
+                    <FileWarning />
+                    <span>Listing合规</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#7E5AA6">
+                    <Package />
+                    <span>爆款选品</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#A66F42">
+                    <Percent />
+                    <span>折扣优惠</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#4B5A9A">
+                    <TrendingDown />
+                    <span>旺季销售</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#3D7A62">
+                    <ClipboardList />
+                    <span>绩效考核</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#7E5AA6">
+                    <BookOpen />
+                    <span>FBA 手册</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#A66F42">
+                    <Settings />
+                    <span>AGL 操作</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#4B5A9A">
+                    <PieChart />
+                    <span>ACOS 优化</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#3D7A62">
+                    <Calculator />
+                    <span>产品核算分析</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#7E5AA6">
+                    <BarChart />
+                    <span>项目核算</span>
+                  </ServiceItem>
+                  <ServiceItem $bgColor="#A66F42">
+                    <CalendarRange />
+                    <span>全年销售规划</span>
+                  </ServiceItem>
+                </ServiceItemsRow>
+              </ServiceItemsTrack>
+            </ScrollContainer>
+          </OperationServiceWrapper>
         </ServicesSection>
       </ServicesSectionWrapper>
 
@@ -692,8 +1122,8 @@ const Home: React.FC = () => {
                     <li>对品牌现有产品线进行全面评估，优化产品描述和图片。</li>
                     <li>实施智能库存管理系统，提高库存周转率，降低仓储成本。</li>
                     <li>定针对性的广告策略，优化关键词和投放时间。</li>
-                    <li>开展品牌推广活动，提高品牌在目标客户群中的曝光度。</li>
-                    <li>利用客户反馈，持续改进产品质量和服务。</li>
+                    <li>与知名KOL合作，开展多场线上直播和产品体验活动。</li>
+                    <li>优化亚马逊店铺，提高搜索排名和转化率。</li>
                   </ul>
                 </CaseSection>
                 
