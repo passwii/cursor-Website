@@ -23,7 +23,7 @@ def save_file(file, folder, filename):
     file.save(filepath)
     return filepath
 
-def process_product_analysis(project_name, report_start_date, report_end_date, business_report, payment_report, payment_report_hold, ad_product_report, basic_report):
+def process_product_analysis(project_name, report_start_date, report_end_date, business_report, payment_report, ad_product_report, basic_report):
     current_time = datetime.datetime.now().strftime('%H-%M-%S')
     source_folder = os.getcwd()
     os.chdir(source_folder)
@@ -43,7 +43,6 @@ def process_product_analysis(project_name, report_start_date, report_end_date, b
 
     business_report_path = f'{project_name}_Business_Report_{report_date}.csv'
     payment_report_path = f'{project_name}_Payment_Report_{report_date}.csv'
-    payment_report_hold_path = f'{project_name}_Payment_Report_Hold_{report_date}.csv'
     ad_product_report_path = f'{project_name}_AD_Product_{report_date}.xlsx'
     basic_report_path = f'{project_name}_Basic_Information.csv'
 
@@ -53,9 +52,6 @@ def process_product_analysis(project_name, report_start_date, report_end_date, b
     with open(payment_report_path, 'wb') as f:
         f.write(payment_report.read())
 
-    with open(payment_report_hold_path, 'wb') as f:
-        f.write(payment_report_hold.read())
-
     with open(ad_product_report_path, 'wb') as f:
         f.write(ad_product_report.read())
 
@@ -64,41 +60,14 @@ def process_product_analysis(project_name, report_start_date, report_end_date, b
 
     business_report = pd.read_csv(business_report_path, encoding='utf-8')
     payment_report = pd.read_csv(payment_report_path, encoding='utf-8', thousands=',', skiprows=7)
-    payment_report_hold = pd.read_csv(payment_report_hold_path, encoding='utf-8', thousands=',', skiprows=7)
     ad_product_report = pd.read_excel(ad_product_report_path, engine='openpyxl')
     basic_report = pd.read_csv(basic_report_path, encoding='utf-8')
 
-    # Process payment report hold dates
-    def clean_date(date_str):
-        try:
-            # Parse the date string and convert to datetime
-            date_obj = datetime.datetime.strptime(date_str.strip(), '%b %d, %Y %I:%M:%S %p %Z')
-            return date_obj.date()
-        except:
-            return None
-
-    if 'Date/Time' in payment_report_hold.columns:
-        # Clean dates and remove rows with invalid dates
-        payment_report_hold['Clean_Date'] = payment_report_hold['Date/Time'].apply(clean_date)
-        payment_report_hold = payment_report_hold.dropna(subset=['Clean_Date'])
-        
-        # Convert date strings to datetime objects for comparison
-        start_date = datetime.datetime.strptime(report_start_date, '%Y-%m-%d').date()
-        end_date = datetime.datetime.strptime(report_end_date, '%Y-%m-%d').date()
-        
-        # Filter rows within the date range
-        payment_report_hold = payment_report_hold[
-            (payment_report_hold['Clean_Date'] >= start_date) & 
-            (payment_report_hold['Clean_Date'] <= end_date)
-        ]
-        
-        # Drop the temporary Clean_Date column
-        payment_report_hold = payment_report_hold.drop('Clean_Date', axis=1)
 
     files_to_copy = [
         (business_report_path, f'{tmp_folder_path}/{project_name}_Business_Report_{report_date}_{current_time}.csv'),
         (payment_report_path, f'{tmp_folder_path}/{project_name}_Payment_Report_{report_date}_{current_time}.csv'),
-        (payment_report_hold_path, f'{tmp_folder_path}/{project_name}_Payment_Report_Hold_{report_date}_{current_time}.csv'),
+        
         (ad_product_report_path, f'{tmp_folder_path}/{project_name}_AD_Product_{report_date}_{current_time}.xlsx'),
         (basic_report_path, f'{tmp_folder_path}/{project_name}_Basic_Information_{report_date}_{current_time}.csv')
     ]
@@ -142,15 +111,8 @@ def process_product_analysis(project_name, report_start_date, report_end_date, b
 
     # 读取Payment数据表，此时数据表中的sku都是小写格式
     df_payment = payment_report.copy()
-    df_payment_hold = payment_report_hold.copy()
     df_payment.fillna(0, inplace=True)
 
-    # 将Payment Hold 9th 列添加一列，使其和 payment 对齐
-    df_payment_hold.insert(8, 'account type', 0)
-
-    # 把 Payment Hold 的数据添加到 Payment 数据表中
-    df_payment = pd.concat([df_payment, df_payment_hold], ignore_index=True)
-    df_payment.fillna(0, inplace=True)
 
     # 筛选出类型为'Order'和'Refund'的记录
     df_order_and_refund = df_payment.loc[df_payment['type'].isin(['Order', 'Refund'])]
@@ -272,7 +234,7 @@ def process_product_analysis(project_name, report_start_date, report_end_date, b
         '广告点击量': [],
         '广告点击率': [],  # 广告点击率 = 广告点击量 / 广告展示量
         '广告订单量': [],
-        '广告单占比': [],  # 广告单占比 = 广告订单量 / 实际销售量
+        '广告单占比': [],  # 广告单占比 = 广告订单量 / 业务报告销售量
         '广告转化率': [],  # 广告转化 = 广告订单量 / 广告点击量
         '广告花费': [],
         '广告销售额': [],
@@ -339,11 +301,11 @@ def process_product_analysis(project_name, report_start_date, report_end_date, b
     df_overview['广告点击量'] = df_overview['广告点击量'].astype(int)
     df_overview['广告订单量'] = df_overview['广告订单量'].astype(int)
     df_overview['广告点击率'] = np.where(df_overview['广告展示量'] == 0, 0, df_overview['广告点击量'] / df_overview['广告展示量'])
-    df_overview['广告单占比'] = np.where(df_overview['实际销售量'] == 0, 0, df_overview['广告订单量'] / df_overview['实际销售量'])
+    df_overview['广告单占比'] = np.where(df_overview['总销量'] == 0, 0, df_overview['广告订单量'] / df_overview['总销量'])
     df_overview['广告转化率'] = df_overview['广告订单量'] / df_overview['广告点击量']
-    df_overview['CPC'] = np.where(df_overview['广告点击量'] == 0, 0, df_overview['广告花费'] / df_overview['广告点击量'])
+    df_overview['CPC'] = np.where(df_overview['广告点击量'] == 0, 0, df_overview['广告花费'] / df_overview['广告点击量']).round(2)
     df_overview['ACOS'] = np.where(df_overview['广告销售额'] == 0, 0, df_overview['广告花费'] / df_overview['广告销售额'])
-    df_overview['SP占比'] = np.where(df_overview['实际销售额'] == 0, 0, df_overview['广告花费'] / df_overview['实际销售额'])
+    df_overview['SP占比'] = np.where(df_overview['总销售额'] == 0, 0, df_overview['广告花费'] / df_overview['总销售额'])
     
     # Payment数据
     df_overview['实际销售额'] = df_overview['实际销售额'].round(2)
@@ -363,7 +325,7 @@ def process_product_analysis(project_name, report_start_date, report_end_date, b
     df_overview['利润'] = df_overview['实际销售额'] - df_overview['总成本'] - df_overview['广告花费'] - df_overview['实际退款额']
     df_overview['利润率'] = np.where(df_overview['实际销售额'] == 0, 0, df_overview['利润'] / df_overview['实际销售额'])
     
-    df_overview['平均售价'] = np.where(df_overview['实际销售量'] == 0, 0, df_overview['实际销售额'] / df_overview['实际销售量'])
+    df_overview['平均售价'] = np.where(df_overview['实际销售量'] == 0, 0, (df_overview['实际销售额'] / df_overview['实际销售量']).round(2))
     df_overview['退款率'] = np.where(df_overview['实际销售额'] == 0, 0, df_overview['实际退款额'] / df_overview['实际销售额'])
     
     overview_drop_cols = ['头程单价', 'FOB单价']
@@ -409,7 +371,6 @@ def product_analysis():
         report_end_date = request.form.get('report_end_date')
         business_report = request.files.get('business_report')
         payment_report = request.files.get('payment_report')
-        payment_report_hold = request.files.get('payment_report_hold')
         ad_product_report = request.files.get('ad_product_report')
         basic_report = request.files.get('basic_report')
         
@@ -421,7 +382,7 @@ def product_analysis():
             flash('文件格式不正确')
             return redirect(url_for('main_product_analysis.product_analysis'))
         
-        file_content, filename = process_product_analysis(project_name, report_start_date, report_end_date, business_report, payment_report, payment_report_hold, ad_product_report, basic_report)  
+        file_content, filename = process_product_analysis(project_name, report_start_date, report_end_date, business_report, payment_report, ad_product_report, basic_report)  
         
         return send_file(
             io.BytesIO(file_content),
