@@ -165,14 +165,16 @@ const SectionTitle = styled.div`
 const PhilosophySection = styled.section`
   position: relative;
   z-index: 1;
-  padding: 100px 0;
+  padding: 0px 0;
   background: #fff;
   isolation: isolate;
+  height: calc(100vh - 360px);
 `;
 
 const ParallaxContainer = styled.div`
   position: relative;
   width: 100%;
+  height: 100%;
   clip-path: inset(0);
 `;
 
@@ -194,8 +196,8 @@ const ParallaxBackground = styled(motion.div)`
     inset: 0;
     background: linear-gradient(
       to bottom,
-      rgba(245, 247, 250, 0.97) 0%,
-      rgba(245, 247, 250, 0.92) 40%,
+      rgba(245, 247, 250, 0.85) 0%,
+      rgba(245, 247, 250, 0.82) 40%,
       rgba(245, 247, 250, 0) 100%
     );
   }
@@ -206,8 +208,8 @@ const PhilosophyMask = styled(motion.div)`
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(240, 242, 245, 0.95) 0%,
-    rgba(240, 242, 245, 0.85) 60%,
+    rgba(240, 242, 245, 0.85) 0%,
+    rgba(240, 242, 245, 0.75) 60%,
     rgba(240, 242, 245, 0) 100%
   );
   backdrop-filter: blur(1px);
@@ -217,7 +219,7 @@ const PhilosophyContent = styled.div`
   position: relative;
   z-index: 2;
   color: #2c3e50;
-  padding-top: 60px;
+  padding-top: 40px;
   margin: 0 20px;
 `;
 
