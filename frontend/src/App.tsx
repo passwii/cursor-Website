@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import AdminPage from './pages/admin/Admin';
 import ServicePage from './pages/service/Service';
+import AboutPage from './pages/About';
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -24,7 +25,7 @@ const Ecosystem = () => <div style={{ padding: '20px' }}>跨境全生态</div>;
 const AI = () => <div style={{ padding: '20px' }}>AI 赋能</div>;
 
 // About pages
-const About = () => <div style={{ padding: '20px' }}>关于我们</div>;
+const About = () => <AboutPage />;
 const Company = () => <div style={{ padding: '20px' }}>公司概况</div>;
 const Culture = () => <div style={{ padding: '20px' }}>企业文化</div>;
 const Partners = () => <div style={{ padding: '20px' }}>合作伙伴</div>;
