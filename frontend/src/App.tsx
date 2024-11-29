@@ -7,6 +7,8 @@ import Home from './pages/Home';
 import AdminPage from './pages/admin/Admin';
 import ServicePage from './pages/service/Service';
 import AboutPage from './pages/About';
+import Contact from './pages/contact/Contact';
+import News from './pages/news/News';
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -26,13 +28,9 @@ const AI = () => <div style={{ padding: '20px' }}>AI 赋能</div>;
 
 // About pages
 const About = () => <AboutPage />;
-const Company = () => <div style={{ padding: '20px' }}>公司概况</div>;
-const Culture = () => <div style={{ padding: '20px' }}>企业文化</div>;
-const Partners = () => <div style={{ padding: '20px' }}>合作伙伴</div>;
-const Future = () => <div style={{ padding: '20px' }}>展望未来</div>;
 
 // Contact pages
-const Contact = () => <div style={{ padding: '20px' }}>联系我们</div>;
+const ContactPage = () => <Contact />;
 const Consultation = () => <div style={{ padding: '20px' }}>跨境咨询</div>;
 const Social = () => <div style={{ padding: '20px' }}>社媒联系</div>;
 const Careers = () => <div style={{ padding: '20px' }}>人才招聘</div>;
@@ -48,22 +46,20 @@ function App() {
             
             {/* Service routes */}
             <Route path="/service" element={<ServicePage />} />
-            <Route path="/service/ecosystem" element={<Ecosystem />} />
             <Route path="/service/ai" element={<AI />} />
             
-            {/* About routes */}
+            {/* About route */}
             <Route path="/about" element={<About />} />
-            <Route path="/about/company" element={<Company />} />
-            <Route path="/about/culture" element={<Culture />} />
-            <Route path="/about/partners" element={<Partners />} />
-            <Route path="/about/future" element={<Future />} />
             
             {/* Contact routes */}
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/contact" element={<ContactPage />} />
             <Route path="/contact/consultation" element={<Consultation />} />
             <Route path="/contact/social" element={<Social />} />
             <Route path="/contact/careers" element={<Careers />} />
-            
+
+            {/* News routes */}
+            <Route path="/news" element={<News />} />
+
             {/* Admin routes */}
             <Route path="/admin/*" element={<AdminPage />} />
           </Routes>

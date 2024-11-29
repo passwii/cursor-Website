@@ -1,13 +1,19 @@
-import React from 'react';
+// React and core dependencies
+import React, { useState, useRef, useEffect } from 'react';
+
+// Third-party libraries
 import styled from 'styled-components';
-import { motion, useInView, animate, useMotionValue, useTransform, useScroll } from 'framer-motion';
-import { useRef, useEffect } from 'react';
-import aboutHero from '../assets/images/about-hero.webp';
-import blfBackLove from '../assets/images/blf-back-love.webp';
+import { motion, useInView, animate, useMotionValue, useTransform, useScroll, AnimatePresence } from 'framer-motion';
+
+// Icons
 import { FaGlobeAmericas } from 'react-icons/fa';
 import { BiSolidData } from 'react-icons/bi';
 import { AiOutlineRobot } from 'react-icons/ai';
 import { BsFlagFill } from 'react-icons/bs';
+
+// Assets
+import aboutHero from '../assets/images/about-hero.webp';
+import blfBackLove from '../assets/images/blf-back-love.webp';
 
 // Using placeholder images
 const TEAM_MEMBER_PLACEHOLDER = 'https://via.placeholder.com/200x200?text=Team+Member';
@@ -73,9 +79,9 @@ const IntroSection = styled(Section)`
 `;
 
 const Container = styled.div`
-  max-width: 1400px; 
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 0 1rem;  
+  padding: 0 2rem;
 `;
 
 const IntroContainer = styled.div`
@@ -90,27 +96,29 @@ const IntroContainer = styled.div`
   padding: 0 1rem;  
 `;
 
-const IntroText = styled.div`
-  max-width: 100%;
-  padding-left: 1rem;
+const IntroText = styled(motion.div)`
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+  color: #2c3e50;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 4rem;
+  padding: 0 1rem;
+
   p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #4a5568;
-    margin-bottom: 1.5rem;
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
+    margin: 1.5rem 0;
+    text-align: justify;
+    text-justify: inter-word;
   }
 `;
 
 const StatsBanner = styled(motion.div)`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2.5rem;
-  margin-top: 3rem;
-  padding: 2.5rem;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1.5rem;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
@@ -123,7 +131,7 @@ const StatItem = styled(motion.div)`
     font-size: 2.5rem;
     font-weight: bold;
     color: #0066cc;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     line-height: 1;
   }
 
@@ -283,54 +291,159 @@ const CoreCard = styled.div`
 `;
 
 const TeamSection = styled(Section)`
-  text-align: center;
+  background: #fff;
+  padding: 100px 0;
 `;
 
 const TeamGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
-  margin-top: 3rem;
+  margin-top: 4rem;
+  justify-content: center;
 `;
 
 const TeamMember = styled.div`
   text-align: center;
-  h3 {
-    margin: 1rem 0 0.5rem;
+
+  .avatar {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0.5rem 0;
+  }
+
   p {
-    color: #666;
+    font-size: 1rem;
+    color: #5d6b7b;
+    margin: 0;
   }
 `;
 
 const GoalsSection = styled(Section)`
   background: #f8f9fa;
+  padding: 100px 0;
 `;
 
 const GoalsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  text-align: center;
-`;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+  margin-top: 4rem;
 
-const PartnersSection = styled(Section)`
-  .partners-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 1rem;
-    @media (max-width: 768px) {
-      grid-template-columns: repeat(3, 1fr);
+  > div {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    h3 {
+      font-size: 1.75rem;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 0;
+        width: 40px;
+        height: 3px;
+        background: #0066cc;
+        border-radius: 2px;
+      }
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #5d6b7b;
+      line-height: 1.6;
+      margin: 0;
     }
   }
 `;
 
+const PartnersSection = styled(Section)`
+  background: #fff;
+  padding: 100px 0;
+`;
+
+const PartnersGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 3rem 2rem;
+  margin-top: 4rem;
+`;
+
 const PartnerLogo = styled.div`
-  aspect-ratio: 2/1;
-  background: #f8f9fa;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+`;
+
+const PartnersFooter = styled.div`
+  text-align: center;
+  margin-top: 4rem;
+
+  .action-button {
+    background: #0066cc;
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: #0052a3;
+      transform: translateY(-2px);
+    }
+  }
+
+  .footer-text {
+    margin-top: 1.5rem;
+    color: #5d6b7b;
+    font-size: 1rem;
+  }
 `;
 
 const CareersSection = styled(Section)`
@@ -339,19 +452,188 @@ const CareersSection = styled(Section)`
 
 const JobsTable = styled.table`
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 2rem;
-  
-  th, td {
-    padding: 1rem;
+  border-collapse: separate;
+  border-spacing: 0 1rem;
+
+  thead tr th {
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    padding: 1rem 1.5rem;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 1.1rem;
+    background: #f8f9fa;
+    &:first-child {
+      border-radius: 8px 0 0 8px;
+    }
+    &:last-child {
+      border-radius: 0 8px 8px 0;
+    }
   }
-  
-  th {
-    background: #f1f1f1;
+
+  tbody tr {
+    background: white;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    td {
+      padding: 1.5rem;
+      color: #5d6b7b;
+      border-top: 1px solid #f1f3f5;
+      border-bottom: 1px solid #f1f3f5;
+
+      &:first-child {
+        border-left: 1px solid #f1f3f5;
+        border-radius: 8px 0 0 8px;
+        font-weight: 500;
+        color: #2c3e50;
+      }
+      &:last-child {
+        border-right: 1px solid #f1f3f5;
+        border-radius: 0 8px 8px 0;
+      }
+    }
   }
 `;
+
+const JobDetails = styled(motion.tr)`
+  td {
+    padding: 0 !important;
+  }
+`;
+
+const JobDetailsContent = styled(motion.div)`
+  background: #f8f9fa;
+  padding: 2rem;
+  margin: 0 1.5rem 1.5rem;
+  border-radius: 8px;
+
+  h4 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+
+  .detail-section {
+    margin-bottom: 1.5rem;
+
+    h5 {
+      color: #0066cc;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        color: #5d6b7b;
+        margin-bottom: 0.5rem;
+        padding-left: 1.5rem;
+        position: relative;
+
+        &:before {
+          content: "•";
+          color: #0066cc;
+          position: absolute;
+          left: 0;
+        }
+      }
+    }
+  }
+`;
+
+const ExpandButton = styled.button`
+  background: none;
+  border: none;
+  color: #0066cc;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #0052a3;
+  }
+
+  svg {
+    transition: transform 0.3s ease;
+  }
+`;
+
+interface JobPosition {
+  title: string;
+  department: string;
+  experience: string;
+  description: string;
+  requirements: string[];
+  responsibilities: string[];
+}
+
+const jobPositions: JobPosition[] = [
+  {
+    title: "亚马逊运营实习生",
+    department: "运营部",
+    experience: "毕业生",
+    description: "加入我们充满活力的团队，学习跨境电商运营的实践经验。",
+    requirements: [
+      "本科及以上学历，专业不限",
+      "英语良好，能进行日常沟通",
+      "有责任心，学习能力强",
+      "对跨境电商感兴趣"
+    ],
+    responsibilities: [
+      "协助运营团队进行日常listing优化",
+      "参与产品选品和市场调研",
+      "协助数据分析和竞品分析",
+      "学习并实践跨境电商运营技能"
+    ]
+  },
+  {
+    title: "亚马逊运营",
+    department: "运营部",
+    experience: "1年及以上",
+    description: "负责亚马逊平台的产品运营和优化工作。",
+    requirements: [
+      "本科及以上学历，1年以上亚马逊运营经验",
+      "优秀的英语读写能力",
+      "熟悉亚马逊平台规则和操作流程",
+      "有较强的数据分析能力"
+    ],
+    responsibilities: [
+      "负责店铺日常运营和绩效提升",
+      "产品listing优化和关键词布局",
+      "竞品分析和市场调研",
+      "制定并执行促销策略"
+    ]
+  },
+  {
+    title: "供应链管理",
+    department: "市场部",
+    experience: "2年及以上",
+    description: "负责公司跨境电商供应链管理和优化工作。",
+    requirements: [
+      "本科及以上学历，2年以上供应链管理经验",
+      "熟悉跨境物流和仓储管理",
+      "优秀的沟通协调能力",
+      "有跨境电商行业经验优先"
+    ],
+    responsibilities: [
+      "制定和优化供应链策略",
+      "管理和协调供应商关系",
+      "优化库存和物流方案",
+      "降低供应链成本"
+    ]
+  }
+];
 
 const AnimatedNumber = ({ value, suffix = '' }: { value: number, suffix?: string }) => {
   const ref = useRef(null);
@@ -394,6 +676,61 @@ const About: React.FC = () => {
     [1, 0.92, 0.92, 1]
   );
 
+  const [expandedJob, setExpandedJob] = useState(-1);
+
+  const members = [
+    {
+      name: "John Doe",
+      role: "CEO & Founder",
+      avatar: TEAM_MEMBER_PLACEHOLDER
+    },
+    {
+      name: "Jane Smith",
+      role: "CTO",
+      avatar: TEAM_MEMBER_PLACEHOLDER
+    },
+    {
+      name: "轻舟 Jack",
+      role: "运营专家",
+      avatar: TEAM_MEMBER_PLACEHOLDER
+    },
+    {
+      name: "凌志 Rock",
+      role: "技术总监",
+      avatar: TEAM_MEMBER_PLACEHOLDER
+    },
+    {
+      name: "苏毅 Leo",
+      role: "客户服务",
+      avatar: TEAM_MEMBER_PLACEHOLDER
+    },
+    {
+      name: "扶苏 Buck",
+      role: "营销策划",
+      avatar: TEAM_MEMBER_PLACEHOLDER
+    },
+    {
+      name: "宋月 Jackie",
+      role: "产品经理",
+      avatar: TEAM_MEMBER_PLACEHOLDER
+    },
+    {
+      name: "John Doe",
+      role: "CEO & Founder",
+      avatar: TEAM_MEMBER_PLACEHOLDER
+    },
+    {
+      name: "Jane Smith",
+      role: "CTO",
+      avatar: TEAM_MEMBER_PLACEHOLDER
+    },
+    {
+      name: "轻舟 Jack",
+      role: "运营专家",
+      avatar: TEAM_MEMBER_PLACEHOLDER
+    },
+  ];
+
   return (
     <>
       {/* Section 1: Hero */}
@@ -421,23 +758,23 @@ const About: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 1.2 }}
               >
                 <StatItem
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
+                  transition={{ duration: 1.2, delay: 0.1 }}
                 >
                   <div className="number">
-                    <AnimatedNumber value={7} />
+                    <AnimatedNumber value={10} />
                   </div>
                   <motion.div 
                     className="label"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
+                    transition={{ duration: 1.2, delay: 0.3 }}
                   >
                     核心成员
                   </motion.div>
@@ -446,7 +783,7 @@ const About: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  transition={{ duration: 1.2, delay: 0.2 }}
                 >
                   <div className="number">
                     <AnimatedNumber value={10} suffix="+" />
@@ -456,7 +793,7 @@ const About: React.FC = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
+                    transition={{ duration: 1.2, delay: 0.4 }}
                   >
                     BS 品牌
                   </motion.div>
@@ -465,7 +802,7 @@ const About: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
+                  transition={{ duration: 1.2, delay: 0.3 }}
                 >
                   <div className="number">
                     <AnimatedNumber value={100} suffix="M" />
@@ -475,7 +812,7 @@ const About: React.FC = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.5 }}
+                    transition={{ duration: 1.2, delay: 0.5 }}
                   >
                     人均操盘业绩
                   </motion.div>
@@ -484,7 +821,7 @@ const About: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
+                  transition={{ duration: 1.2, delay: 0.4 }}
                 >
                   <div className="number">
                     <AnimatedNumber value={6} />
@@ -494,7 +831,7 @@ const About: React.FC = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
+                    transition={{ duration: 1.2, delay: 0.6 }}
                   >
                     跨境平台
                   </motion.div>
@@ -556,21 +893,15 @@ const About: React.FC = () => {
         <Container>
           <SectionTitle>
             <h2>团队核心成员</h2>
-            <p>BELIEVE是一支充满激情、专业高效的跨境电商运营团队，汇聚了行业精英，致力于为企业开拓全球市场，实现品牌国际化。在这里，每一位成员都是我们宝贵的财富，他们各有所长，共同为团队的发展贡献力量。</p>
+            <p>BELIEVE是一支充满激情、专业高效的跨境电商运营团队，汇聚了行业精英，致力于为企业开拓全球市场，实现品牌国际化。<br />
+              在这里，每一位成员都是我们宝贵的财富，他们各有所长，共同为团队的发展贡献力量。</p>
           </SectionTitle>
           <TeamGrid>
-            {[
-              { name: '宋月 Jackie', title: '产品经理', desc: '拥有丰富的跨境选品经验，精准把握市场脉动，为消费者提供最具竞争力的产品。' },
-              { name: '轻舟 Jack', title: '运营专家', desc: '精通各大电商平台运营策略，擅长数据分析，助力企业实现业绩翻番。' },
-              { name: '凌志 Rock', title: '技术总监', desc: '跨境电商领域的技术骨干，精通各种前沿技术，致力于为跨境电商业务提供最稳定、高效、安全的解决方案。' },
-              { name: '苏毅 Leo', title: '客户服务', desc: '专业、热情、耐心，为客户提供一流的服务体验，为企业树立良好的口碑。' },
-              { name: '扶苏 Buck', title: '营销策划', desc: '创意无限，擅长整合营销资源，为企业量身定制推广方案，提升品牌知名度。' }
-            ].map((member, index) => (
+            {members.map((member, index) => (
               <TeamMember key={index}>
-                <img src={TEAM_MEMBER_PLACEHOLDER} alt={member.name} />
+                <img src={member.avatar} alt={member.name} className="avatar" />
                 <h3>{member.name}</h3>
-                <h4>{member.title}</h4>
-                <p>{member.desc}</p>
+                <p>{member.role}</p>
               </TeamMember>
             ))}
           </TeamGrid>
@@ -610,13 +941,17 @@ const About: React.FC = () => {
           <SectionTitle>
             <h2>合作伙伴</h2>
           </SectionTitle>
-          <div className="partners-grid">
+          <PartnersGrid>
             {Array(12).fill(0).map((_, index) => (
               <PartnerLogo key={index}>
                 <img src={PARTNER_LOGO_PLACEHOLDER} alt={`Partner ${index + 1}`} />
               </PartnerLogo>
             ))}
-          </div>
+          </PartnersGrid>
+          <PartnersFooter>
+            <button className="action-button">寻找更多伙伴</button>
+            <p className="footer-text">我们期待与更多跨境服务商合作，携手创造更多可能</p>
+          </PartnersFooter>
         </Container>
       </PartnersSection>
 
@@ -633,24 +968,71 @@ const About: React.FC = () => {
                 <th>招聘职位</th>
                 <th>业务部门</th>
                 <th>经验要求</th>
+                <th>详情</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>亚马逊运营实习生</td>
-                <td>运营部</td>
-                <td>毕业生</td>
-              </tr>
-              <tr>
-                <td>亚马逊运营</td>
-                <td>运营部</td>
-                <td>1年及以上</td>
-              </tr>
-              <tr>
-                <td>供应链管理</td>
-                <td>市场部</td>
-                <td>2年及以上</td>
-              </tr>
+              {jobPositions.map((job, index) => (
+                <React.Fragment key={index}>
+                  <tr onClick={() => setExpandedJob(expandedJob === index ? -1 : index)}>
+                    <td>{job.title}</td>
+                    <td>{job.department}</td>
+                    <td>{job.experience}</td>
+                    <td>
+                      <ExpandButton>
+                        {expandedJob === index ? '收起' : '展开'}
+                        <motion.svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          animate={{ rotate: expandedJob === index ? 180 : 0 }}
+                        >
+                          <path
+                            d="M4 6L8 10L12 6"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </motion.svg>
+                      </ExpandButton>
+                    </td>
+                  </tr>
+                  <JobDetails>
+                    <td colSpan={4}>
+                      <AnimatePresence>
+                        {expandedJob === index && (
+                          <JobDetailsContent
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                          >
+                            <h4>{job.description}</h4>
+                            <div className="detail-section">
+                              <h5>岗位要求：</h5>
+                              <ul>
+                                {job.requirements.map((req, i) => (
+                                  <li key={i}>{req}</li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div className="detail-section">
+                              <h5>工作职责：</h5>
+                              <ul>
+                                {job.responsibilities.map((resp, i) => (
+                                  <li key={i}>{resp}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </JobDetailsContent>
+                        )}
+                      </AnimatePresence>
+                    </td>
+                  </JobDetails>
+                </React.Fragment>
+              ))}
             </tbody>
           </JobsTable>
         </Container>

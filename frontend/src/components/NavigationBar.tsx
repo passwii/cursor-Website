@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import logoImage from '../assets/images/logo.webp';
 
@@ -8,146 +9,130 @@ const Nav = styled.nav`
   top: 0;
   left: 0;
   right: 0;
-  height: 70px;
-  padding: 0 50px;
-  background: rgba(255, 255, 255, 0.7);
+  height: var(--nav-height, 80px);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  padding: 0 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 `;
 
 const LogoSection = styled(Link)`
   display: flex;
   align-items: center;
-  gap: 15px;
-  min-width: 300px;
   text-decoration: none;
-  cursor: pointer;
-  
-  &:hover {
-    opacity: 0.9;
-  }
+  color: inherit;
+  margin-right: 60px;
 `;
 
 const LogoImage = styled.img`
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
+  height: 40px;
+  margin-right: 10px;
 `;
 
 const LogoText = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
 `;
 
-const MainText = styled.div`
-  font-size: 18px;
-  font-weight: 600;
+const MainText = styled.span`
+  font-size: 1.2rem;
+  font-weight: bold;
   color: #333;
 `;
 
-const SubText = styled.div`
-  font-size: 14px;
+const SubText = styled.span`
+  font-size: 0.8rem;
   color: #666;
   font-style: bold;
 `;
 
-const NavLinks = styled.div`
+const NavList = styled.div`
   display: flex;
-  gap: 40px;
   align-items: center;
-  flex: 1;
   justify-content: center;
-  max-width: 800px;
-  margin: 0 auto;
+  gap: 40px;
+  flex: 1;
+  white-space: nowrap;
+`;
+
+const Dropdown = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  padding: 8px 0;
+  z-index: 1000;
 `;
 
 const NavItem = styled.div`
   position: relative;
-  padding: 10px 0;
-  min-width: 100px;
-  text-align: center;
-  
-  &:hover > div {
-    display: block;
-    animation: fadeIn 0.3s ease;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px) translateX(-50%);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) translateX(-50%);
-    }
-  }
-`;
-
-const NavLink = styled(Link)<{ $isActive?: boolean }>`
-  text-decoration: none;
-  color: ${props => props.$isActive ? '#fff' : '#666'};
-  font-size: 16px;
-  transition: all 0.3s ease;
-  cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 8px 20px;
-  border-radius: 20px;
-  background: ${props => {
-    if (props.to === '/admin') return '#1976d2';
-    return props.$isActive ? '#1976d2' : 'transparent';
-  }};
-  color: ${props => props.to === '/admin' ? '#fff' : props.$isActive ? '#fff' : '#666'};
-  
-  &:hover {
-    background: ${props => {
-      if (props.to === '/admin') return '#2196f3';
-      return props.$isActive ? '#1976d2' : '#f5f5f5';
-    }};
-    color: ${props => props.to === '/admin' || props.$isActive ? '#fff' : '#666'};
+  height: var(--nav-height, 80px);
+
+  &:hover ${Dropdown} {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
   }
 `;
 
-const Dropdown = styled.div`
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(5px);
-  min-width: 160px;
-  width: max-content;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 8px 0;
-  z-index: 1001;
+const NavLink = styled(Link)<{ $isActive: boolean }>`
+  color: ${props => props.$isActive ? '#0066cc' : '#333'};
+  text-decoration: none;
+  font-weight: ${props => props.$isActive ? '600' : '500'};
+  font-size: 1rem;
+  padding: 0 15px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #0066cc;
+  }
 `;
 
-const DropdownItem = styled(Link)<{ $isActive?: boolean }>`
+const DropdownItem = styled(Link)<{ $isActive: boolean }>`
   display: block;
-  padding: 8px 20px;
-  color: ${props => props.$isActive ? '#fff' : '#666'};
+  padding: 12px 20px;
+  color: ${props => props.$isActive ? '#0066cc' : '#333'};
   text-decoration: none;
   transition: all 0.3s ease;
-  text-align: center;
+  font-weight: ${props => props.$isActive ? '600' : 'normal'};
+  font-size: 0.95rem;
   white-space: nowrap;
-  margin: 4px 8px;
-  border-radius: 20px;
-  background: ${props => props.$isActive ? '#1976d2' : 'transparent'};
-  
+
   &:hover {
-    background: ${props => props.$isActive ? '#1976d2' : '#f5f5f5'};
-    color: ${props => props.$isActive ? '#fff' : '#666'};
+    background: #f8f9fa;
+    color: #0066cc;
+  }
+`;
+
+const AdminLink = styled(NavLink)`
+  background: #0066cc;
+  color: white !important;
+  border-radius: 4px;
+  padding: 8px 16px;
+  height: auto;
+  margin-left: auto;
+
+  &:hover {
+    background: #0052a3;
+    color: white !important;
   }
 `;
 
@@ -159,95 +144,134 @@ const AdminSection = styled.div`
 
 const NavigationBar: React.FC = () => {
   const location = useLocation();
-  
+  const navigate = useNavigate();
+
+  const handleNavClick = (to: string) => {
+    // 如果是当前页面，滚动到顶部
+    if (location.pathname === to) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // 导航到新页面并滚动到顶部
+      navigate(to);
+      window.scrollTo({ top: 0 });
+    }
+  };
+
   return (
     <Nav>
-      <LogoSection to="/">
+      <LogoSection 
+        to="/"
+        onClick={(e) => {
+          e.preventDefault();
+          handleNavClick('/');
+        }}
+      >
         <LogoImage src={logoImage} alt="彼励扶" />
         <LogoText>
           <MainText>彼励扶跨境</MainText>
           <SubText>It's always Day 1</SubText>
         </LogoText>
       </LogoSection>
-      <NavLinks>
+
+      <NavList>
         <NavItem>
-          <NavLink to="/" $isActive={location.pathname === '/'}>
-            主页
+          <NavLink to="/" onClick={(e) => {
+            e.preventDefault();
+            handleNavClick('/');
+          }} $isActive={location.pathname === '/'}>
+            首页
           </NavLink>
         </NavItem>
 
         <NavItem>
-          <NavLink to="/service" $isActive={location.pathname.startsWith('/service')}>
+          <NavLink to="/service" onClick={(e) => {
+            e.preventDefault();
+            handleNavClick('/service');
+          }} $isActive={location.pathname === '/service'}>
             服务体系
           </NavLink>
           <Dropdown>
-            <DropdownItem to="/service/ecosystem" $isActive={location.pathname === '/service/ecosystem'}>
+            <DropdownItem to="/service#ecosystem" $isActive={location.pathname === '/service' && location.hash === '#ecosystem'}>
               跨境全生态
             </DropdownItem>
             <DropdownItem to="/service#core-tech" $isActive={location.pathname === '/service' && location.hash === '#core-tech'}>
-              AI 赋能
+              核心技术
+            </DropdownItem>
+            <DropdownItem to="/service#ai-empower" $isActive={location.pathname === '/service' && location.hash === '#ai-empower'}>
+              AI赋能
             </DropdownItem>
           </Dropdown>
         </NavItem>
 
         <NavItem>
-          <NavLink to="/about" $isActive={location.pathname.startsWith('/about')}>
+          <NavLink to="/about" onClick={(e) => {
+            e.preventDefault();
+            handleNavClick('/about');
+          }} $isActive={location.pathname === '/about'}>
             关于我们
           </NavLink>
           <Dropdown>
-            <DropdownItem to="/about/company" $isActive={location.pathname === '/about/company'}>
-              公司概况
+            <DropdownItem to="/about#company" $isActive={location.pathname === '/about' && location.hash === '#company'}>
+              公司简介
             </DropdownItem>
-            <DropdownItem to="/about/culture" $isActive={location.pathname === '/about/culture'}>
+            <DropdownItem to="/about#culture" $isActive={location.pathname === '/about' && location.hash === '#culture'}>
               企业文化
             </DropdownItem>
-            <DropdownItem to="/about/partners" $isActive={location.pathname === '/about/partners'}>
-              合作伙伴
+            <DropdownItem to="/about#future" $isActive={location.pathname === '/about' && location.hash === '#future'}>
+              未来展望
             </DropdownItem>
-            <DropdownItem to="/about/future" $isActive={location.pathname === '/about/future'}>
-              展望未来
+            <DropdownItem to="/about#partners" $isActive={location.pathname === '/about' && location.hash === '#partners'}>
+              合作伙伴
             </DropdownItem>
           </Dropdown>
         </NavItem>
 
         <NavItem>
-          <NavLink to="/contact" $isActive={location.pathname.startsWith('/contact')}>
+          <NavLink to="/contact" onClick={(e) => {
+            e.preventDefault();
+            handleNavClick('/contact');
+          }} $isActive={location.pathname === '/contact'}>
             联系我们
           </NavLink>
           <Dropdown>
-            
-            <DropdownItem to="/contact/social" $isActive={location.pathname === '/contact/social'}>
-              社媒联系
+            <DropdownItem to="/contact#business" $isActive={location.pathname === '/contact' && location.hash === '#business'}>
+              商务合作
             </DropdownItem>
-            <DropdownItem to="/contact/careers" $isActive={location.pathname === '/contact/careers'}>
+            <DropdownItem to="/contact#recruitment" $isActive={location.pathname === '/contact' && location.hash === '#recruitment'}>
               人才招聘
             </DropdownItem>
           </Dropdown>
         </NavItem>
 
         <NavItem>
-          <NavLink to="/news" $isActive={location.pathname.startsWith('/news')}>
+          <NavLink to="/news" onClick={(e) => {
+            e.preventDefault();
+            handleNavClick('/news');
+          }} $isActive={location.pathname === '/news'}>
             新闻资讯
           </NavLink>
           <Dropdown>
-            <DropdownItem to="/news/company" $isActive={location.pathname === '/news/company'}>
+            <DropdownItem to="/news#company" $isActive={location.pathname === '/news' && location.hash === '#company'}>
               公司动态
             </DropdownItem>
-            <DropdownItem to="/news/industry" $isActive={location.pathname === '/news/industry'}>
+            <DropdownItem to="/news#industry" $isActive={location.pathname === '/news' && location.hash === '#industry'}>
               行业资讯
             </DropdownItem>
-            <DropdownItem to="/news/insights" $isActive={location.pathname === '/news/insights'}>
+            <DropdownItem to="/news#insights" $isActive={location.pathname === '/news' && location.hash === '#insights'}>
               跨境洞察
             </DropdownItem>
           </Dropdown>
         </NavItem>
-      </NavLinks>
-      
-      <AdminSection>
-        <NavLink to="/admin" $isActive={location.pathname === '/admin'}>
-          业务后台
-        </NavLink>
-      </AdminSection>
+
+        <NavItem>
+          <AdminLink to="/admin" onClick={(e) => {
+            e.preventDefault();
+            handleNavClick('/admin');
+          }} $isActive={location.pathname === '/admin'}>
+            管理后台
+          </AdminLink>
+        </NavItem>
+      </NavList>
     </Nav>
   );
 };

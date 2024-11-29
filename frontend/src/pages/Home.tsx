@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import crossBoardImage from '../assets/images/cross-board.webp';
+import aboutHero from '../assets/images/about-hero.webp';
+import blfBackLove from '../assets/images/blf-back-love.webp';
+import serviceHero from '../assets/images/service-hero.webp';
 import { 
   Activity, 
   TrendingUp, 
@@ -37,6 +40,7 @@ import {
   CalendarRange
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet';
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -714,6 +718,53 @@ const Home: React.FC = () => {
 
   return (
     <HomeContainer>
+      <Helmet>
+        {/* 预加载当前页面关键图片 */}
+        <link rel="preload" href={crossBoardImage} as="image" type="image/webp" />
+        
+        {/* Service 页面资源预加载 */}
+        <link 
+          rel="prefetch" 
+          href={serviceHero}
+          as="image"
+          type="image/webp"
+        />
+        
+        {/* About 页面图片预加载 */}
+        <link 
+          rel="prefetch" 
+          href={aboutHero}
+          as="image" 
+          type="image/webp" 
+        />
+        <link 
+          rel="prefetch" 
+          href={blfBackLove}
+          as="image" 
+          type="image/webp" 
+        />
+        
+        {/* 预加载主要 JS 和 CSS */}
+        <link rel="prefetch" href="/static/js/main.6a7632d9.js" as="script" />
+        <link rel="preload" href="/static/css/main.39178522.css" as="style" />
+        
+        {/* DNS 预连接 */}
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://via.placeholder.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* 预加载字体 */}
+        <link
+          rel="prefetch"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+          as="style"
+        />
+        
+        {/* 为当前页面添加 meta 描述 */}
+        <title>彼励扶 - 跨境电商解决方案</title>
+        <meta name="description" content="彼励扶致力于为跨境电商企业提供一站式智能营销解决方案，通过AI技术赋能，助力企业实现全球化业务增长。" />
+      </Helmet>
       <HeroSection>
         <div>
           <Content>
@@ -732,6 +783,7 @@ const Home: React.FC = () => {
       <ServicesSectionWrapper>
         <ServicesSection>
           <SectionTitle>跨境优服</SectionTitle>
+
           <ServicesGrid>
             <ServiceCard $colorIndex={0}>
               <IconContainer>
@@ -765,13 +817,9 @@ const Home: React.FC = () => {
 
           <OperationServiceWrapper>
             <SubSectionTitle>
-              跨境运营面临诸多方面竞争，<br />
-              我们拥有全行业顶尖运营人才，优秀的运营团队，全流程数据管理制度,
-              <br />
-              专注运营流程，为客户提供全面的跨境电商解决方案。
-              <br />
-              彼励扶将成为您产品出海品牌运营的终极合作伙伴。
-
+            彼励扶拥有全行业顶尖运营人才，优秀的运营团队，全流程数据管理制度,<br />
+            我们专注运营流程，为客户提供全面的跨境电商解决方案。<br/>
+            
             </SubSectionTitle>
             <OperationDescription
               initial={{ opacity: 0, y: 20 }}

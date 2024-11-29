@@ -3,6 +3,8 @@ import { ArrowRight, Zap, Shield, Globe, Wrench, Brain, Search, Share2, FileText
 import styles from './Service.module.css';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Helmet } from 'react-helmet';
+import serviceHero from '../../assets/images/service-hero.webp';
 
 // Hook for window resize
 const useWindowSize = () => {
@@ -130,24 +132,24 @@ const AIEmpowerment: React.FC = () => {
         transition={{ duration: 0.6, delay: 0.4 }}
       >
         <div className={styles['stat-item']}>
-          <span className={styles['stat-number']}>2,019</span>
-          <span className={styles['stat-label']}>Studio set up</span>
-          <span className={styles['stat-label-cn']}>工作室成立</span>
+          <span className={styles['stat-number']}>1,000+</span>
+          <span className={styles['stat-label']}>SD & MidJourney</span>
+          <span className={styles['stat-label-cn']}>图片生成</span>
         </div>
         <div className={styles['stat-item']}>
-          <span className={styles['stat-number']}>100+</span>
-          <span className={styles['stat-label']}>Product service</span>
-          <span className={styles['stat-label-cn']}>产品服务</span>
+          <span className={styles['stat-number']}>4</span>
+          <span className={styles['stat-label']}>Local LLM</span>
+          <span className={styles['stat-label-cn']}>大模型部署</span>
         </div>
         <div className={styles['stat-item']}>
-          <span className={styles['stat-number']}>30+</span>
-          <span className={styles['stat-label']}>Cooperative business</span>
-          <span className={styles['stat-label-cn']}>合作商家</span>
+          <span className={styles['stat-number']}>6+</span>
+          <span className={styles['stat-label']}>Text eMail Service</span>
+          <span className={styles['stat-label-cn']}>文案 客服模型服务店铺</span>
         </div>
         <div className={styles['stat-item']}>
-          <span className={styles['stat-number']}>999+</span>
-          <span className={styles['stat-label']}>Word-of-mouth praise</span>
-          <span className={styles['stat-label-cn']}>口碑好评</span>
+          <span className={styles['stat-number']}>206 GB</span>
+          <span className={styles['stat-label']}>Sharepoint Docs Size</span>
+          <span className={styles['stat-label-cn']}>Sharepoint 项目文档</span>
         </div>
       </motion.div>
 
@@ -482,12 +484,36 @@ const ServicePage: React.FC = () => {
 
   return (
     <div className={styles.container}>
+      <Helmet>
+        {/* 预加载当前页面背景图片 */}
+        <link 
+          rel="preload" 
+          href={serviceHero}
+          as="image" 
+          type="image/webp" 
+        />
+        
+        {/* DNS 预连接 */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* 预加载字体 */}
+        <link
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+          as="style"
+        />
+        
+        {/* 为当前页面添加 meta 描述 */}
+        <title>服务 - 彼励扶跨境电商解决方案</title>
+        <meta name="description" content="彼励扶提供全方位的跨境电商服务，包括市场洞察、项目方案、产品出海和品牌出海等服务，助力企业实现全球化业务增长。" />
+      </Helmet>
       {/* Hero Section */}
       <div className={styles['hero-section']} ref={heroRef}>
         <div 
           className={styles['hero-background']}
           style={{
-            backgroundImage: 'url("https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80")',
+            backgroundImage: `url(${serviceHero})`,
             filter: 'brightness(0.75)'
           }}
         />
@@ -509,53 +535,55 @@ const ServicePage: React.FC = () => {
       </div>
 
       {/* Services Grid */}
-      <div className={styles['services-grid']}>
-        <motion.h2 
-          className={styles['services-heading']}
-          style={{ 
-            scale: servicesTitleScale,
-            transformOrigin: 'center center'
-          }}
-        >
-          跨境全生态服务
-        </motion.h2>
-        <p className={styles['services-description']}>
-          为您提供跨境全生态服务, 助力创造跨境品牌价值
-        </p>
-
-        <div className={styles['services-cards']}>
-          {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              title={service.title}
-              description={service.description}
-              icon={service.icon}
-              index={index}
-            />
-          ))}
-        </div>
-
-        {/* Contact Section */}
-        <div className={styles['contact-section']}>
-          <motion.h4 
-            className={styles['contact-title']}
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ 
-              duration: 1.2,
-              ease: "easeOut"
+      <div id="ecosystem">
+        <div className={styles['services-grid']}>
+          <motion.h2 
+            className={styles['services-heading']}
+            style={{ 
+              scale: servicesTitleScale,
+              transformOrigin: 'center center'
             }}
           >
-            杨帆出海，未来无限
-          </motion.h4>
-          <button className={styles['contact-button']}>
-            联系合作
-          </button>
+            跨境全生态服务
+          </motion.h2>
+          <p className={styles['services-description']}>
+            为您提供跨境全生态服务, 助力创造跨境品牌价值
+          </p>
+
+          <div className={styles['services-cards']}>
+            {services.map((service, index) => (
+              <ServiceCard
+                key={index}
+                title={service.title}
+                description={service.description}
+                icon={service.icon}
+                index={index}
+              />
+            ))}
+          </div>
+
+          {/* Contact Section */}
+          <div className={styles['contact-section']}>
+            <motion.h4 
+              className={styles['contact-title']}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ 
+                duration: 1.2,
+                ease: "easeOut"
+              }}
+            >
+              杨帆出海，未来无限
+            </motion.h4>
+            <button className={styles['contact-button']}>
+              联系合作
+            </button>
+          </div>
         </div>
       </div>
 
-          {/* Primary Services Section */}
+      {/* Primary Services Section */}
       <div className={styles['primary-services']}>
         <h2 className={styles['primary-services-title']}>
           主营业务
@@ -619,31 +647,16 @@ const ServicePage: React.FC = () => {
         </div>
       </div>
 
-      {/* Core Technologies Section */}
-      <div id="core-tech" className={styles['core-technologies-section']}>
-        <div className={styles['core-technologies-title']}>
-          <h2 className={styles['core-technologies-heading']}>核心技术</h2>
-          <p className={styles['core-technologies-description']}>AI 赋能跨境电商全链路</p>
-        </div>
-
-        <div className={styles['solar-system']}>
-          {/* Connecting Ring */}
-          <div className={styles['connecting-ring']} />
-
-          {/* Central AI Sun */}
-          <motion.div 
-            className={styles['ai-sun']}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-          >
-            <BrainCircuitIcon className={styles['tech-icon']} />
-          </motion.div>
-
-          {/* Tech Planets */}
+      {/* Core Technology Section */}
+      <div id="core-tech" className={styles['core-tech-section']}>
+        <h2 className={styles['core-tech-title']}>核心技术</h2>
+        <p className={styles['core-tech-description']}>
+          我们的核心技术体系
+        </p>
+        
+        <div className={styles['tech-planets']}>
           {technologies.map((tech, index) => {
             const position = calculatePosition(index, technologies.length);
-            
             return (
               <motion.div
                 key={tech.name}
