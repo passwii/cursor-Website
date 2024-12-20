@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import NavigationBar from './components/NavigationBar';
-import Footer from './components/Footer';
+import NavigationBar from './components/NavigationBar/NavigationBar';
+import Footer from './components/Footer/Footer';
 import Home from './pages/Home';
 import AdminPage from './pages/admin/Admin';
 import ServicePage from './pages/service/Service';
@@ -14,11 +14,19 @@ const AppContainer = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  margin: 0;
+  padding: 0;
 `;
 
 const Content = styled.main`
   flex: 1;
-  padding-top: 70px; // Height of the navigation bar
+  padding-top: 65px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  > * {
+    margin: 0;
+  }
 `;
 
 // Service pages

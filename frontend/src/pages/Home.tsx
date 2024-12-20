@@ -64,7 +64,7 @@ const HeroSection = styled(Section)`
   position: relative;
   background: linear-gradient(to right, #f1f8fe, #ddeefb, #c7e4fc);
   width: 100vw;
-  height: calc(100vh - 70px); /* Accounting for navigation height */
+  height: calc(100vh - 80px); /* Accounting for navigation height */
   max-width: 100%;
   margin: 0;
   padding: 0;
