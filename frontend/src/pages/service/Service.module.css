@@ -388,18 +388,29 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   transform-origin: center center;
   letter-spacing: -0.02em;
+  text-align: center;
+  white-space: nowrap;
 }
 
 .hero-title span {
+  font-size: var(--hero-title-size, 128px);
+  line-height: 1.2;
   display: block;
+  margin-bottom: 0.3em;
+  white-space: nowrap;
 }
 
 .hero-title p {
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  margin-top: 1.5rem;
-  font-weight: 500;
-  opacity: 0.9;
-  letter-spacing: 0;
+  font-size: var(--hero-subtitle-size, 32px);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+  .hero-title span,
+  .hero-title p {
+    white-space: normal;
+  }
 }
 
 @media (max-width: 768px) {

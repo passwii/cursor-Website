@@ -1,0 +1,86 @@
+.heroSection {
+  position: relative;
+  background: linear-gradient(to right, #f1f8fe, #ddeefb, #c7e4fc);
+  width: 100vw;
+  height: calc(100vh - 80px);
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.content {
+  flex: 1;
+  padding-left: 40px;
+}
+
+.title {
+  font-size: 3.5rem;
+  color: #1a237e;
+  margin-bottom: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.description {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  color: #424242;
+  margin-bottom: 40px;
+  max-width: 600px;
+}
+
+.imageContainer {
+  flex: 1.4;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 40px;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  max-width: 100%;
+}
+
+@media (max-width: 968px) {
+  .container {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+
+  .content {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .title {
+    font-size: 2.8rem;
+  }
+
+  .description {
+    font-size: 1.2rem;
+  }
+
+  .imageContainer {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+} 

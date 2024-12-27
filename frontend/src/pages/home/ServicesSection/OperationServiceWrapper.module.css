@@ -1,0 +1,68 @@
+.operationServiceWrapper {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background-color: #f8fafc;
+    padding: 20px 0 30px;
+    overflow: hidden;
+}
+
+.subSectionTitle {
+    text-align: center;
+    font-size: 20px;
+    margin: 20px 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.operationDescription {
+    text-align: center;
+    color: #666;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.scrollContainer {
+    width: 100%;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.serviceItemsTrack {
+    display: flex;
+    width: fit-content;
+}
+
+.serviceItemsRow {
+    display: flex;
+    gap: 24px;
+    padding: 0 12px;
+}
+
+.serviceItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 40px;
+    background-color: var(--bgColor);
+    color: white;
+    border-radius: 12px;
+    white-space: nowrap;
+    min-width: 200px;
+}
+
+.serviceItem svg {
+    width: 24px;
+    height: 24px;
+}
+
+.serviceItem span {
+    font-size: 16px;
+    font-weight: 500;
+}

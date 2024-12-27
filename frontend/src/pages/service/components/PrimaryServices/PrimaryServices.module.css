@@ -1,0 +1,245 @@
+.primary-services {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: #f5f7fa;
+  position: relative;
+  overflow: hidden;
+}
+
+.primary-services::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 0, 0, 0.1) 50%, 
+    transparent 100%
+  );
+}
+
+.primary-services::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(0, 0, 0, 0.1) 50%, 
+    transparent 100%
+  );
+}
+
+.primary-services-title {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 3rem;
+  position: relative;
+  display: inline-block;
+}
+
+.primary-services-title::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    #3498db 50%, 
+    transparent 100%
+  );
+}
+
+.primary-services-title span {
+  display: block;
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin-top: 0.3rem;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.services-dock-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-dock {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1.5rem auto;
+  width: 100%;
+}
+
+.dock-item {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 260px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.dock-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(52, 152, 219, 0.05) 0%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dock-item:hover::before {
+  opacity: 1;
+}
+
+.dock-item.active {
+  border-color: rgba(52, 152, 219, 0.5);
+  box-shadow: 
+    0 15px 20px -5px rgba(0, 0, 0, 0.1),
+    0 8px 8px -5px rgba(0, 0, 0, 0.04);
+  transform: scale(1.05) translateY(-5px);
+}
+
+.dock-title {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+.dock-subtitles {
+  color: #7f8c8d;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.service-details-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 2rem auto 0;
+  padding: 0 2rem;
+}
+
+.dock-details-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+}
+
+.dock-detail-item {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 480px;
+  overflow: hidden;
+}
+
+.dock-detail-item h4 {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 600;
+  padding: 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.detail-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  flex-grow: 1;
+  padding: 1.25rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: all 0.2s ease;
+}
+
+.detail-item:hover {
+  color: #3498db;
+  transform: translateX(4px);
+}
+
+.detail-bullet {
+  color: #3498db;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+@media (max-width: 1200px) {
+  .dock-details-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .dock-detail-item {
+    min-height: 440px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-dock {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .dock-item {
+    width: 100%;
+    max-width: 300px;
+    padding: 1.25rem;
+  }
+  
+  .dock-item.active {
+    transform: scale(1.02);
+  }
+
+  .dock-details-list {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .dock-detail-item {
+    min-height: auto;
+  }
+
+  .primary-services-title {
+    font-size: 2rem;
+  }
+} 

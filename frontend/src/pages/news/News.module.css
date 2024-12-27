@@ -1,6 +1,6 @@
 .container {
   min-height: 100vh;
-  padding-top: var(--nav-height);
+  /* padding-top: var(--nav-height); */
   background-color: #f8f9fa;
 }
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Users, Code, TrendingUp } from 'lucide-react';
 import styles from './Contact.module.css';
+import contactBg from '../../assets/images/contact-handshake.webp';
 
 interface FormData {
   name: string;
@@ -61,69 +62,91 @@ const Contact: React.FC = () => {
     <div className={styles.container}>
       {/* Business Cooperation Section */}
       <section className={styles.section}>
-        <div className={styles['business-section']}>
-          <motion.div 
-            className={styles['section-title']}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2>商务合作</h2>
-            <p>期待与您建立长期稳定的合作关系</p>
-          </motion.div>
+        <div 
+          className={styles['business-section']}
+          style={{
+            minHeight: '100vh',
+            backgroundImage: `url(${contactBg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed',
+            position: 'relative'
+          }}
+        >
+          <div 
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.6)',
+            }}
+          />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <motion.div 
+              className={styles['section-title']}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2>商务合作</h2>
+              <p>期待与您建立长期稳定的合作关系</p>
+            </motion.div>
 
-          <motion.form 
-            className={styles['contact-form']}
-            onSubmit={handleSubmit}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <div className={styles['form-group']}>
-              <label htmlFor="name">姓名</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-                placeholder="请输入您的姓名"
-              />
-            </div>
+            <motion.form 
+              className={styles['contact-form']}
+              onSubmit={handleSubmit}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className={styles['form-group']}>
+                <label htmlFor="name">姓名</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="请输入您的姓名"
+                />
+              </div>
 
-            <div className={styles['form-group']}>
-              <label htmlFor="phone">联系电话</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                required
-                placeholder="请输入您的联系电话"
-              />
-            </div>
+              <div className={styles['form-group']}>
+                <label htmlFor="phone">联系电话</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="请输入您的联系电话"
+                />
+              </div>
 
-            <div className={styles['form-group']}>
-              <label htmlFor="message">合作留言</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                required
-                placeholder="请输入您的合作意向"
-                rows={5}
-              />
-            </div>
+              <div className={styles['form-group']}>
+                <label htmlFor="message">合作留言</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="请输入您的合作意向"
+                  rows={5}
+                />
+              </div>
 
-            <button type="submit" className={styles['submit-button']}>
-              提交
-            </button>
-          </motion.form>
+              <button type="submit" className={styles['submit-button']}>
+                提交
+              </button>
+            </motion.form>
+          </div>
         </div>
       </section>
 

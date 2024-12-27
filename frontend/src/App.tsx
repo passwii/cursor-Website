@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import Footer from './components/Footer/Footer';
-import Home from './pages/Home';
+import Home from './pages/home/Home';
 import AdminPage from './pages/admin/Admin';
 import ServicePage from './pages/service/Service';
-import AboutPage from './pages/About';
+import AboutPage from './pages/about/About';
 import Contact from './pages/contact/Contact';
 import News from './pages/news/News';
 

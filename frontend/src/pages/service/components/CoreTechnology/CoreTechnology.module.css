@@ -1,0 +1,179 @@
+.core-tech-section {
+  text-align: center;
+  padding: 6rem 0 1rem;
+  background: #0052CC;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+}
+
+.core-tech-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+  margin-bottom: 3rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.tech-planets {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+  padding: 3rem;
+  height: auto;
+}
+
+.tech-planet {
+  position: static;
+  width: calc(25% - 3rem);
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  transform: none !important;
+}
+
+.planet-content {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.planet-content:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 0 30px rgba(255, 255, 255, 0.1),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.tech-content {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 1rem;
+  backdrop-filter: blur(5px);
+}
+
+.tech-planet:hover .tech-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tech-title {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.tech-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 210px;
+  margin: 0 auto;
+}
+
+.tech-circle:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 0 30px rgba(255, 255, 255, 0.15),
+    inset 0 0 30px rgba(255, 255, 255, 0.15);
+}
+
+.tech-icon {
+  width: 40px;
+  height: 40px;
+  color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.4));
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.planet-content:hover .tech-icon {
+  transform: scale(1.1);
+  color: #ffffff;
+  filter: 
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.6))
+    drop-shadow(0 0 20px rgba(255, 255, 255, 0.4))
+    drop-shadow(0 0 30px rgba(255, 255, 255, 0.2));
+}
+
+@media (max-width: 1400px) {
+  .tech-planet {
+    width: calc(25% - 2rem);
+    min-width: 260px;
+  }
+  
+  .planet-content {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .tech-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .tech-description {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-planets {
+    padding: 2rem 1rem;
+    gap: 2rem;
+  }
+
+  .tech-planet {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .planet-content {
+    width: 140px;
+    height: 140px;
+  }
+
+  .tech-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .tech-info {
+    width: 100%;
+  }
+
+  .tech-description {
+    max-width: 240px;
+  }
+
+  .core-tech-section {
+    padding: 4rem 0 1rem;
+  }
+} 
