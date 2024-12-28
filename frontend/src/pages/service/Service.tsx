@@ -12,6 +12,7 @@ import ServiceCard from './components/ServiceCard';
 import PrimaryServices from './components/PrimaryServices';
 import CoreTechnology from './components/CoreTechnology';
 import AIEmpowerment from './components/AIEmpowerment';
+import ServiceCase from './components/ServiceCase';
 
 const ServicePage: React.FC = () => {
   const { scrollY } = useScroll();
@@ -86,7 +87,7 @@ const ServicePage: React.FC = () => {
     },
     {
       title: "产品出海",
-      description: "通过市场数据分析，制定合理的定价策略，以实现利润最大化。确保产品符合目标市场的法律法规、安全标准等，避免侵权和违规风险。优化供应链，选择可靠的供应商，控制成本，保证产品质量和供货稳定。制定高效的物流方案，选择合适的物流服务商，降低物流成本，提升配送时效。",
+      description: "通过市场数据分析，制定合理的定价策略，以实现利润最大化。确保产品符合目标市场的��律法规、安全标准等，避免侵权和违规风险。优化供应链，选择可靠的供应商，控制成本，保证产品质量和供货稳定。制定高效的物流方案，选择合适的物流服务商，降低物流成本，提升配送时效。",
       icon: <Zap className={styles['icon']} />
     },
     {
@@ -152,7 +153,7 @@ const ServicePage: React.FC = () => {
               transformOrigin: 'center center'
             }}
           >
-            跨境全生态服务
+            跨境全生态
           </motion.h2>
           <p className={styles['services-description']}>
             为您提供跨境全生态服务, 助力创造跨境品牌价值
@@ -192,13 +193,23 @@ const ServicePage: React.FC = () => {
       </div>
 
       {/* Primary Services Section */}
-      <PrimaryServices />
+      <section id="ecosystem">
+        <PrimaryServices />
+      </section>
 
       {/* Core Technology Section */}
-      <CoreTechnology />
+      <section id="core-tech">
+        <CoreTechnology />
+      </section>
 
       {/* AI Empowerment Section */}
-      <AIEmpowerment />
+      <section id="ai-empower">
+        <AIEmpowerment />
+      </section>
+
+      <section id="service-case">
+        <ServiceCase />
+      </section>
     </div>
   );
 };

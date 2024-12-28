@@ -1,7 +1,7 @@
 .primary-services {
   padding: 4rem 2rem;
   text-align: center;
-  background: #f5f7fa;
+  background: #f1f2f4;
   position: relative;
   overflow: hidden;
 }
@@ -39,31 +39,7 @@
   color: #2c3e50;
   margin-bottom: 3rem;
   position: relative;
-  display: inline-block;
-}
-
-.primary-services-title::after {
-  content: '';
-  position: absolute;
-  bottom: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 2px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    #3498db 50%, 
-    transparent 100%
-  );
-}
-
-.primary-services-title span {
-  display: block;
-  font-size: 1rem;
-  color: #7f8c8d;
-  margin-top: 0.3rem;
-  font-weight: 300;
-  letter-spacing: 1px;
+  font-weight: bold;
 }
 
 .services-dock-container {
@@ -81,18 +57,23 @@
   gap: 1.5rem;
   margin: 1.5rem auto;
   width: 100%;
+  max-width: 1680px;
 }
 
 .dock-item {
   background: white;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 12px;
-  padding: 1.5rem;
-  width: 260px;
+  padding: 1rem 2rem;
+  width: 320px;
+  height: 80px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.25s ease-out;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .dock-item::before {
@@ -108,7 +89,7 @@
     transparent 100%
   );
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease-in;
 }
 
 .dock-item:hover::before {
@@ -116,17 +97,22 @@
 }
 
 .dock-item.active {
-  border-color: rgba(52, 152, 219, 0.5);
+  border-color: #3498db;
+  background: rgba(52, 152, 219, 0.02);
   box-shadow: 
-    0 15px 20px -5px rgba(0, 0, 0, 0.1),
-    0 8px 8px -5px rgba(0, 0, 0, 0.04);
-  transform: scale(1.05) translateY(-5px);
+    0 12px 24px -5px rgba(52, 152, 219, 0.12),
+    0 8px 12px -5px rgba(52, 152, 219, 0.08);
+  transform: translateY(-2px);
+}
+
+.dock-item.active .dock-title {
+  color: #3498db;
 }
 
 .dock-title {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #2c3e50;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.4rem;
   font-weight: 600;
   position: relative;
   z-index: 1;
@@ -134,8 +120,8 @@
 
 .dock-subtitles {
   color: #7f8c8d;
-  line-height: 1.5;
-  font-size: 0.95rem;
+  line-height: 1.4;
+  font-size: 0.9rem;
   margin: 0;
 }
 
@@ -150,17 +136,20 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2.5rem;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .dock-detail-item {
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  min-height: 480px;
+  min-height: 280px;
   overflow: hidden;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+  text-align: center;
 }
 
 .dock-detail-item h4 {
@@ -170,24 +159,72 @@
   font-weight: 600;
   padding: 1.25rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .detail-items {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 1rem;
   flex-grow: 1;
   padding: 1.25rem;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  counter-reset: item;
+  padding-left: 2rem;
 }
 
 .detail-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.6rem;
+  justify-content: flex-start;
+  gap: 1rem;
   color: #64748b;
   font-size: 0.95rem;
   line-height: 1.5;
-  transition: all 0.2s ease;
+  transition: all 0.2s ease-out;
+  width: 100%;
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.detail-item span {
+  display: block;
+  width: calc(100% - 1rem);
+  text-align: justify;
+  text-justify: inter-word;
+  white-space: pre-wrap;
+  word-break: break-word;
+  min-height: 1.5em;
+  padding-right: 1rem;
+  padding-top: 0.15rem;
+}
+
+.detail-item span::after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+  height: 0;
+}
+
+.detail-item::before {
+  content: counter(item);
+  counter-increment: item;
+  position: absolute;
+  left: 0.5rem;
+  top: 0.15rem;
+  color: #3498db;
+  font-size: 0.8rem;
+  font-weight: 500;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: rgba(52, 152, 219, 0.1);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-out;
 }
 
 .detail-item:hover {
@@ -195,12 +232,9 @@
   transform: translateX(4px);
 }
 
-.detail-bullet {
-  color: #3498db;
-  font-size: 1.1rem;
-  line-height: 1.5;
-  flex-shrink: 0;
-  margin-top: 2px;
+.detail-item:hover::before {
+  background: #3498db;
+  color: white;
 }
 
 @media (max-width: 1200px) {
@@ -210,7 +244,7 @@
   }
 
   .dock-detail-item {
-    min-height: 440px;
+    min-height: 340px;
   }
 }
 
@@ -222,12 +256,16 @@
   
   .dock-item {
     width: 100%;
-    max-width: 300px;
-    padding: 1.25rem;
+    max-width: 400px;
+    height: 70px;
+    padding: 0.8rem 1.5rem;
   }
   
   .dock-item.active {
-    transform: scale(1.02);
+    transform: translateY(-1px);
+    box-shadow: 
+      0 8px 16px -5px rgba(52, 152, 219, 0.1),
+      0 4px 8px -5px rgba(52, 152, 219, 0.06);
   }
 
   .dock-details-list {
@@ -241,5 +279,19 @@
 
   .primary-services-title {
     font-size: 2rem;
+  }
+
+  .detail-items {
+    width: 90%;
+    padding-left: 1rem;
+  }
+
+  .detail-item {
+    padding-left: 2rem;
+  }
+
+  .detail-item span {
+    width: calc(100% - 0.5rem);
+    padding-right: 0.5rem;
   }
 } 

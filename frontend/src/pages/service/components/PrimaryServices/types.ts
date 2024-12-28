@@ -4,6 +4,7 @@ export interface ServiceDetail {
 }
 
 export interface PrimaryService {
+  id: string;
   title: string;
   subtitles: string;
   details: ServiceDetail[];

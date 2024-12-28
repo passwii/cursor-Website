@@ -1,0 +1,441 @@
+.container {
+  width: 100%;
+}
+
+/* Banner Styles */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 360px;
+  overflow: hidden;
+}
+
+.bannerImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.bannerOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.bannerContent {
+  text-align: center;
+}
+
+.bannerTitle {
+  color: white;
+  font-size: 3.5rem;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 16px;
+}
+
+.bannerSubtitle {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  opacity: 0.9;
+}
+
+/* Categories Section */
+.categoriesSection {
+  max-width: 1200px;
+  margin: -60px auto 0;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.categories {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  margin-bottom: 48px;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 8px;
+}
+
+/* 隐藏滚动条但保留功能 */
+.categories::-webkit-scrollbar {
+  display: none;
+}
+
+.categoryButton {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--bg-primary);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 16px;
+}
+
+.categoryIcon {
+  width: 32px;
+  height: 32px;
+  stroke-width: 1.5;
+  transition: all 0.3s ease;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-sizing: content-box;
+}
+
+.categoryButton span {
+  margin-top: 12px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* 悬浮效果 */
+.categoryButton:hover {
+  background: var(--bg-secondary);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.categoryButton:hover .categoryIcon {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+/* 激活状态 */
+.categoryButton.active {
+  background: var(--bg-secondary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.categoryButton.active .categoryIcon {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  border-width: 3px;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .categories {
+    justify-content: flex-start;
+    padding: 0 16px;
+    padding-bottom: 8px;
+  }
+
+  .categoryButton {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .categories {
+    gap: 12px;
+    padding: 0 12px;
+    padding-bottom: 8px;
+  }
+
+  .categoryButton {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+/* Cases Grid */
+.casesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 24px 80px;
+}
+
+.caseCard {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+/* 删除 hover 时的位移效果 */
+.caseCard:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.caseImage {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+
+.caseImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.category {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(4px);
+}
+
+.caseContent {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 240px);
+}
+
+.caseContent h3 {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.caseContent p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.metric {
+  text-align: center;
+  padding: 12px 16px;
+  background: var(--bg-primary);
+  border-radius: 8px;
+  min-width: 100px;
+}
+
+.metricValue {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+
+.metricLabel {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+/* 响应式调整 */
+@media (max-width: 1200px) {
+  .casesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .casesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0 16px 60px;
+  }
+
+  .caseImage {
+    height: 200px;
+  }
+
+  .caseContent {
+    height: calc(100% - 200px);
+    padding: 20px;
+  }
+
+  .caseContent h3 {
+    font-size: 1.2rem;
+  }
+
+  .caseContent p {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .casesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .caseImage {
+    height: 180px;
+  }
+
+  .caseContent {
+    height: calc(100% - 180px);
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: 280px;
+  }
+
+  .bannerTitle {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+  }
+
+  .bannerSubtitle {
+    font-size: 1.1rem;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .categories {
+    gap: 16px;
+  }
+
+  .categoryButton {
+    width: 100px;
+    height: 100px;
+    padding: 12px;
+  }
+
+  .categoryIcon {
+    width: 28px;
+    height: 28px;
+    padding: 6px;
+  }
+
+  .categoryButton span {
+    margin-top: 8px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+    height: 240px;
+  }
+
+  .bannerTitle {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+
+  .bannerSubtitle {
+    font-size: 1rem;
+  }
+
+  .categoriesSection {
+    margin-top: -40px;
+  }
+
+  .categories {
+    gap: 12px;
+  }
+
+  .categoryButton {
+    width: 90px;
+    height: 90px;
+    padding: 10px;
+  }
+
+  .categoryIcon {
+    width: 24px;
+    height: 24px;
+    padding: 5px;
+  }
+
+  .categoryButton span {
+    margin-top: 6px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .metric {
+    padding: 10px 12px;
+    min-width: 80px;
+  }
+
+  .metricValue {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .metrics {
+    gap: 12px;
+  }
+
+  .metric {
+    padding: 8px 10px;
+    min-width: 70px;
+  }
+
+  .metricValue {
+    font-size: 1.1rem;
+  }
+} 

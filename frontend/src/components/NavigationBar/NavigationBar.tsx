@@ -147,15 +147,54 @@ const NavigationBar: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleNavClick = (to: string) => {
-    // 如果是当前页面，滚动到顶部
-    if (location.pathname === to) {
+  const handleNavClick = (to: string, hash?: string) => {
+    const isSamePage = location.pathname === to;
+    const navHeight = 80; // 导航栏高度
+    const additionalOffset = -20; // 增加额外偏移量，确保内容不被导航栏遮挡
+    const totalOffset = navHeight + additionalOffset;
+    
+    if (isSamePage && !hash) {
+      // 如果是当前页面且没有hash，只滚动到顶部
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else if (isSamePage && hash) {
+      // 如果是当前页面且有hash，滚动到对应元素
+      const element = document.querySelector(hash);
+      if (element) {
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
     } else {
-      // 导航到新页面并滚动到顶部
+      // 导航到新页面
       navigate(to);
-      window.scrollTo({ top: 0 });
+      if (hash) {
+        // 等待页面加载完成后滚动到指定位置
+        setTimeout(() => {
+          const element = document.querySelector(hash);
+          if (element) {
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - totalOffset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 100);
+      } else {
+        window.scrollTo({ top: 0 });
+      }
     }
+  };
+
+  // 修改 DropdownItem 的点击处理
+  const handleDropdownClick = (e: React.MouseEvent<HTMLAnchorElement>, to: string, hash: string) => {
+    e.preventDefault();
+    handleNavClick(to, hash);
   };
 
   return (
@@ -185,21 +224,44 @@ const NavigationBar: React.FC = () => {
         </NavItem>
 
         <NavItem>
-          <NavLink to="/service" onClick={(e) => {
-            e.preventDefault();
-            handleNavClick('/service');
-          }} $isActive={location.pathname === '/service'}>
+          <NavLink 
+            to="/service" 
+            onClick={(e) => {
+              e.preventDefault();
+              handleNavClick('/service');
+            }} 
+            $isActive={location.pathname === '/service'}
+          >
             服务体系
           </NavLink>
           <Dropdown>
-            <DropdownItem to="/service#ecosystem" $isActive={location.pathname === '/service' && location.hash === '#ecosystem'}>
+            <DropdownItem 
+              to="/service#ecosystem" 
+              onClick={(e) => handleDropdownClick(e, '/service', '#ecosystem')}
+              $isActive={location.pathname === '/service' && location.hash === '#ecosystem'}
+            >
               跨境全生态
             </DropdownItem>
-            <DropdownItem to="/service#core-tech" $isActive={location.pathname === '/service' && location.hash === '#core-tech'}>
+            <DropdownItem 
+              to="/service#core-tech" 
+              onClick={(e) => handleDropdownClick(e, '/service', '#core-tech')}
+              $isActive={location.pathname === '/service' && location.hash === '#core-tech'}
+            >
               核心技术
             </DropdownItem>
-            <DropdownItem to="/service#ai-empower" $isActive={location.pathname === '/service' && location.hash === '#ai-empower'}>
+            <DropdownItem 
+              to="/service#ai-empower" 
+              onClick={(e) => handleDropdownClick(e, '/service', '#ai-empower')}
+              $isActive={location.pathname === '/service' && location.hash === '#ai-empower'}
+            >
               AI赋能
+            </DropdownItem>
+            <DropdownItem 
+              to="/service#service-case" 
+              onClick={(e) => handleDropdownClick(e, '/service', '#service-case')}
+              $isActive={location.pathname === '/service' && location.hash === '#service-case'}
+            >
+              服务案例
             </DropdownItem>
           </Dropdown>
         </NavItem>
@@ -212,19 +274,46 @@ const NavigationBar: React.FC = () => {
             关于我们
           </NavLink>
           <Dropdown>
-            <DropdownItem to="/about#company" $isActive={location.pathname === '/about' && location.hash === '#company'}>
+            <DropdownItem 
+              to="/about#company" 
+              onClick={(e) => handleDropdownClick(e, '/about', '#company')}
+              $isActive={location.pathname === '/about' && location.hash === '#company'}
+            >
               公司简介
             </DropdownItem>
-            <DropdownItem to="/about#culture" $isActive={location.pathname === '/about' && location.hash === '#culture'}>
+            <DropdownItem 
+              to="/about#culture" 
+              onClick={(e) => handleDropdownClick(e, '/about', '#culture')}
+              $isActive={location.pathname === '/about' && location.hash === '#culture'}
+            >
               企业文化
             </DropdownItem>
-            <DropdownItem to="/about#future" $isActive={location.pathname === '/about' && location.hash === '#future'}>
+            <DropdownItem 
+              to="/about#team" 
+              onClick={(e) => handleDropdownClick(e, '/about', '#team')}
+              $isActive={location.pathname === '/about' && location.hash === '#team'}
+            >
+              团队风采
+            </DropdownItem>
+            <DropdownItem 
+              to="/about#future" 
+              onClick={(e) => handleDropdownClick(e, '/about', '#future')}
+              $isActive={location.pathname === '/about' && location.hash === '#future'}
+            >
               未来展望
             </DropdownItem>
-            <DropdownItem to="/about#partners" $isActive={location.pathname === '/about' && location.hash === '#partners'}>
+            <DropdownItem 
+              to="/about#partners" 
+              onClick={(e) => handleDropdownClick(e, '/about', '#partners')}
+              $isActive={location.pathname === '/about' && location.hash === '#partners'}
+            >
               合作伙伴
             </DropdownItem>
-            <DropdownItem to="/about#job" $isActive={location.pathname === '/about' && location.hash === '#job'}>
+            <DropdownItem 
+              to="/about#job" 
+              onClick={(e) => handleDropdownClick(e, '/about', '#job')}
+              $isActive={location.pathname === '/about' && location.hash === '#job'}
+            >
               人才招聘
             </DropdownItem>
           </Dropdown>
@@ -238,10 +327,18 @@ const NavigationBar: React.FC = () => {
             联系我们
           </NavLink>
           <Dropdown>
-            <DropdownItem to="/contact#business" $isActive={location.pathname === '/contact' && location.hash === '#business'}>
+            <DropdownItem 
+              to="/contact#business" 
+              onClick={(e) => handleDropdownClick(e, '/contact', '#business')}
+              $isActive={location.pathname === '/contact' && location.hash === '#business'}
+            >
               商务合作
             </DropdownItem>
-            <DropdownItem to="/contact#recruitment" $isActive={location.pathname === '/contact' && location.hash === '#recruitment'}>
+            <DropdownItem 
+              to="/contact#recruitment" 
+              onClick={(e) => handleDropdownClick(e, '/contact', '#recruitment')}
+              $isActive={location.pathname === '/contact' && location.hash === '#recruitment'}
+            >
               人才招聘
             </DropdownItem>
           </Dropdown>
@@ -255,13 +352,25 @@ const NavigationBar: React.FC = () => {
             新闻资讯
           </NavLink>
           <Dropdown>
-            <DropdownItem to="/news#company" $isActive={location.pathname === '/news' && location.hash === '#company'}>
+            <DropdownItem 
+              to="/news#company" 
+              onClick={(e) => handleDropdownClick(e, '/news', '#company')}
+              $isActive={location.pathname === '/news' && location.hash === '#company'}
+            >
               公司动态
             </DropdownItem>
-            <DropdownItem to="/news#industry" $isActive={location.pathname === '/news' && location.hash === '#industry'}>
+            <DropdownItem 
+              to="/news#industry" 
+              onClick={(e) => handleDropdownClick(e, '/news', '#industry')}
+              $isActive={location.pathname === '/news' && location.hash === '#industry'}
+            >
               行业资讯
             </DropdownItem>
-            <DropdownItem to="/news#insights" $isActive={location.pathname === '/news' && location.hash === '#insights'}>
+            <DropdownItem 
+              to="/news#insights" 
+              onClick={(e) => handleDropdownClick(e, '/news', '#insights')}
+              $isActive={location.pathname === '/news' && location.hash === '#insights'}
+            >
               跨境洞察
             </DropdownItem>
           </Dropdown>

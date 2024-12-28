@@ -2,15 +2,16 @@ import { PrimaryService } from './types';
 
 export const primaryServices: PrimaryService[] = [
   {
+    id: "service-1",
     title: "知识产权服务",
-    subtitles: "商标注册、专利申请、版权登记等",
+    subtitles: "提供商标注册、专利申请、版权登记等",
     details: [
       {
         title: "专利权",
         items: [
           "发明专利申请",
-          "实用新型专利申请",
-          "外观设计专利申请",
+          "实用新型专利",
+          "外观设计专利",
           "专利检索分析"
         ]
       },
@@ -44,8 +45,9 @@ export const primaryServices: PrimaryService[] = [
     ]
   },
   {
+    id: "service-2",
     title: "项目孵化服务",
-    subtitles: "项目评估筛选、资源对接整合、运营指导培训等",
+    subtitles: "项目评估筛选、资源整合、运营培训",
     details: [
       {
         title: "平台准备",
@@ -86,8 +88,9 @@ export const primaryServices: PrimaryService[] = [
     ]
   },
   {
+    id: "service-3",
     title: "托管运营服务",
-    subtitles: "店铺运营、营销推广、数据分析、仓储物流等",
+    subtitles: "店铺运营、营销推广数据分析、仓储物流",
     details: [
       {
         title: "市场推广与品牌建设",
