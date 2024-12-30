@@ -314,7 +314,7 @@ const About: React.FC = () => {
         <div className={styles.container}>
           <div className={styles.sectionTitle}>
             <h2>团队风采</h2>
-            <p>BELIEVE是一支充满激情、专业高效的跨境电商运营团队，汇聚了行业精英，���力于为企业开拓全球市场，实现品牌国际化。</p>
+            <p>BELIEVE是一支充满激情、专业高效的跨境电商运营团队，汇聚了行业精英，致力于为企业开拓全球市场，实现品牌国际化。</p>
           </div>
           <div className={styles.teamGrid}>
             {members.map((member, index) => (

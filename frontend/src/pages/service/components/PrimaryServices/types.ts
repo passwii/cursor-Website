@@ -7,6 +7,7 @@ export interface PrimaryService {
   id: string;
   title: string;
   subtitles: string;
+  image: string;
   details: ServiceDetail[];
 }
 

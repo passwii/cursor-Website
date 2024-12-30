@@ -1,9 +1,12 @@
 .primary-services {
-  padding: 4rem 2rem;
+  padding: 0;
   text-align: center;
   background: #f1f2f4;
   position: relative;
   overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .primary-services::before {
@@ -37,7 +40,7 @@
 .primary-services-title {
   font-size: 2.5rem;
   color: #2c3e50;
-  margin-bottom: 3rem;
+  margin: 2rem 0;
   position: relative;
   font-weight: bold;
 }
@@ -47,33 +50,32 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .services-dock {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin: 1.5rem auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   width: 100%;
-  max-width: 1680px;
+  margin: 0;
+  gap: 0;
+  flex: 1;
 }
 
 .dock-item {
   background: white;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  padding: 1rem 2rem;
-  width: 320px;
-  height: 80px;
+  padding: 0;
   cursor: pointer;
-  transition: all 0.25s ease-out;
+  transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  border-radius: 0;
+  border: none;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
 
 .dock-item::before {
@@ -97,22 +99,39 @@
 }
 
 .dock-item.active {
-  border-color: #3498db;
-  background: rgba(52, 152, 219, 0.02);
-  box-shadow: 
-    0 12px 24px -5px rgba(52, 152, 219, 0.12),
-    0 8px 12px -5px rgba(52, 152, 219, 0.08);
-  transform: translateY(-2px);
+  background: #1e3d59;
 }
 
 .dock-item.active .dock-title {
-  color: #3498db;
+  color: white;
+}
+
+.dock-item.active .dock-subtitles {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dock-item.active::before {
+  display: none;
+}
+
+.dock-item.active:hover {
+  background: #1e3d59;
+}
+
+.dock-content {
+  width: 100%;
+  padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .dock-title {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: #2c3e50;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.8rem;
   font-weight: 600;
   position: relative;
   z-index: 1;
@@ -120,178 +139,100 @@
 
 .dock-subtitles {
   color: #7f8c8d;
-  line-height: 1.4;
-  font-size: 0.9rem;
+  line-height: 1.5;
+  font-size: 1rem;
   margin: 0;
+  text-align: center;
 }
 
 .service-details-container {
-  width: 100%;
-  max-width: 1400px;
-  margin: 2rem auto 0;
-  padding: 0 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #1e3d59;
+  padding: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(100%);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.service-details-container.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .dock-details-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2.5rem;
-  transform: translateZ(0);
-  will-change: transform;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  height: 100%;
 }
 
 .dock-detail-item {
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  min-height: 280px;
-  overflow: hidden;
-  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-  text-align: center;
+  border-radius: 4px;
+  padding: 1rem;
 }
 
 .dock-detail-item h4 {
-  color: #2c3e50;
-  font-size: 1.1rem;
-  margin: 0;
+  color: #4fc3f7;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
   font-weight: 600;
-  padding: 1.25rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  text-align: center;
+  border-bottom: 1px solid rgba(79, 195, 247, 0.3);
+  padding-bottom: 0.5rem;
 }
 
 .detail-items {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  flex-grow: 1;
-  padding: 1.25rem;
-  align-items: center;
-  width: 80%;
-  margin: 0 auto;
-  counter-reset: item;
-  padding-left: 2rem;
+  gap: 0.5rem;
 }
 
 .detail-item {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 1rem;
-  color: #64748b;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  transition: all 0.2s ease-out;
-  width: 100%;
-  position: relative;
-  padding-left: 2.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
 
-.detail-item span {
+.service-image {
+  width: 100%;
+  height: 40%;
+  object-fit: cover;
+  margin: 0;
   display: block;
-  width: calc(100% - 1rem);
-  text-align: justify;
-  text-justify: inter-word;
-  white-space: pre-wrap;
-  word-break: break-word;
-  min-height: 1.5em;
-  padding-right: 1rem;
-  padding-top: 0.15rem;
 }
 
-.detail-item span::after {
-  content: "";
-  display: inline-block;
-  width: 100%;
-  height: 0;
+.dock-item:hover {
+  background: rgba(52, 152, 219, 0.05);
 }
 
-.detail-item::before {
-  content: counter(item);
-  counter-increment: item;
-  position: absolute;
-  left: 0.5rem;
-  top: 0.15rem;
-  color: #3498db;
-  font-size: 0.8rem;
-  font-weight: 500;
-  width: 1.5rem;
-  height: 1.5rem;
-  background: rgba(52, 152, 219, 0.1);
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease-out;
-}
-
-.detail-item:hover {
-  color: #3498db;
-  transform: translateX(4px);
-}
-
-.detail-item:hover::before {
-  background: #3498db;
-  color: white;
-}
-
-@media (max-width: 1200px) {
-  .dock-details-list {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  .dock-detail-item {
-    min-height: 340px;
-  }
-}
-
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .services-dock {
-    flex-direction: column;
-    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
   }
   
-  .dock-item {
-    width: 100%;
-    max-width: 400px;
-    height: 70px;
-    padding: 0.8rem 1.5rem;
+  .service-image {
+    height: 35%;
   }
-  
-  .dock-item.active {
-    transform: translateY(-1px);
-    box-shadow: 
-      0 8px 16px -5px rgba(52, 152, 219, 0.1),
-      0 4px 8px -5px rgba(52, 152, 219, 0.06);
-  }
+}
 
-  .dock-details-list {
+@media (max-width: 640px) {
+  .services-dock {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
   }
-
-  .dock-detail-item {
-    min-height: auto;
+  
+  .service-image {
+    height: 30%;
   }
-
+  
   .primary-services-title {
-    font-size: 2rem;
-  }
-
-  .detail-items {
-    width: 90%;
-    padding-left: 1rem;
-  }
-
-  .detail-item {
-    padding-left: 2rem;
-  }
-
-  .detail-item span {
-    width: calc(100% - 0.5rem);
-    padding-right: 0.5rem;
+    margin: 1.5rem 0;
   }
 } 
