@@ -5,7 +5,7 @@ export const primaryServices: PrimaryService[] = [
     id: "service-1",
     title: "知识产权服务",
     subtitles: "提供商标注册、专利申请、版权登记等",
-    image: "https://via.placeholder.com/800x450",
+    image: "https://via.placeholder.com/1200x600",
     details: [
       {
         title: "专利权",
@@ -49,7 +49,7 @@ export const primaryServices: PrimaryService[] = [
     id: "service-2",
     title: "项目孵化服务",
     subtitles: "项目评估筛选、资源整合、运营培训",
-    image: "https://via.placeholder.com/800x450",
+    image: "https://via.placeholder.com/1200x600",
     details: [
       {
         title: "平台准备",
@@ -93,7 +93,7 @@ export const primaryServices: PrimaryService[] = [
     id: "service-3",
     title: "托管运营服务",
     subtitles: "店铺运营、营销推广数据分析、仓储物流",
-    image: "https://via.placeholder.com/800x450",
+    image: "https://via.placeholder.com/1200x600",
     details: [
       {
         title: "市场推广与品牌建设",
@@ -137,7 +137,7 @@ export const primaryServices: PrimaryService[] = [
     id: "service-4",
     title: "品牌出海服务",
     subtitles: "品牌策划、市场调研、营销推广",
-    image: "https://via.placeholder.com/800x450",
+    image: "https://via.placeholder.com/1200x600",
     details: [
       {
         title: "品牌策划",

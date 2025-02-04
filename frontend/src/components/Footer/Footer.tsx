@@ -111,8 +111,8 @@ const Footer: React.FC = () => {
           <h3>关注我们</h3>
           <p>关注我们的社交媒体账号，获取最新的跨境电商资讯和行业动态。</p>
           <ul>
-            <li>微信公众号：BelieveBoy</li>
-            <li>领英：BelieveBoy</li>
+            <li>微信：BelieveBoy</li>
+            <li>公众号：BelieveBoy</li>
           </ul>
         </FooterSection>
       </FooterContent>

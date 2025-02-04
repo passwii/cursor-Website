@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Users, Code, TrendingUp } from 'lucide-react';
+import { Mail, Send } from 'lucide-react';
 import styles from './Contact.module.css';
 import contactBg from '../../assets/images/contact-handshake.webp';
+import { departments } from './departments';
 
 interface FormData {
   name: string;
   phone: string;
+  email: string;
+  company: string;
   message: string;
 }
 
@@ -14,8 +17,14 @@ const Contact: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
     name: '',
     phone: '',
+    email: '',
+    company: '',
     message: ''
   });
+
+  useEffect(() => {
+    document.title = '联系我们 - BELIEVE';
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -25,64 +34,39 @@ const Contact: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Handle form submission
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({
-      name: '',
-      phone: '',
-      message: ''
-    });
-  };
-
-  const departments = [
-    {
-      title: '技术部',
-      icon: Code,
-      hrName: '张经理',
-      email: 'tech@believeboy.com'
-    },
-    {
-      title: '运营部',
-      icon: TrendingUp,
-      hrName: '李经理',
-      email: 'operations@believeboy.com'
-    },
-    {
-      title: '人力资源部',
-      icon: Users,
-      hrName: '王经理',
-      email: 'hr@believeboy.com'
+    try {
+      // TODO: 实现表单提交逻辑
+      console.log('Form submitted:', formData);
+      // 重置表单
+      setFormData({
+        name: '',
+        phone: '',
+        email: '',
+        company: '',
+        message: ''
+      });
+      alert('提交成功！我们会尽快与您联系。');
+    } catch (error) {
+      console.error('提交失败:', error);
+      alert('提交失败，请稍后重试。');
     }
-  ];
+  };
 
   return (
     <div className={styles.container}>
-      {/* Business Cooperation Section */}
       <section className={styles.section}>
         <div 
           className={styles['business-section']}
           style={{
-            minHeight: '100vh',
             backgroundImage: `url(${contactBg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundAttachment: 'fixed',
             position: 'relative'
           }}
         >
-          <div 
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: 'rgba(0, 0, 0, 0.6)',
-            }}
-          />
+          <div className={styles.overlay} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <motion.div 
               className={styles['section-title']}
@@ -117,6 +101,32 @@ const Contact: React.FC = () => {
               </div>
 
               <div className={styles['form-group']}>
+                <label htmlFor="company">公司名称</label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="请输入您的公司名称"
+                />
+              </div>
+
+              <div className={styles['form-group']}>
+                <label htmlFor="email">电子邮箱</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  placeholder="请输入您的电子邮箱"
+                />
+              </div>
+
+              <div className={styles['form-group']}>
                 <label htmlFor="phone">联系电话</label>
                 <input
                   type="tel"
@@ -130,19 +140,20 @@ const Contact: React.FC = () => {
               </div>
 
               <div className={styles['form-group']}>
-                <label htmlFor="message">合作留言</label>
+                <label htmlFor="message">合作意向</label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
                   required
-                  placeholder="请输入您的合作意向"
+                  placeholder="请详细描述您的合作意向"
                   rows={5}
                 />
               </div>
 
               <button type="submit" className={styles['submit-button']}>
+                <Send size={20} style={{ marginRight: '8px' }} />
                 提交
               </button>
             </motion.form>
@@ -150,7 +161,6 @@ const Contact: React.FC = () => {
         </div>
       </section>
 
-      {/* Recruitment Section */}
       <section className={styles.section}>
         <div className={styles['recruitment-section']}>
           <motion.div 
@@ -176,13 +186,14 @@ const Contact: React.FC = () => {
               >
                 <dept.icon className={styles['department-icon']} />
                 <h3 className={styles['department-title']}>{dept.title}</h3>
-                <p>我们正在寻找优秀的人才加入我们的团队</p>
+                <p>{dept.description}</p>
                 <div className={styles['hr-info']}>
                   <div className={styles['hr-name']}>
                     招聘负责人：{dept.hrName}
                   </div>
                   <div className={styles['hr-contact']}>
-                    联系邮箱：{dept.email}
+                    <Mail size={16} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                    {dept.email}
                   </div>
                 </div>
               </motion.div>

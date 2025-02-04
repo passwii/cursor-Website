@@ -9,8 +9,9 @@ const ServicesSection: React.FC = () => {
       <section className={styles.servicesSection}>
         <div className={styles.titleGroup}>
           <h2 className={styles.title}>跨境优服</h2>
+          <div className={styles.line}></div> {/* 添加蓝色线条 */}
           <p className={styles.subtitle}>
-            彼励扶拥有全行业顶尖运营人才，优秀的运营团队，全流程数据管理制度
+            彼励扶拥有全行业顶尖运营人才，优秀的技术团队，全流程数据管理制度
           </p>
         </div>
         
@@ -62,4 +63,4 @@ const ServicesSection: React.FC = () => {
   );
 };
 
-export default ServicesSection; 
+export default ServicesSection;

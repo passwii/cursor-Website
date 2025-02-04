@@ -87,7 +87,7 @@ const ServicePage: React.FC = () => {
     },
     {
       title: "产品出海",
-      description: "通过市场数据分析，制定合理的定价策略，以实现利润最大化。确保产品符合目标市场的��律法规、安全标准等，避免侵权和违规风险。优化供应链，选择可靠的供应商，控制成本，保证产品质量和供货稳定。制定高效的物流方案，选择合适的物流服务商，降低物流成本，提升配送时效。",
+      description: "通过市场数据分析，制定合理的定价策略，以实现利润最大化。确保产品符合目标市场的法律法规、安全标准等，避免侵权和违规风险。优化供应链，选择可靠的供应商，控制成本，保证产品质量和供货稳定。制定高效的物流方案，选择合适的物流服务商，降低物流成本，提升配送时效。",
       icon: <Zap className={styles['icon']} />
     },
     {
@@ -113,7 +113,7 @@ const ServicePage: React.FC = () => {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
           as="style"
         />
-        <title>服务 - 彼励扶跨境电商解决方案</title>
+        <title>服务项目 - BELIEVE</title>
         <meta name="description" content="彼励扶提供全方位的跨境电商服务，包括市场洞察、项目方案、产品出海和品牌出海等服务，助力企业实现全球化业务增长。" />
       </Helmet>
 

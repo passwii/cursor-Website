@@ -60,7 +60,7 @@ const ServiceCase: React.FC<ServiceCaseProps> = ({ className }) => {
               transition={{ duration: 0.6 }}
               className={styles.bannerTitle}
             >
-              合作案例
+              客户案例
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -76,15 +76,6 @@ const ServiceCase: React.FC<ServiceCaseProps> = ({ className }) => {
 
       {/* Categories Section */}
       <div className={styles.categoriesSection}>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className={styles.header}
-        >
-          <h3 className={styles.sectionTitle}>客户案例</h3>
-        </motion.div>
-
         <div className={styles.categories}>
           {categories.map((category) => (
             <button 

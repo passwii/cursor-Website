@@ -57,88 +57,90 @@ const OperationServiceWrapper: React.FC = () => {
                             repeat: Infinity,
                             ease: 'linear',
                             repeatType: 'loop',
+                            repeatDelay: 0,
                         }}
+                        // 移除 whileHover={{ x: 0 }}
                     >
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#4B5A9A" }}
+                            style={{ color: "#4B5A9A" }}
                         >
                             <Binary />
                             <span>A9算法</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#3D7A62" }}
+                            style={{ color: "#3D7A62" }}
                         >
                             <Repeat />
                             <span>螺旋打法</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#7E5AA6" }}
+                            style={{ color: "#7E5AA6" }}
                         >
                             <Tags />
                             <span>定价促销</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#A66F42" }}
+                            style={{ color: "#A66F42" }}
                         >
                             <Share2 />
                             <span>站外推广</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#4B5A9A" }}
+                            style={{ color: "#4B5A9A" }}
                         >
                             <BadgeCheck />
                             <span>产品认证</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#3D7A62" }}
+                            style={{ color: "#3D7A62" }}
                         >
                             <UserCheck />
                             <span>客户联系</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#7E5AA6" }}
+                            style={{ color: "#7E5AA6" }}
                         >
                             <Wrench />
                             <span>运营工具</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#A66F42" }}
+                            style={{ color: "#A66F42" }}
                         >
                             <BarChart2 />
                             <span>财务报表</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#4B5A9A" }}
+                            style={{ color: "#4B5A9A" }}
                         >
                             <Boxes />
                             <span>库存管理</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#3D7A62" }}
+                            style={{ color: "#3D7A62" }}
                         >
                             <Search />
                             <span>新品探测</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#7E5AA6" }}
+                            style={{ color: "#7E5AA6" }}
                         >
                             <MessageCircle />
                             <span>Review 管理</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#A66F42" }}
+                            style={{ color: "#A66F42" }}
                         >
                             <Facebook />
                             <span>Facebook 群组</span>
@@ -153,88 +155,91 @@ const OperationServiceWrapper: React.FC = () => {
                             repeat: Infinity,
                             ease: 'linear',
                             repeatType: 'loop',
+                            repeatDelay: 0,
                         }}
+                        // 移除 whileHover={{ x: 0 }}
                     >
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#4B5A9A" }}
+                            style={{ color: "#4B5A9A" }}
                         >
                             <Binary />
                             <span>A9算法</span>
                         </motion.div>
+                            
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#3D7A62" }}
+                            style={{ color: "#3D7A62" }}
                         >
                             <Repeat />
                             <span>螺旋打法</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#7E5AA6" }}
+                            style={{ color: "#7E5AA6" }}
                         >
                             <Tags />
                             <span>定价促销</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#A66F42" }}
+                            style={{ color: "#A66F42" }}
                         >
                             <Share2 />
                             <span>站外推广</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#4B5A9A" }}
+                            style={{ color: "#4B5A9A" }}
                         >
                             <BadgeCheck />
                             <span>产品认证</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#3D7A62" }}
+                            style={{ color: "#3D7A62" }}
                         >
                             <UserCheck />
                             <span>客户联系</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#7E5AA6" }}
+                            style={{ color: "#7E5AA6" }}
                         >
                             <Wrench />
                             <span>运营工具</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#A66F42" }}
+                            style={{ color: "#A66F42" }}
                         >
                             <BarChart2 />
                             <span>财务报表</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#4B5A9A" }}
+                            style={{ color: "#4B5A9A" }}
                         >
                             <Boxes />
                             <span>库存管理</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#3D7A62" }}
+                            style={{ color: "#3D7A62" }}
                         >
                             <Search />
                             <span>新品探测</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#7E5AA6" }}
+                            style={{ color: "#7E5AA6" }}
                         >
                             <MessageCircle />
                             <span>Review 管理</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#A66F42" }}
+                            style={{ color: "#A66F42" }}
                         >
                             <Facebook />
                             <span>Facebook 群组</span>
@@ -252,102 +257,104 @@ const OperationServiceWrapper: React.FC = () => {
                             repeat: Infinity,
                             ease: 'linear',
                             repeatType: 'loop',
+                            repeatDelay: 0,
                         }}
+                        // 移除 whileHover={{ x: '-100%' }}
                     >
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#7E5AA6" }}
+                            style={{ color: "#7E5AA6" }}
                         >
                             <ShieldAlert />
                             <span>店铺安全</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#A66F42" }}
+                            style={{ color: "#A66F42" }}
                         >
                             <MessageSquare />
                             <span>客诉处理</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#4B5A9A" }}
+                            style={{ color: "#4B5A9A" }}
                         >
                             <Receipt />
                             <span>VAT税法</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#3D7A62" }}
+                            style={{ color: "#3D7A62" }}
                         >
                             <FileWarning />
                             <span>Listing合规</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#7E5AA6" }}
+                            style={{ color: "#7E5AA6" }}
                         >
                             <Package />
                             <span>爆款选品</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#A66F42" }}
+                            style={{ color: "#A66F42" }}
                         >
                             <Percent />
                             <span>折扣优惠</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#4B5A9A" }}
+                            style={{ color: "#4B5A9A" }}
                         >
                             <TrendingDown />
                             <span>旺季销售</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#3D7A62" }}
+                            style={{ color: "#3D7A62" }}
                         >
                             <ClipboardList />
                             <span>绩效考核</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#7E5AA6" }}
+                            style={{ color: "#7E5AA6" }}
                         >
                             <BookOpen />
                             <span>FBA 手册</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#A66F42" }}
+                            style={{ color: "#A66F42" }}
                         >
                             <Settings />
                             <span>AGL 操作</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#4B5A9A" }}
+                            style={{ color: "#4B5A9A" }}
                         >
                             <PieChart />
                             <span>ACOS 优化</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#3D7A62" }}
+                            style={{ color: "#3D7A62" }}
                         >
                             <Calculator />
                             <span>产品核算分析</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#7E5AA6" }}
+                            style={{ color: "#7E5AA6" }}
                         >
                             <BarChart />
                             <span>项目核算</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#A66F42" }}
+                            style={{ color: "#A66F42" }}
                         >
                             <CalendarRange />
                             <span>全年销售规划</span>
@@ -362,102 +369,104 @@ const OperationServiceWrapper: React.FC = () => {
                             repeat: Infinity,
                             ease: 'linear',
                             repeatType: 'loop',
+                            repeatDelay: 0,
                         }}
+                        // 移除 whileHover={{ x: '-100%' }}
                     >
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#7E5AA6" }}
+                            style={{ color: "#7E5AA6" }}
                         >
                             <ShieldAlert />
                             <span>店铺安全</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#A66F42" }}
+                            style={{ color: "#A66F42" }}
                         >
                             <MessageSquare />
                             <span>客诉处理</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#4B5A9A" }}
+                            style={{ color: "#4B5A9A" }}
                         >
                             <Receipt />
                             <span>VAT税法</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#3D7A62" }}
+                            style={{ color: "#3D7A62" }}
                         >
                             <FileWarning />
                             <span>Listing合规</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#7E5AA6" }}
+                            style={{ color: "#7E5AA6" }}
                         >
                             <Package />
                             <span>爆款选品</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#A66F42" }}
+                            style={{ color: "#A66F42" }}
                         >
                             <Percent />
                             <span>折扣优惠</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#4B5A9A" }}
+                            style={{ color: "#4B5A9A" }}
                         >
                             <TrendingDown />
                             <span>旺季销售</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#3D7A62" }}
+                            style={{ color: "#3D7A62" }}
                         >
                             <ClipboardList />
                             <span>绩效考核</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#7E5AA6" }}
+                            style={{ color: "#7E5AA6" }}
                         >
                             <BookOpen />
                             <span>FBA 手册</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#A66F42" }}
+                            style={{ color: "#A66F42" }}
                         >
                             <Settings />
                             <span>AGL 操作</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#4B5A9A" }}
+                            style={{ color: "#4B5A9A" }}
                         >
                             <PieChart />
                             <span>ACOS 优化</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#3D7A62" }}
+                            style={{ color: "#3D7A62" }}
                         >
                             <Calculator />
                             <span>产品核算分析</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#7E5AA6" }}
+                            style={{ color: "#7E5AA6" }}
                         >
                             <BarChart />
                             <span>项目核算</span>
                         </motion.div>
                         <motion.div
                             className={styles.serviceItem}
-                            style={{ backgroundColor: "#A66F42" }}
+                            style={{ color: "#A66F42" }}
                         >
                             <CalendarRange />
                             <span>全年销售规划</span>

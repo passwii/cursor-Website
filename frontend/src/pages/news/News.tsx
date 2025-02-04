@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import styles from './News.module.css';
@@ -72,6 +72,10 @@ const newsData: NewsItem[] = [
 const News: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('全部');
   const [visibleCount, setVisibleCount] = useState(6);
+
+  useEffect(() => {
+    document.title = '新闻资讯 - BELIEVE';
+  }, []);
 
   const filteredNews = newsData.filter(
     news => activeCategory === '全部' || news.category === activeCategory

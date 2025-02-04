@@ -137,6 +137,10 @@ const About: React.FC = () => {
     [1, 0.92, 0.92, 1]
   );
 
+  useEffect(() => {
+    document.title = '关于我们 - BELIEVE';
+  }, []);
+
   return (
     <>
       {/* Section 1: Hero */}

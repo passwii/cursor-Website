@@ -52,22 +52,10 @@
 /* Categories Section */
 .categoriesSection {
   max-width: 1200px;
-  margin: -60px auto 0;
+  margin: 40px auto 0;
   padding: 0 24px;
   position: relative;
   z-index: 2;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.sectionTitle {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 16px;
 }
 
 .subtitle {
@@ -81,7 +69,7 @@
   display: flex;
   justify-content: flex-start;
   gap: 16px;
-  margin-bottom: 48px;
+  margin-bottom: 60px;
   padding: 0 20px;
   max-width: 1200px;
   margin-left: auto;
@@ -195,47 +183,64 @@
 }
 
 .caseCard {
-  background: var(--bg-secondary);
+  position: relative;
+  background: #fff;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  height: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* 删除 hover 时的位移效果 */
 .caseCard:hover {
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
 .caseImage {
   position: relative;
-  height: 240px;
   overflow: hidden;
 }
 
 .caseImage img {
   width: 100%;
-  height: 100%;
+  height: 240px;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.caseCard:hover .caseImage img {
+  transform: scale(1.05);
 }
 
 .category {
   position: absolute;
-  bottom: 16px;
-  left: 16px;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 0.9rem;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
   backdrop-filter: blur(4px);
+  transform: translateY(0);
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.caseCard:hover .category {
+  transform: translateY(-4px);
+  opacity: 1;
+  background: rgba(67, 56, 202, 0.85);
+  box-shadow: 0 4px 12px rgba(67, 56, 202, 0.2);
 }
 
 .caseContent {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  height: calc(100% - 240px);
+  padding: 20px;
+  transition: transform 0.3s ease;
+}
+
+.caseCard:hover .caseContent {
+  transform: translateY(-4px);
 }
 
 .caseContent h3 {
@@ -258,33 +263,73 @@
 }
 
 .metrics {
+  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin-top: 20px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
 }
 
 .metric {
   text-align: center;
-  padding: 12px 16px;
-  background: var(--bg-primary);
-  border-radius: 8px;
-  min-width: 100px;
+  transition: all 0.3s ease;
+}
+
+.caseCard:hover .metric {
+  transform: translateY(-2px);
 }
 
 .metricValue {
   display: block;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  color: var(--primary-color);
+  color: #4338ca;
   margin-bottom: 4px;
-  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.caseCard:hover .metricValue {
+  color: #4f46e5;
 }
 
 .metricLabel {
   font-size: 0.9rem;
   color: var(--text-secondary);
   white-space: nowrap;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .metrics {
+    margin-top: 16px;
+    padding-top: 16px;
+    gap: 12px;
+  }
+
+  .metricValue {
+    font-size: 1.3rem;
+  }
+
+  .metricLabel {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .metrics {
+    margin-top: 12px;
+    padding-top: 12px;
+    gap: 8px;
+  }
+
+  .metricValue {
+    font-size: 1.2rem;
+  }
+
+  .metricLabel {
+    font-size: 0.8rem;
+  }
 }
 
 /* 响应式调整 */
@@ -437,5 +482,26 @@
 
   .metricValue {
     font-size: 1.1rem;
+  }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .categoriesSection {
+    margin-top: 32px;
+  }
+  
+  .categories {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .categoriesSection {
+    margin-top: 24px;
+  }
+  
+  .categories {
+    margin-bottom: 32px;
   }
 } 

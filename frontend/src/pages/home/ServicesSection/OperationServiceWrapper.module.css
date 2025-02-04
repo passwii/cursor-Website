@@ -26,22 +26,22 @@
 .scrollContainer {
     width: 100%;
     overflow: hidden;
-    -webkit-overflow-scrolling: touch;
     padding: 20px 0;
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 30px;
 }
 
 .serviceItemsTrack {
     display: flex;
     width: fit-content;
+    position: relative; 
 }
 
 .serviceItemsRow {
     display: flex;
-    gap: 24px;
+    gap: 30px; 
     padding: 0 12px;
 }
 
@@ -49,9 +49,21 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 20px 40px;
-    background-color: var(--bgColor);
-    color: white;
+    padding: 16px 32px;
+    background-color: white;
+    border: 2px solid currentColor;
+    border-radius: 12px; 
+    white-space: nowrap;
+    min-width: 180px;
+    border-right: 2px solid currentColor;  
+}
+
+.serviceItem:last-child {
+    border-right: 2px solid currentColor; 
+}
+
+.serviceItem {
+    color: var(--bgColor);
     border-radius: 12px;
     white-space: nowrap;
     min-width: 200px;
@@ -60,9 +72,82 @@
 .serviceItem svg {
     width: 24px;
     height: 24px;
+    color: currentColor;
 }
 
 .serviceItem span {
     font-size: 16px;
     font-weight: 500;
+    color: currentColor;
+}
+
+/* OperationServiceWrapper.module.css */
+
+.operationServiceWrapper {
+    padding: 20px;
+    background-color: #f9fafb;
+    border-radius: 12px;
+}
+
+.subSectionTitle {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+}
+
+.operationDescription {
+    font-size: 16px;
+    color: #4a5568;
+    margin-bottom: 24px;
+}
+
+.scrollContainer {
+    overflow: hidden;
+    position: relative;
+}
+
+.serviceItemsTrack {
+    display: flex;
+    width: 200%;
+}
+
+.serviceItemsRow {
+    display: flex;
+    width: 100%;
+}
+
+.serviceItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    margin: 8px;
+    border-radius: 12px;
+    background-color: white;
+    border: 2px solid currentColor;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: var(--bgColor);
+    min-width: 120px;
+}
+
+.serviceItem:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.serviceItem svg {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+    color: currentColor;
+}
+
+.serviceItem span {
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    color: currentColor;
 }

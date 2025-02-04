@@ -4,9 +4,11 @@
   background: #f1f2f4;
   position: relative;
   overflow: hidden;
-  min-height: 100vh;
+  height: 100vh;
+  min-height: unset;
   display: flex;
   flex-direction: column;
+  gap: 0;
 }
 
 .primary-services::before {
@@ -38,11 +40,12 @@
 }
 
 .primary-services-title {
-  font-size: 2.5rem;
-  color: #2c3e50;
-  margin: 2rem 0;
+  font-size: 3rem;
+  color: white;
+  margin: 0;
   position: relative;
   font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .services-dock-container {
@@ -59,7 +62,10 @@
   width: 100%;
   margin: 0;
   gap: 0;
-  flex: 1;
+  height: 67vh;
+  flex: 0 0 67vh;
+  position: relative;
+  z-index: 2;
 }
 
 .dock-item {
@@ -99,7 +105,7 @@
 }
 
 .dock-item.active {
-  background: #1e3d59;
+  background: #1a4b8c;
 }
 
 .dock-item.active .dock-title {
@@ -107,7 +113,7 @@
 }
 
 .dock-item.active .dock-subtitles {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .dock-item.active::before {
@@ -115,34 +121,39 @@
 }
 
 .dock-item.active:hover {
-  background: #1e3d59;
+  background: #1a4b8c;
 }
 
 .dock-content {
   width: 100%;
   padding: 2rem;
-  flex: 1;
+  flex: 0 0 33%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  background: white;
 }
 
 .dock-title {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #2c3e50;
   margin-bottom: 0.8rem;
   font-weight: 600;
   position: relative;
   z-index: 1;
+  text-align: left;
+  padding-left: 1rem;
 }
 
 .dock-subtitles {
   color: #7f8c8d;
   line-height: 1.5;
-  font-size: 1rem;
+  font-size: 1.1rem;
   margin: 0;
-  text-align: center;
+  text-align: left;
+  padding-left: 1rem;
+  width: 100%;
 }
 
 .service-details-container {
@@ -151,12 +162,12 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: #1e3d59;
+  background: #1a4b8c;
   padding: 2rem;
   opacity: 0;
   visibility: hidden;
   transform: translateY(100%);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -169,23 +180,24 @@
 }
 
 .dock-details-list {
+  padding-top: 33%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
   height: 100%;
 }
 
 .dock-detail-item {
   border-radius: 4px;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .dock-detail-item h4 {
-  color: #4fc3f7;
+  color: #64b5f6;
   font-size: 1rem;
   margin-bottom: 0.75rem;
   font-weight: 600;
-  border-bottom: 1px solid rgba(79, 195, 247, 0.3);
+  border-bottom: 1px solid rgba(100, 181, 246, 0.3);
   padding-bottom: 0.5rem;
 }
 
@@ -196,14 +208,14 @@
 }
 
 .detail-item {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   font-size: 0.9rem;
   line-height: 1.4;
 }
 
 .service-image {
   width: 100%;
-  height: 40%;
+  height: 67%;
   object-fit: cover;
   margin: 0;
   display: block;
@@ -218,8 +230,21 @@
     grid-template-columns: repeat(2, 1fr);
   }
   
+  .dock-content {
+    padding: 1.5rem;
+  }
+  
+  .dock-title, 
+  .dock-subtitles {
+    padding-left: 0.8rem;
+  }
+  
+  .dock-title {
+    font-size: 1.4rem;
+  }
+  
   .service-image {
-    height: 35%;
+    height: 67%;
   }
 }
 
@@ -228,11 +253,101 @@
     grid-template-columns: 1fr;
   }
   
+  .dock-content {
+    padding: 1.2rem 1rem;
+  }
+  
+  .dock-title, 
+  .dock-subtitles {
+    padding-left: 0.6rem;
+  }
+  
+  .dock-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .dock-subtitles {
+    font-size: 1rem;
+  }
+  
   .service-image {
-    height: 30%;
+    height: 67%;
   }
   
   .primary-services-title {
     margin: 1.5rem 0;
+  }
+}
+
+.title-container {
+  position: relative;
+  height: 33vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  flex: 0 0 33vh;
+}
+
+.title-background {
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 140%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+
+.title-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  padding: 0 2rem;
+  will-change: transform;
+}
+
+.title-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.5) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: 1;
+}
+
+@media (max-width: 1024px) {
+  .service-details-container {
+    padding: 1.5rem;
+  }
+  
+  .dock-detail-item {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .service-details-container {
+    padding: 1rem;
+  }
+  
+  .dock-detail-item {
+    padding: 1rem;
+  }
+  
+  .dock-details-list {
+    padding-top: 33%;
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 } 
