@@ -1,0 +1,135 @@
+.adminCard {
+  height: 100%;
+  cursor: pointer;
+  background: linear-gradient(145deg, #ffffff, #f5f5f5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.adminCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.adminCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.adminCard:hover::before {
+  left: 100%;
+}
+
+.toolCard {
+  height: 100%;
+  cursor: pointer;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.toolCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, rgba(25, 118, 210, 0.1), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.toolCardContent {
+  padding: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.4s ease;
+  background: transparent;
+}
+
+.toolTitle {
+  font-weight: 600;
+  color: #2c3e50;
+  transition: color 0.4s ease;
+}
+
+.toolDescription {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: auto;
+  transition: color 0.4s ease;
+}
+
+/* Hover effects */
+.toolCard:hover {
+  transform: translateY(-8px);
+  border-color: #1976d2;
+  box-shadow: 0 12px 24px rgba(25, 118, 210, 0.15);
+}
+
+.toolCard:hover::after {
+  transform: translateX(100%);
+}
+
+.toolCard:hover .toolTitle {
+  color: #1976d2;
+}
+
+.toolCard:hover .toolDescription {
+  color: #444;
+}
+
+.statsCard {
+  composes: adminCard;
+  background: white;
+}
+
+.statsValue {
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  color: #1976d2 !important;
+}
+
+.statsTitle {
+  font-size: 1rem !important;
+  color: #666 !important;
+}
+
+.tabPanel {
+  min-height: 400px;
+  padding: 24px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.3s ease-out;
+} 

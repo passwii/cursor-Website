@@ -2,6 +2,12 @@
   padding: 6rem 0;
   background: #f8fafc;
   overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 4rem 0;
+  }
 }
 
 .ai-content {
@@ -9,6 +15,11 @@
   margin: 0 auto;
   padding: 0 2rem;
   text-align: center;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
+  }
 }
 
 .ai-title {
@@ -37,6 +48,23 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+  width: calc(100% - 3rem);
+  box-sizing: border-box;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2rem;
+    margin: 0 1.5rem;
+    width: calc(100% - 3rem);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+    margin: 0 1.5rem;
+    gap: 1.5rem;
+    width: calc(100% - 3rem);
+  }
 }
 
 .stat-item {
@@ -92,6 +120,22 @@
   max-width: 1400px;
   margin: 4rem auto 0;
   justify-content: center;
+  box-sizing: border-box;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 0 1.5rem;
+    width: 100%;
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+    margin: 3rem auto 0;
+    width: calc(100% - 3rem);
+  }
 }
 
 .capability-card {
@@ -126,73 +170,6 @@
   font-size: 1.25rem;
   font-weight: 600;
   color: #1e293b;
-}
-
-@media (max-width: 1024px) {
-  .stats-banner {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 2rem;
-  }
-
-  .ai-title {
-    font-size: 2rem;
-  }
-
-  .ai-description {
-    font-size: 1rem;
-  }
-
-  .ai-capabilities {
-    grid-template-columns: repeat(2, minmax(280px, 340px));
-    gap: 3rem;
-  }
-}
-
-@media (max-width: 1280px) {
-  .ai-capabilities {
-    grid-template-columns: repeat(2, minmax(280px, 340px));
-    gap: 3rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .ai-section {
-    padding: 4rem 0;
-  }
-
-  .stats-banner {
-    grid-template-columns: 1fr;
-    padding: 1.5rem;
-  }
-
-  .stat-item {
-    padding: 1rem;
-  }
-
-  .stat-number {
-    font-size: 2.5rem;
-  }
-
-  .stat-label {
-    font-size: 1rem;
-  }
-
-  .stat-label-cn {
-    font-size: 0.9rem;
-  }
-
-  .ai-content {
-    padding: 0 1rem;
-  }
-
-  .ai-capabilities {
-    grid-template-columns: minmax(280px, 1fr);
-    gap: 2rem;
-  }
-
-  .capability-image {
-    height: 200px;
-  }
 }
 
 .capability-img {

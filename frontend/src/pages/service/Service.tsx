@@ -134,10 +134,10 @@ const ServicePage: React.FC = () => {
                 opacity: titleOpacity
               }}
             >
-              <h1 className={styles['hero-title']}>
-                <span>品牌 制造，智达 全球</span>
+              <div className={styles['hero-title']}>
+                <span></span>
                 <p>From Here, We Reach the World</p>
-              </h1>
+              </div>
             </motion.div>
           </div>
         </div>

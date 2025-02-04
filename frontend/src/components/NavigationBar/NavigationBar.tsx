@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 import styled from 'styled-components';
 import logoImage from '../../assets/images/blf-logo.ico';
 
@@ -19,6 +20,10 @@ const Nav = styled.nav`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   z-index: 1000;
   margin: 0;
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+  }
 `;
 
 const LogoSection = styled(Link)`
@@ -51,16 +56,75 @@ const SubText = styled.span`
   font-style: bold;
 `;
 
-const NavList = styled.div`
+const MenuButton = styled.button`
+  display: none;
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  padding: 8px;
+  
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+  }
+`;
+
+const NavList = styled.div<{ $isOpen: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 40px;
   flex: 1;
   white-space: nowrap;
+
+  @media (max-width: 768px) {
+    position: fixed;
+    top: var(--nav-height, 80px);
+    right: ${props => props.$isOpen ? '0' : '-100%'};
+    bottom: 0;
+    width: 100%;
+    height: calc(100vh - var(--nav-height, 80px));
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+    gap: 0;
+    transition: right 0.3s ease;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    z-index: 999;
+  }
 `;
 
-const Dropdown = styled.div`
+// 先声明一个空的 Dropdown 类型
+const Dropdown = styled.div``; // 临时声明，后面会被覆盖
+
+const NavItem = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: var(--nav-height, 80px);
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 0;
+  }
+
+  &:hover ${Dropdown} {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+`;
+
+// 重新定义完整的 Dropdown 组件
+const StyledDropdown = styled.div`
   position: absolute;
   top: 100%;
   left: 0;
@@ -76,20 +140,28 @@ const Dropdown = styled.div`
   transition: all 0.3s ease;
   padding: 8px 0;
   z-index: 1000;
-`;
 
-const NavItem = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: var(--nav-height, 80px);
-
-  &:hover ${Dropdown} {
+  @media (max-width: 768px) {
+    position: static;
     opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: none;
+    box-shadow: none;
+    background: transparent;
+    padding: 0 0 0 20px;
+    width: 100%;
+    display: none;
+  }
+
+  ${NavItem}:hover & {
+    @media (max-width: 768px) {
+      display: block;
+    }
   }
 `;
+
+// 覆盖之前的临时声明
+Object.assign(Dropdown, StyledDropdown);
 
 const NavLink = styled(Link)<{ $isActive: boolean }>`
   color: ${props => props.$isActive ? '#0066cc' : '#333'};
@@ -101,6 +173,13 @@ const NavLink = styled(Link)<{ $isActive: boolean }>`
   display: flex;
   align-items: center;
   transition: color 0.3s ease;
+
+  @media (max-width: 768px) {
+    height: auto;
+    padding: 16px 0;
+    width: 100%;
+    font-size: 1.1rem;
+  }
 
   &:hover {
     color: #0066cc;
@@ -117,6 +196,11 @@ const DropdownItem = styled(Link)<{ $isActive: boolean }>`
   font-size: 0.95rem;
   white-space: nowrap;
 
+  @media (max-width: 768px) {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+
   &:hover {
     background: #f8f9fa;
     color: #0066cc;
@@ -131,6 +215,12 @@ const AdminLink = styled(NavLink)`
   height: auto;
   margin-left: auto;
 
+  @media (max-width: 768px) {
+    margin: 8px 0;
+    text-align: center;
+    justify-content: center;
+  }
+
   &:hover {
     background: #0052a3;
     color: white !important;
@@ -144,8 +234,25 @@ const AdminSection = styled.div`
 `;
 
 const NavigationBar: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const nav = document.querySelector('nav');
+      if (isMenuOpen && nav && !nav.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
 
   const handleNavClick = (to: string, hash?: string) => {
     const isSamePage = location.pathname === to;
@@ -213,7 +320,11 @@ const NavigationBar: React.FC = () => {
         </LogoText>
       </LogoSection>
 
-      <NavList>
+      <MenuButton onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+      </MenuButton>
+
+      <NavList $isOpen={isMenuOpen}>
         <NavItem>
           <NavLink to="/" onClick={(e) => {
             e.preventDefault();
