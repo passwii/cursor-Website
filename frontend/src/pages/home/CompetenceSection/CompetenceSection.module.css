@@ -2,7 +2,7 @@
   width: 100vw;
   margin-left: 50%;
   transform: translateX(-50%);
-  background-color: #f8fafc;
+  background-color: #eef5ff;
   padding: 80px 0;
 }
 
@@ -60,7 +60,7 @@
   border-radius: 10px;
   padding: 40px 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
   cursor: pointer;
   min-height: 280px;
   width: 100%;
@@ -117,8 +117,8 @@
 }
 
 .competencyCard:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.009);
 }
 
 .competencyCard.active {

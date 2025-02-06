@@ -4,6 +4,8 @@ import HeroSection from './HeroSection/HeroSection';
 import ServicesSection from './ServicesSection/ServicesSection';
 import CompetenceSection from './CompetenceSection/CompetenceSection';
 import ServiceCasesSection from './ServiceCasesSection/ServiceCasesSection';
+import AIEmpowerment from '../service/components/AIEmpowerment';
+import CompanyIntro from '../about/components/CompanyIntro/CompanyIntro';
 import styled from 'styled-components';
 
 const HomeContainer = styled.div`
@@ -24,6 +26,8 @@ const Home: React.FC = () => {
       <HeroSection />
       <ServicesSection />
       <CompetenceSection />
+      <CompanyIntro />
+      <AIEmpowerment />
       <ServiceCasesSection />
     </HomeContainer>
   );

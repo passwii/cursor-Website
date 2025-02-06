@@ -1,9 +1,14 @@
 import React from 'react';
 import styles from './ServiceCasesSection.module.css';
+// 导入图片
+import drillBitImg from '../../../assets/images/servicecase/drill.webp';
+import glassPanImg from '../../../assets/images/servicecase/glass.webp';
+import mattressImg from '../../../assets/images/servicecase/mattress.webp';
 
 const cases = [
   {
     title: 'Drill Bit',
+    image: drillBitImg,
     overview: '某工具配件品牌面临亚马逊平台销量停滞、品牌知名度低的问题。',
     process: [
       '对品牌现有产品线进行全面评估，优化产品描述和图片。',
@@ -16,6 +21,7 @@ const cases = [
   },
   {
     title: 'Glass Pan',
+    image: glassPanImg,
     overview: '某知名工厂为美国主流品牌和线下商超供应食品餐盘，面临严重的成本压缩问题。',
     process: [
       '组建专业团队，深入分析工厂现有供应链和产品结构。',
@@ -28,6 +34,7 @@ const cases = [
   },
   {
     title: 'Mattress',
+    image: mattressImg,
     overview: '某家居床垫品牌希望在美国市场扩大影响力，提高销售额。',
     process: [
       '深入分析目标市场，制定针对性的品牌定位和营销策略。',
@@ -54,7 +61,10 @@ const ServiceCasesSection: React.FC = () => {
         <div className={styles.casesGrid}>
           {cases.map((item, index) => (
             <div key={index} className={styles.caseCard}>
-              <div className={styles.imagePlaceholder} />
+              <div 
+                className={styles.imagePlaceholder}
+                style={{ backgroundImage: `url(${item.image})` }}
+              />
               <div className={styles.content}>
                 <h3 className={styles.caseTitle}>{item.title}</h3>
                 

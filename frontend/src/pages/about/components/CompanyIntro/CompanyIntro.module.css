@@ -1,0 +1,90 @@
+.introSection {
+  padding: 80px 0;
+  background-color: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sectionTitle h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.introContainer {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.introText {
+  flex: 1;
+}
+
+.introText p {
+  margin-bottom: 20px;
+  line-height: 1.8;
+  color: #666;
+}
+
+.introImage {
+  flex: 1;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.statsBanner {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.statItem {
+  text-align: center;
+}
+
+.number {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.label {
+  color: #666;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .introContainer {
+    flex-direction: column;
+  }
+
+  .introImage {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .statsBanner {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .statItem {
+    width: calc(50% - 10px);
+  }
+} 
