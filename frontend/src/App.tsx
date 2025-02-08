@@ -9,6 +9,15 @@ import ServicePage from './pages/service/Service';
 import AboutPage from './pages/about/About';
 import Contact from './pages/contact/Contact';
 import News from './pages/news/News';
+import ExchangeRate from './pages/admin/components/toolset/exchange/ExchangeRate';
+import DailyReport from './pages/admin/components/dataset/daily/DailyReport';
+import MonthlyReport from './pages/admin/components/dataset/monthly/MonthlyReport';
+import ProductAnalysis from './pages/admin/components/dataset/product/ProductAnalysis';
+import PaymentReportHelp from './pages/admin/components/help/PaymentReportHelp';
+import FbaRevisePdf from './pages/admin/components/toolset/FBApdf/FbaRevisePdf';
+import Login from './pages/admin/components/Login';
+import PrivateRoute from './components/auth/PrivateRoute';
+
 
 const AppContainer = styled.div`
   min-height: 100vh;
@@ -50,14 +59,53 @@ function App() {
         <NavigationBar />
         <Content>
           <Routes>
+            {/* Public routes */}
             <Route path="/" element={<Home />} />
+            <Route path="/admin/login" element={<Login />} />
+            
+            {/* Protected admin routes */}
+            <Route path="/admin" element={
+              <PrivateRoute>
+                <AdminPage />
+              </PrivateRoute>
+            } />
+            <Route path="/admin/toolset/exchange" element={
+              <PrivateRoute>
+                <ExchangeRate />
+              </PrivateRoute>
+            } />
+            <Route path="/admin/toolset/fba-revise-pdf" element={
+              <PrivateRoute>
+                <FbaRevisePdf />
+              </PrivateRoute>
+            } />
+            <Route path="/admin/dataset/daily-report" element={
+              <PrivateRoute>
+                <DailyReport />
+              </PrivateRoute>
+            } />
+            <Route path="/admin/dataset/monthly-report" element={
+              <PrivateRoute>
+                <MonthlyReport />
+              </PrivateRoute>
+            } />
+            <Route path="/admin/dataset/product-analysis" element={
+              <PrivateRoute>
+                <ProductAnalysis />
+              </PrivateRoute>
+            } />
+            <Route path="/admin/dataset/payment-report-help" element={
+              <PrivateRoute>
+                <PaymentReportHelp />
+              </PrivateRoute>
+            } />
+            
+            {/* Other public routes */}
+            <Route path="/service" element={<ServicePage />} />
+            <Route path="/about" element={<About />} />
             
             {/* Service routes */}
-            <Route path="/service" element={<ServicePage />} />
             <Route path="/service/ai" element={<AI />} />
-            
-            {/* About route */}
-            <Route path="/about" element={<About />} />
             
             {/* Contact routes */}
             <Route path="/contact" element={<ContactPage />} />
@@ -67,9 +115,6 @@ function App() {
 
             {/* News routes */}
             <Route path="/news" element={<News />} />
-
-            {/* Admin routes */}
-            <Route path="/admin/*" element={<AdminPage />} />
           </Routes>
         </Content>
         <Footer />

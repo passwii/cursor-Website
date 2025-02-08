@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Typography, Paper, Grid, Card, CardContent, Tabs, Tab, Box } from '@mui/material';
+import { Container, Typography, Paper, Grid, Card, CardContent, Tabs, Tab, Box, Button } from '@mui/material';
 import styled from 'styled-components';
 import styles from './Admin.module.css';
+import { Target, LogOut } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -29,7 +31,6 @@ const TabPanel = (props: TabPanelProps) => {
   return (
     <div 
       hidden={value !== index}
-      className={value === index ? styles.fadeIn : ''}
       {...other}
     >
       {value === index && (
@@ -43,7 +44,20 @@ const TabPanel = (props: TabPanelProps) => {
 
 const AdminPage: React.FC = () => {
   const [tabValue, setTabValue] = useState(0);
+  const navigate = useNavigate();
   
+  useEffect(() => {
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
+    if (!isAuthenticated) {
+      navigate('/admin/login');
+    }
+  }, [navigate]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    navigate('/admin/login');
+  };
+
   const stats = [
     { title: '总用户数', value: '1,234' },
     { title: '活跃会话', value: '156' },
@@ -57,14 +71,24 @@ const AdminPage: React.FC = () => {
 
   return (
     <StyledContainer>
-      <Typography variant="h4" gutterBottom>
-        管理后台
-      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+        <Typography variant="h4" gutterBottom sx={{ mb: 0 }}>
+          管理后台
+        </Typography>
+        <Button 
+          variant="outlined" 
+          color="primary" 
+          onClick={handleLogout}
+          startIcon={<LogOut size={20} />}
+        >
+          退出登录
+        </Button>
+      </Box>
       
       <Grid container spacing={3} sx={{ mb: 4 }}>
         {stats.map((stat, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
-            <StyledCard className={styles.statsCard}>
+            <Card className={styles.statsCard}>
               <CardContent>
                 <Typography className={styles.statsTitle} gutterBottom>
                   {stat.title}
@@ -73,7 +97,7 @@ const AdminPage: React.FC = () => {
                   {stat.value}
                 </Typography>
               </CardContent>
-            </StyledCard>
+            </Card>
           </Grid>
         ))}
       </Grid>
@@ -87,17 +111,7 @@ const AdminPage: React.FC = () => {
 
         </Tabs>
 
-        <TabPanel value={tabValue} index={2}>
-          <Typography variant="h6">
-            数据功能开发中...
-          </Typography>
-        </TabPanel>
-
-        <TabPanel value={tabValue} index={3}>
-          <Typography variant="h6">
-            用户管理功能开发中...
-          </Typography>
-        </TabPanel>
+        
 
         <TabPanel value={tabValue} index={0}>
           <Grid container spacing={3}>
@@ -115,7 +129,7 @@ const AdminPage: React.FC = () => {
             </Grid>
             
             <Grid item xs={12} sm={6} md={4}>
-              <Card className={styles.toolCard} onClick={() => window.open('https://fba.believeboy.com', '_blank')}>
+              <Card className={styles.toolCard} onClick={() => navigate('/admin/toolset/fba-revise-pdf')}>
                 <CardContent className={styles.toolCardContent}>
                   <Typography className={styles.toolTitle} variant="h6">
                     FBA 标签处理
@@ -128,7 +142,7 @@ const AdminPage: React.FC = () => {
             </Grid>
             
             <Grid item xs={12} sm={6} md={4}>
-              <Card className={styles.toolCard} onClick={() => window.open('https://exchange.believeboy.com', '_blank')}>
+              <Card className={styles.toolCard} onClick={() => navigate('/admin/toolset/exchange')}>
                 <CardContent className={styles.toolCardContent}>
                   <Typography className={styles.toolTitle} variant="h6">
                     汇率动态
@@ -145,7 +159,7 @@ const AdminPage: React.FC = () => {
         <TabPanel value={tabValue} index={1}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={4}>
-              <Card className={styles.toolCard} onClick={() => window.open('https://dailyreport.believeboy.com', '_blank')}>
+              <Card className={styles.toolCard} onClick={() => navigate('/admin/dataset/daily-report')}>
                 <CardContent className={styles.toolCardContent}>
                   <Typography className={styles.toolTitle} variant="h6">
                     日报系统
@@ -158,7 +172,7 @@ const AdminPage: React.FC = () => {
             </Grid>
 
             <Grid item xs={12} sm={6} md={4}>
-              <Card className={styles.toolCard} onClick={() => window.open('https://monthlyreport.believeboy.com', '_blank')}>
+              <Card className={styles.toolCard} onClick={() => navigate('/admin/dataset/monthly-report')}>
                 <CardContent className={styles.toolCardContent}>
                   <Typography className={styles.toolTitle} variant="h6">
                     月报系统
@@ -171,7 +185,7 @@ const AdminPage: React.FC = () => {
             </Grid>
 
             <Grid item xs={12} sm={6} md={4}>
-              <Card className={styles.toolCard} onClick={() => window.open('https://productanalysis.believeboy.com', '_blank')}>
+              <Card className={styles.toolCard} onClick={() => window.open('/admin/dataset/product-analysis', '_blank')}>
                 <CardContent className={styles.toolCardContent}>
                   <Typography className={styles.toolTitle} variant="h6">
                     产品分析
@@ -210,6 +224,19 @@ const AdminPage: React.FC = () => {
             </Grid>
           </Grid>
         </TabPanel>
+
+        <TabPanel value={tabValue} index={2}>
+          <Typography variant="h6">
+            数据功能开发中...
+          </Typography>
+        </TabPanel>
+
+        <TabPanel value={tabValue} index={3}>
+          <Typography variant="h6">
+            用户管理功能开发中...
+          </Typography>
+        </TabPanel>
+        
       </Paper>
     </StyledContainer>
   );
