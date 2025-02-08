@@ -18,6 +18,8 @@ import FbaRevisePdf from './pages/admin/components/toolset/FBApdf/FbaRevisePdf';
 import Login from './pages/admin/components/Login';
 import PrivateRoute from './components/auth/PrivateRoute';
 import Analytics from './components/analytics/Analytics';
+import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 
 const AppContainer = styled.div`
@@ -58,6 +60,8 @@ function App() {
     <Router>
       <AppContainer>
         <Analytics />
+        <VercelAnalytics />
+        <SpeedInsights />
         <NavigationBar />
         <Content>
           <Routes>
