@@ -421,4 +421,34 @@
     grid-template-columns: 1fr;
     gap: 1rem;
   }
+}
+
+.moreText {
+  display: inline-block;
+  color: #666;
+  font-size: 14px;
+  margin-top: 12px;
+  cursor: pointer;
+  border: 1px solid #666;
+  border-radius: 20px;
+  padding: 4px 16px;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  margin-left: 1rem;
+}
+
+.moreText:hover {
+  color: #1a4b8c;
+  border-color: #1a4b8c;
+  background-color: rgba(26, 75, 140, 0.05);
+}
+
+/* 当父元素 dock-item 处于 active 状态时的样式 */
+.dock-item.active .moreText {
+  color: white;
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.dock-item.active .moreText:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 } 

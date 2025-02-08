@@ -9,6 +9,7 @@ export const primaryServices: PrimaryService[] = [
     id: "service-1",
     title: "知识产权服务",
     subtitles: "提供商标注册、专利申请、版权登记等",
+    moreText: "点击更多",
     image: intellectualPropertyImg,
     details: [
       {
@@ -53,6 +54,7 @@ export const primaryServices: PrimaryService[] = [
     id: "service-2",
     title: "项目孵化服务",
     subtitles: "项目评估筛选、资源整合、运营培训",
+    moreText: "点击更多",
     image: projectIncubationImg,
     details: [
       {
@@ -97,6 +99,7 @@ export const primaryServices: PrimaryService[] = [
     id: "service-3",
     title: "托管运营服务",
     subtitles: "店铺运营、营销推广数据分析、仓储物流",
+    moreText: "点击更多",
     image: managedOperationsImg,
     details: [
       {
@@ -141,6 +144,7 @@ export const primaryServices: PrimaryService[] = [
     id: "service-4",
     title: "品牌出海服务",
     subtitles: "品牌策划、市场调研、营销推广",
+    moreText: "点击更多",
     image: globalExpansionImg,
     details: [
       {

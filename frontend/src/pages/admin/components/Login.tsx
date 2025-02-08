@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Paper, TextField, Button, Typography, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
+import * as analytics from '../../../utils/analytics';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -19,8 +20,18 @@ const Login: React.FC = () => {
   const handleLogin = () => {
     if (username === 'damon' && password === 'rock2025') {
       localStorage.setItem('isAuthenticated', 'true');
+      analytics.event({
+        action: 'login',
+        category: 'user',
+        label: 'login_success'
+      });
       navigate('/admin');
     } else {
+      analytics.event({
+        action: 'login',
+        category: 'user',
+        label: 'login_failed'
+      });
       setError('用户名或密码错误');
     }
   };

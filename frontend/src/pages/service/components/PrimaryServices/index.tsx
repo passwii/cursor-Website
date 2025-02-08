@@ -53,6 +53,9 @@ const PrimaryServices: React.FC = () => {
             <div className={styles['dock-content']}>
               <h3 className={styles['dock-title']}>{service.title}</h3>
               <p className={styles['dock-subtitles']}>{service.subtitles}</p>
+              {service.moreText && (
+                <span className={styles.moreText}>{service.moreText}</span>
+              )}
             </div>
             <img 
               src={service.image} 

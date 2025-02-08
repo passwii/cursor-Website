@@ -17,6 +17,7 @@ import PaymentReportHelp from './pages/admin/components/help/PaymentReportHelp';
 import FbaRevisePdf from './pages/admin/components/toolset/FBApdf/FbaRevisePdf';
 import Login from './pages/admin/components/Login';
 import PrivateRoute from './components/auth/PrivateRoute';
+import Analytics from './components/analytics/Analytics';
 
 
 const AppContainer = styled.div`
@@ -56,6 +57,7 @@ function App() {
   return (
     <Router>
       <AppContainer>
+        <Analytics />
         <NavigationBar />
         <Content>
           <Routes>
